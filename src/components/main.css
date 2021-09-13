@@ -1,0 +1,17 @@
+.mainRow {
+  width: 100%;
+}
+.mainDiv2 {
+  display: flex;
+}
+@media only screen and (max-width: 576px) {
+  .mainRow {
+    width: auto;
+  }
+  .mainDiv2 {
+    padding-right: 0px !important;
+  }
+  .mainDiv1 {
+    padding-right: 0px !important;
+  }
+}
