@@ -17,7 +17,7 @@ function MainBody() {
             </Switch>
           </div>
           <div className="col-md-4  mainDiv1">
-            <SideBar />
+            
           </div>
         </div>
       </Router>

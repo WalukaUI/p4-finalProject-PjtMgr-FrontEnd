@@ -1,10 +1,12 @@
+import React from 'react';
+import MainBody from "./components/MainBody"
 // import logo from './logo.svg';
 // import './App.css';
 
 function App() {
   return (
     <div className="App">
-          <h1>jfsdfsbfmn</h1>
+          <MainBody />
     </div>
   );
 }

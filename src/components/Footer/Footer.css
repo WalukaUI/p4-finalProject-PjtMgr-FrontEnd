@@ -1,0 +1,9 @@
+.footerTopics{
+    text-decoration: underline;
+}
+
+@media only screen and (max-width: 576px) {
+    .footerTopics {
+      color: rgb(47, 47, 117);
+    }
+}
