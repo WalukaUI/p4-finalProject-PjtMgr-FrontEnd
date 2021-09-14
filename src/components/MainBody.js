@@ -1,9 +1,10 @@
-import React from "react";
-import {BrowserRouter as Router,Route,Redirect,Switch,} from "react-router-dom";
-import "./main.css";
-import Navbar from "./NavBar/Navbar";
-import Footer from "./Footer/Footer";
-import SideBar from "./SideBar/SideBar";
+import React from "react"
+import {BrowserRouter as Router,Route,Redirect,Switch,} from "react-router-dom"
+import "./main.css"
+import Navbar from "./NavBar/Navbar"
+import Footer from "./Footer/Footer"
+import SideBar from "./SideBar/SideBar"
+import Projects from "./Projects/Projects"
 
 function MainBody() {
   return (
@@ -11,13 +12,14 @@ function MainBody() {
       <Router>
         <Navbar />
         <div className="row mainRow">
-             <h3>List of Countries</h3>
-            <div className="col-md-4  mainDiv1">
+        
+            <div className="col-md-3  mainDiv1">
+            <a href="!#" className="myButton">List of Countries</a>
             <SideBar />
             </div>
-          <div className="col-md-8 mainDiv2">
+          <div className="col-md-9 mainDiv2">
             <Switch>
-              {/* <Route path="/contact" exact><Contact /></Route> */}
+              <Route path="/projects" exact><Projects /></Route>
               <Redirect to="/" />
             </Switch>
           </div>
