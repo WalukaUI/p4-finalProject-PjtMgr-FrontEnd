@@ -5,6 +5,8 @@ import Navbar from "./NavBar/Navbar"
 import Footer from "./Footer/Footer"
 import SideBar from "./SideBar/SideBar"
 import Projects from "./Projects/Projects"
+import Departments from "./Departments/Departments"
+import Cities from "./Cities/Cities"
 
 function MainBody() {
   return (
@@ -20,8 +22,8 @@ function MainBody() {
           <div className="col-md-9 mainDiv2">
             <Switch>
               <Route path="/projects" exact><Projects /></Route>
-              <Route path="/departments" exact><Projects /></Route>
-              <Route path="/cities" exact><Projects /></Route>
+              <Route path="/departments" exact><Departments /></Route>
+              <Route path="/cities" exact><Cities /></Route>
               <Route path="/employees" exact><Projects /></Route>
               <Redirect to="/" />
             </Switch>

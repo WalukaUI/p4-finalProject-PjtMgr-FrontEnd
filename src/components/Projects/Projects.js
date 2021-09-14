@@ -1,8 +1,7 @@
 import React, { useEffect, useState } from "react";
-import "bootstrap/dist/css/bootstrap.css";
 import "./Projects.css";
 
-function SideBar() {
+function Projects() {
   const [projects, setProjects] = useState([]);
 
   const URL = "https://project-manager-bkend.herokuapp.com";
@@ -18,7 +17,7 @@ function SideBar() {
 
   return (<>
         {projects.map((c, idx) => {
-          return (<div class="card text-white bg-secondary mb-3 citycard" key={c.name + idx}>
+          return (<div class="card text-white bg-secondary mb-3 projectcard" key={c.name + idx}>
             <div className="card-header">{c.name}</div>
             <div className="card-body">
               <h6 className="card-title">Client name: {c.client_name}</h6>
@@ -34,4 +33,4 @@ function SideBar() {
   );
 }
 
-export default SideBar;
+export default Projects;
