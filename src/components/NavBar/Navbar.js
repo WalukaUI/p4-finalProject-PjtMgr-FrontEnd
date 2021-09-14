@@ -43,10 +43,10 @@ function Nav2() {
                     <NavDropdown.Item href="/history"></NavDropdown.Item>
                   </NavDropdown>
                 </Nav>
-                <Nav.Link href="/create">
+                <Nav.Link href="/Login">
                   <button className="btn btn-warning">Log in</button>
                 </Nav.Link>
-                <Nav.Link href="/create">
+                <Nav.Link href="/Signup">
                   <button className="btn btn-warning">Sign up</button>
                 </Nav.Link>
               </Navbar.Collapse>
