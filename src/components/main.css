@@ -18,3 +18,18 @@
     padding-right: 0px !important;
   }
 }
+
+.headderBtn{
+  width: 100%;
+  text-align: center;
+	box-shadow:inset 0px -3px 7px 0px #c1dce6;
+	background:linear-gradient(to bottom, #7ec3eb 5%, #273542 100%);
+	background-color:#b6def5;
+	border-radius:3px;
+	border:1px solid #0b0e07;
+	display:inline-block;
+	color:#ffffff;
+	font-size:15px;
+	padding:9px 23px;
+	text-decoration:none;
+}
