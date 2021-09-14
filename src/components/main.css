@@ -1,6 +1,6 @@
 .mainRow {
   width: 100%;
-}
+  }
 .mainDiv2 {
   display: flex;
   flex-wrap: wrap;
@@ -32,4 +32,8 @@
 	font-size:15px;
 	padding:9px 23px;
 	text-decoration:none;
+}
+.hedderdiv{
+  padding-left: 25%;
+  width: 100%;
 }

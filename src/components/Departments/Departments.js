@@ -21,6 +21,7 @@ function Departments() {
             <div className="card-header">{c.name}</div>
             <div className="card-body">
               <h6 className="card-title">Department Manager: {c.dept_manager_name}</h6>
+              <button className="btn btn-light">Edit</button>
             </div>
           </div>
           )
