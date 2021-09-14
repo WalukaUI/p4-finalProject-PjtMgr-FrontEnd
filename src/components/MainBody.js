@@ -20,6 +20,9 @@ function MainBody() {
           <div className="col-md-9 mainDiv2">
             <Switch>
               <Route path="/projects" exact><Projects /></Route>
+              <Route path="/departments" exact><Projects /></Route>
+              <Route path="/cities" exact><Projects /></Route>
+              <Route path="/employees" exact><Projects /></Route>
               <Redirect to="/" />
             </Switch>
           </div>

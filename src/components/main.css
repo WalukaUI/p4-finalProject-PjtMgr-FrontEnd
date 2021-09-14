@@ -3,6 +3,9 @@
 }
 .mainDiv2 {
   display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  padding-top: 10px;
 }
 @media only screen and (max-width: 576px) {
   .mainRow {

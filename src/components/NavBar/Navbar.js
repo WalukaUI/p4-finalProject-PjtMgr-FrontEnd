@@ -31,9 +31,10 @@ function Nav2() {
               <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="me-auto">
                   <Nav.Link href="/projects">Projects</Nav.Link>
-                  <Nav.Link href="/countries">Countries</Nav.Link>
+                  <Nav.Link href="/departments">Departments</Nav.Link>
                   <Nav.Link href="/cities">Cities</Nav.Link>
-                  <NavDropdown title="More" id="collasible-nav-dropdown">
+                  <Nav.Link href="/employees">Employees</Nav.Link>
+                  {/* <NavDropdown title="More" id="collasible-nav-dropdown">
                     <NavDropdown.Item href="/departments">
                       Departments
                     </NavDropdown.Item>
@@ -41,7 +42,7 @@ function Nav2() {
                       Employees
                     </NavDropdown.Item>
                     <NavDropdown.Item href="/history"></NavDropdown.Item>
-                  </NavDropdown>
+                  </NavDropdown> */}
                 </Nav>
                 <Nav.Link href="/Login">
                   <button className="btn btn-warning">Log in</button>
