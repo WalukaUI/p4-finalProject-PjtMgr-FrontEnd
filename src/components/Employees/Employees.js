@@ -20,7 +20,7 @@ function Employees() {
           return (<div class="card text-white bg-secondary mb-3 employeeCard" key={c.name + idx}>
             <div className="card-header">{c.name}</div>
             <div className="card-body">
-              <h6 className="card-title">Branch Name: {c.branch_name}</h6>
+              <h6 className="card-title">Role: {c.role}</h6>
             </div>
           </div>
           )

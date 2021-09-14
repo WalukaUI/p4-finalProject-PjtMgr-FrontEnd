@@ -7,6 +7,7 @@ import SideBar from "./SideBar/SideBar"
 import Projects from "./Projects/Projects"
 import Departments from "./Departments/Departments"
 import Cities from "./Cities/Cities"
+import Employees from "./Employees/Employees"
 
 function MainBody() {
   return (
@@ -24,7 +25,7 @@ function MainBody() {
               <Route path="/projects" exact><Projects /></Route>
               <Route path="/departments" exact><Departments /></Route>
               <Route path="/cities" exact><Cities /></Route>
-              <Route path="/employees" exact><Projects /></Route>
+              <Route path="/employees" exact><Employees /></Route>
               <Redirect to="/" />
             </Switch>
           </div>

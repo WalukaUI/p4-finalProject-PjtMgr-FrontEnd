@@ -20,7 +20,7 @@ function SideBar() {
     <>
       <div className="cardDiv">
       {country.map((c,idx)=>{
-        return <a href="!#" className="myButton" key={c.name + idx}>{c.name}</a>
+        return <a href="/home" className="myButton" key={c.name + idx}>{c.name}</a>
     })}
 
       </div>
