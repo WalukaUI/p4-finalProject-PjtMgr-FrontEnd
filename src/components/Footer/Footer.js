@@ -26,7 +26,7 @@ function Footer() {
                 </h6>
                 <p>
                   <p className="text-reset">Branches Contact details</p>
-                  <p className="text-reset">Countries Contact details</p>
+                
                 </p>
               </div>
 

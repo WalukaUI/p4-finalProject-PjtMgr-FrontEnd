@@ -1,11 +1,10 @@
 import React, { useEffect, useState } from "react";
+import Loading from "../LoadingAnimation/Loading"
 import "./Projects.css";
 
 function Projects() {
-  const [projects, setProjects] = useState([]);
-
-  const URL = "https://project-manager-bkend.herokuapp.com";
-
+  const [projects, setProjects] = useState(null);
+  let URL="https://project-manager-bkend.herokuapp.com"
   useEffect(() => {
     fetch(`${URL}/projects`, {
       method: "GET",
@@ -13,11 +12,10 @@ function Projects() {
     })
       .then((r) => r.json())
       .then((data) => setProjects(data));
-  }, []);
+  });
 
-  return (<>
-        {projects.map((c, idx) => {
-          return (<div class="card text-white bg-secondary mb-3 projectcard" key={c.name + idx}>
+  return (<>{projects !== null? projects.map((c, idx) => {
+          return (<div className="card text-white bg-secondary mb-3 projectcard" key={c.name + idx}>
             <div className="card-header">{c.name}</div>
             <div className="card-body">
               <h6 className="card-title">Client name: {c.client_name}</h6>
@@ -30,7 +28,7 @@ function Projects() {
             </div>
           </div>
           )
-        })}
+        }): <Loading />}
     </>
   );
 }

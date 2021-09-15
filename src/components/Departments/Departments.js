@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
+import Loading from "../LoadingAnimation/Loading"
 import "./Departments.css";
 
 function Departments() {
-  const [departments, setDepartments] = useState([]);
+  const [departments, setDepartments] = useState(null);
 
   const URL = "https://project-manager-bkend.herokuapp.com";
 
@@ -15,9 +16,8 @@ function Departments() {
       .then((data) => setDepartments(data));
   }, []);
 
-  return (<>
-        {departments.map((c, idx) => {
-          return (<div class="card text-white bg-secondary mb-3 dptcard" key={c.name + idx}>
+  return (<> {departments !== null ? departments.map((c, idx) => {
+          return (<div className="card text-white bg-secondary mb-3 dptcard" key={c.name + idx}>
             <div className="card-header">{c.name}</div>
             <div className="card-body">
               <h6 className="card-title">Department Manager: {c.dept_manager_name}</h6>
@@ -25,7 +25,7 @@ function Departments() {
             </div>
           </div>
           )
-        })}
+        }): <Loading />}
     </>
   );
 }
