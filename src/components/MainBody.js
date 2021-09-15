@@ -14,6 +14,7 @@ import Departments from "./Departments/Departments";
 import Cities from "./Cities/Cities";
 import Employees from "./Employees/Employees";
 import Home from "./Home/Home";
+import SignUp from "./SignUp/SignUp";
 
 function MainBody() {
   return (
@@ -44,6 +45,9 @@ function MainBody() {
               <Route path="/employees" exact>
               <div className="hedderdiv"><h5>All Employees of the Company</h5></div>
                 <Employees />
+              </Route>
+              <Route path="/signup" exact>
+                <SignUp/>
               </Route>
               <Route path="/" exact>
               <div className="hedderdiv"><h5>Welcome to T&T Project Manager</h5></div>

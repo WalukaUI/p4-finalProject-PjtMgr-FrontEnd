@@ -124,7 +124,7 @@ function Nav2({ onLogin }) {
                   </button>
                 </Nav.Link>
                 <Nav.Link href="/Signup">
-                  <button className="btn btn-warning">Sign up</button>
+                  <button className="btn btn-warning" href="/signup">Sign up</button>
                 </Nav.Link>
               </Navbar.Collapse>
             </div>
