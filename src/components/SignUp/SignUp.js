@@ -1,8 +1,7 @@
-import { position } from "dom-helpers";
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import "./SignUp.css";
 
-function SignUp(){
+function SignUp({setUser}){
    const[username,setUsername]=useState("")
    const[password,setPassword]=useState("")
    const[pwverification, setpwVerification]=useState("")
@@ -16,7 +15,20 @@ function SignUp(){
     password_verification: pwverification,
     position: "manager"
   }
-  console.log(data)
+  fetch("/signup", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(data),
+  }).then((res) => {
+    if (res.ok) {
+      res.json().then((user) => {
+        console.log(user)
+        setUser(user)});
+    }
+  });
+
   }
 
     return<>

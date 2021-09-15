@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState,  useEffect } from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -17,10 +17,23 @@ import Home from "./Home/Home";
 import SignUp from "./SignUp/SignUp";
 
 function MainBody() {
+
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    // auto-login //
+    fetch("/me").then((r) => {
+      if (r.ok) {
+        r.json().then((user) => setUser(user));
+      }
+    });
+  }, []);
+
+  
   return (
     <div className="Login-component">
       <Router>
-        <Navbar />
+        <Navbar setUser={setUser} user={user}/>
         <div className="row mainRow">
           <div className="col-md-3  mainDiv1">
             <a href="/countries" className="headderBtn">
@@ -47,7 +60,7 @@ function MainBody() {
                 <Employees />
               </Route>
               <Route path="/signup" exact>
-                <SignUp/>
+                <SignUp setUser={setUser}/>
               </Route>
               <Route path="/" exact>
               <div className="hedderdiv"><h5>Welcome to T&T Project Manager</h5></div>
