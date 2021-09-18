@@ -4,7 +4,8 @@ import "./Cities.css";
 
 function Cities() {
   const [cities, setCities] = useState(null);
-  let URL="https://project-manager-bkend.herokuapp.com"
+
+  let URL="http://localhost:3000"
   useEffect(() => {
     fetch(`${URL}/cities`, {
       method: "GET",

@@ -5,8 +5,8 @@ import "./Employees.css";
 function Employees() {
   const [employees, setEmployees] = useState(null);
 
-  const URL = "https://project-manager-bkend.herokuapp.com";
-
+  // const URL = "https://project-manager-bkend.herokuapp.com";
+  const URL = "http://localhost:3000";
   useEffect(() => {
     fetch(`${URL}/employees`, {
       method: "GET",

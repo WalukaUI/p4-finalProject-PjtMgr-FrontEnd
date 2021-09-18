@@ -5,16 +5,16 @@ import "./SideBar.css";
 function SideBar() {
   const [country, setCountry] = useState(null);
 
-  const URL = "https://project-manager-bkend.herokuapp.com";
-
-  useEffect(() => {
-    fetch(`${URL}/countries`, {
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
-    })
-      .then((r) => r.json())
-      .then((data) => setCountry(data));
-  }, []);
+  // const URL = "https://project-manager-bkend.herokuapp.com";
+  const URL = "http://localhost:3000";
+  // useEffect(() => {
+  //   fetch(`${URL}/countries`, {
+  //     method: "GET",
+  //     headers: { "Content-Type": "application/json" },
+  //   })
+  //     .then((r) => r.json())
+  //     .then((data) => setCountry(data));
+  // }, []);
 
   return (
     <>

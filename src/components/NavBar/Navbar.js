@@ -3,30 +3,38 @@ import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import "./Navbar.css";
 
-function Nav2({ onLogin }) {
+function Nav2({ setUser, user, logout }) {
   const [login, setLogin] = useState(false);
-  const [username, setUsername] = useState("");
+  const [name, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  const [errors, setErrors] = useState([]);
 
   function handleSubmit(e) {
     e.preventDefault();
 
-    let data = {
-      username: username,
-      password_digest: password
-    };
+    //login
 
-    fetch("https://localhost:3000/login", {
+    fetch("http://localhost:3006/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(data),
-    })
-      .then((r) => r.json())
-      .then(lg=>console.log(lg));
+      body: JSON.stringify({ "name": name, "password": password }),
+    }).then((res) => {
+      if (res.ok) {
+        res.json().then((user) => {
+          setLogin(!login);
+          setUser(user);
+        });
+      } else {
+        res.json().then((err) => {console.log(err.errors)});
+      }
+    });
   }
-
+  function handlelogout(e) {
+    e.preventDefault();
+    logout();
+  }
   function setLoginState(e) {
     e.preventDefault();
     setLogin(!login);
@@ -44,7 +52,7 @@ function Nav2({ onLogin }) {
                   Username
                   <input
                     name="product_name"
-                    value={username}
+                    value={name}
                     className="form-control form-control-sm"
                     placeholder="Username"
                     onChange={(e) => setUsername(e.target.value)}
@@ -83,6 +91,11 @@ function Nav2({ onLogin }) {
                 </div>
               </div>
             </form>
+            {/* <div>
+              {errors.map((err) => (
+                <li key={err}>{err}</li>
+              ))}
+            </div> */}
           </div>
         </div>
       </div>
@@ -118,13 +131,19 @@ function Nav2({ onLogin }) {
                   <Nav.Link href="/cities">Cities</Nav.Link>
                   <Nav.Link href="/employees">Employees</Nav.Link>
                 </Nav>
+
                 <Nav.Link href="/Login">
                   <button className="btn btn-warning" onClick={setLoginState}>
-                    Log in
+                    {user !== null ? "Thank you" : "Log in"}
                   </button>
                 </Nav.Link>
+                <button className="btn btn-warning" onClick={handlelogout}>
+                  Log Out
+                </button>
                 <Nav.Link href="/Signup">
-                  <button className="btn btn-warning" href="/signup">Sign up</button>
+                  <button className="btn btn-warning" href="/signup">
+                    Sign up
+                  </button>
                 </Nav.Link>
               </Navbar.Collapse>
             </div>
