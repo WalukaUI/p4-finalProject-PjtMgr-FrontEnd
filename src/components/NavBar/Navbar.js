@@ -3,31 +3,40 @@ import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import "./Navbar.css";
 
-function Nav2({ setUser, user, logout }) {
+function Nav2({ setUser, logout ,isloggedin, setisloggedin}) {
   const [login, setLogin] = useState(false);
   const [name, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [errors, setErrors] = useState([]);
+  const [errors,setErrors]=useState(null)
 
   function handleSubmit(e) {
     e.preventDefault();
 
     //login
 
-    fetch("http://localhost:3006/login", {
+    fetch("http://localhost:3000/login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({ "name": name, "password": password }),
+      credentials: "include",
+      body: JSON.stringify({
+        name: name,
+        password: password,
+      })
     }).then((res) => {
       if (res.ok) {
         res.json().then((user) => {
           setLogin(!login);
-          setUser(user);
+          setisloggedin(true)
+         return setUser(user);
         });
       } else {
-        res.json().then((err) => {console.log(err.errors)});
+        res.json().then((err) => {
+          setisloggedin(false)
+          console.log(err);
+          setErrors(err.error);
+        });
       }
     });
   }
@@ -91,11 +100,9 @@ function Nav2({ setUser, user, logout }) {
                 </div>
               </div>
             </form>
-            {/* <div>
-              {errors.map((err) => (
-                <li key={err}>{err}</li>
-              ))}
-            </div> */}
+            <div>
+              {errors? <p style={{color:"red", marginTop:"10px"}}>{errors}</p> :null}
+            </div>
           </div>
         </div>
       </div>
@@ -131,20 +138,24 @@ function Nav2({ setUser, user, logout }) {
                   <Nav.Link href="/cities">Cities</Nav.Link>
                   <Nav.Link href="/employees">Employees</Nav.Link>
                 </Nav>
-
-                <Nav.Link href="/Login">
-                  <button className="btn btn-warning" onClick={setLoginState}>
-                    {user !== null ? "Thank you" : "Log in"}
-                  </button>
-                </Nav.Link>
-                <button className="btn btn-warning" onClick={handlelogout}>
-                  Log Out
-                </button>
+                {isloggedin !== true ?
+                                <Nav.Link href="/Login">
+                                <button className="btn btn-warning" onClick={setLoginState}>
+                                 Log in
+                                </button>
+                              </Nav.Link>:
+                              <Nav.Link href="/">
+                              <button className="btn btn-warning" onClick={handlelogout}>
+                               Log Out
+                              </button>
+                            </Nav.Link>
+              }
+              {isloggedin !== true ? 
                 <Nav.Link href="/Signup">
                   <button className="btn btn-warning" href="/signup">
                     Sign up
                   </button>
-                </Nav.Link>
+                </Nav.Link>: null}
               </Navbar.Collapse>
             </div>
           </Container>

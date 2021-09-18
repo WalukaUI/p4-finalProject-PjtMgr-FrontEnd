@@ -1,18 +1,29 @@
 import React, { useEffect, useState } from "react";
+import { Redirect } from "react-router";
 import Loading from "../LoadingAnimation/Loading"
 import "./Projects.css";
 
-function Projects() {
+function Projects({setisloggedin}) {
   const [projects, setProjects] = useState(null);
-  let URL="https://project-manager-bkend.herokuapp.com"
+  // let URL="https://project-manager-bkend.herokuapp.com"
+  let URL="http://localhost:3000"
   useEffect(() => {
     fetch(`${URL}/projects`, {
       method: "GET",
       headers: { "Content-Type": "application/json" },
+      credentials: "include"
     })
-      .then((r) => r.json())
-      .then((data) => setProjects(data));
-  });
+    .then((res) => {
+      if (res.ok) {
+        res.json().then((data) => {
+          setisloggedin(true)
+          setProjects(data)
+        });
+      } else {
+        <Redirect to="/" />
+      }
+    });
+  },[]);
 
   return (<>{projects !== null? projects.map((c, idx) => {
           return (<div className="card text-white bg-secondary mb-3 projectcard" key={c.name + idx}>

@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Loading from "../LoadingAnimation/Loading";
 import "./Cities.css";
 
-function Cities() {
+function Cities({setisloggedin}) {
   const [cities, setCities] = useState(null);
 
   let URL="http://localhost:3000"
@@ -10,10 +10,19 @@ function Cities() {
     fetch(`${URL}/cities`, {
       method: "GET",
       headers: { "Content-Type": "application/json" },
+      credentials: "include"
     })
-      .then((r) => r.json())
-      .then((data) => setCities(data));
-  });
+    .then((res) => {
+      if (res.ok) {
+        res.json().then((data) => {
+          setisloggedin(true)
+          setCities(data)
+        });
+      } else {
+        console.log(res);
+      }
+    });
+  },[]);
 
   return (<> {cities !== null ? 
     cities.map((c, idx) => {

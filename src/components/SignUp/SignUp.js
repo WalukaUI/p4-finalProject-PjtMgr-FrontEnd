@@ -13,10 +13,12 @@ function SignUp({ setUser, user }) {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({       
-        "name": username,
-        "password": password,
-        "password_confirmation": pwverification}),
+      credentials: "include",
+      body: JSON.stringify({
+        name: username,
+        password: password,
+        password_confirmation: pwverification
+      }),
     }).then((res) => {
       if (res.ok) {
         res.json().then((user) => {
@@ -29,59 +31,63 @@ function SignUp({ setUser, user }) {
     });
   }
 
-  return (<>{user === null ? 
-      <form onSubmit={handleSubmit} className="signupform">
-        <div className="form-group">
-          <h4>Register</h4>
-          <label>Username</label>
-          <input
-            type="name"
-            value={username}
-            className="form-control"
-            onChange={(e) => setUsername(e.target.value)}
-            placeholder="Enter Your Username"
-          />
-          <small className="form-text text-muted">
-            We'll never share your informations with anyone else.
-          </small>
+  return (
+    <>
+      {user === null ? (
+        <form onSubmit={handleSubmit} className="signupform">
+          <div className="form-group">
+            <h4>Register</h4>
+            <label>Username</label>
+            <input
+              type="name"
+              value={username}
+              className="form-control"
+              onChange={(e) => setUsername(e.target.value)}
+              placeholder="Enter Your Username"
+            />
+            <small className="form-text text-muted">
+              We'll never share your informations with anyone else.
+            </small>
+          </div>
+          <div className="form-group">
+            <label>Password</label>
+            <input
+              type="password"
+              value={password}
+              autocomplete="on"
+              className="form-control"
+              onChange={(e) => setPassword(e.target.value)}
+              placeholder="Password"
+            />
+          </div>
+          <div className="form-group">
+            <label>Password Verification</label>
+            <input
+              type="password"
+              value={pwverification}
+              autocomplete="on"
+              className="form-control"
+              onChange={(e) => setpwVerification(e.target.value)}
+              placeholder="Password"
+            />
+          </div>
+          <div className="form-group form-check">
+            <input type="checkbox" className="form-check-input" />
+            <label className="form-check-label">
+              I Agreed to terms and Conditions
+            </label>
+          </div>
+          <button type="submit" className="btn btn-primary">
+            Submit
+          </button>
+        </form>
+      ) : (
+        <div>
+          <h1>{user.name}, You are signed in</h1>
         </div>
-        <div className="form-group">
-          <label>Password</label>
-          <input
-            type="password"
-            value={password}
-            autocomplete="on"
-            className="form-control"
-            onChange={(e) => setPassword(e.target.value)}
-            placeholder="Password"
-          />
-        </div>
-        <div className="form-group">
-          <label>Password Verification</label>
-          <input
-            type="password"
-            value={pwverification}
-            autocomplete="on"
-            className="form-control"
-            onChange={(e) => setpwVerification(e.target.value)}
-            placeholder="Password"
-          />
-        </div>
-        <div className="form-group form-check">
-          <input
-            type="checkbox"
-            className="form-check-input"
-          />
-          <label className="form-check-label">
-            I Agreed to terms and Conditions
-          </label>
-        </div>
-        <button type="submit" className="btn btn-primary">
-          Submit
-        </button>
-      </form>
-    : <div><h1>{user.name}, You are signed in</h1></div>
-  }</>)
+      )}
+    </>
+  );
 }
 
 export default SignUp;

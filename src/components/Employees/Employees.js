@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Loading from "../LoadingAnimation/Loading"
 import "./Employees.css";
 
-function Employees() {
+function Employees({setisloggedin}) {
   const [employees, setEmployees] = useState(null);
 
   // const URL = "https://project-manager-bkend.herokuapp.com";
@@ -11,9 +11,19 @@ function Employees() {
     fetch(`${URL}/employees`, {
       method: "GET",
       headers: { "Content-Type": "application/json" },
+      credentials: "include"
     })
-      .then((r) => r.json())
-      .then((data) => setEmployees(data));
+      .then((res) => {
+        if (res.ok) {
+          res.json().then((data) => {
+          setisloggedin(true)
+           setEmployees(data)
+          });
+        } else {
+          console.log(res);
+        }
+      });
+      
   }, []);
 
   return (<>{employees !== null? employees.map((c, idx) => {

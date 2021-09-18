@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Loading from "../LoadingAnimation/Loading";
 import "./Departments.css";
 
-function Departments() {
+function Departments({setisloggedin}) {
   const [departments, setDepartments] = useState(null);
 
   // const URL = "https://project-manager-bkend.herokuapp.com";
@@ -12,11 +12,18 @@ function Departments() {
     fetch(`${URL}/departments`, {
       method: "GET",
       headers: { "Content-Type": "application/json" },
+      credentials: "include"
     })
-      .then((r) => {
-        console.log(r);
-        r.json()})
-      .then((data) => setDepartments(data));
+    .then((res) => {
+      if (res.ok) {
+        res.json().then((data) => {
+          setisloggedin(true)
+          setDepartments(data)
+        });
+      } else {
+        console.log(res);
+      }
+    });
   }, []);
 
   return (
