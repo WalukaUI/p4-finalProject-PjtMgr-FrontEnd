@@ -19,6 +19,7 @@ function Nav2({ setUser, logout ,isloggedin, setisloggedin}) {
     // const URL = "http://localhost:3000";
     fetch(`/login`, {
       method: "POST",
+      mode: 'no-cors',
       headers: {
         "Content-Type": "application/json",
       },
