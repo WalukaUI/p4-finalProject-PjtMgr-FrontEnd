@@ -1,2 +1,5 @@
 /* /index.html 200
-/api/* https://project-manager-bkend.herokuapp.com:splat 200
+ https://project-manager-bkend.herokuapp.com
+ /signup
+ /login
+ /cities
