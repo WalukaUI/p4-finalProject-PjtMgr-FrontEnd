@@ -23,11 +23,11 @@ function MainBody() {
   const [user, setUser] = useState(null);
   const [isloggedin, setisloggedin] = useState(null);
 
-  const URL = "https://project-manager-bkend.herokuapp.com";
+ // const URL = "https://project-manager-bkend.herokuapp.com";
   //const URL="http://localhost:3000"
-  // auto-login //
+  // auto-login // ${URL}
   useEffect(() => {
-    fetch(`${URL}/me`).then((r) => {
+    fetch(`/me`).then((r) => {
       if (r.ok) {
         
         r.json().then((user) =>{ 
