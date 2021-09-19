@@ -11,6 +11,7 @@ function SideBar({user}) {
   
   useEffect(() => {
     fetch(`${URL}/countries`, {
+      mode: 'no-cors',
       method: "GET",
       headers: { "Content-Type": "application/json" },
       credentials: "include"
