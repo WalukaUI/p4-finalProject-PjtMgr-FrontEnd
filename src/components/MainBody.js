@@ -23,11 +23,11 @@ function MainBody() {
   const [user, setUser] = useState(null);
   const [isloggedin, setisloggedin] = useState(null);
 
- // const URL = "https://project-manager-bkend.herokuapp.com";
+  const URL = "https://project-manager-bkend.herokuapp.com";
   //const URL="http://localhost:3000"
   // auto-login // ${URL}
   useEffect(() => {
-    fetch(`/me`).then((r) => {
+    fetch(`${URL}/me`).then((r) => {
       if (r.ok) {
         
         r.json().then((user) =>{ 
@@ -39,7 +39,7 @@ function MainBody() {
 
    // logout //
   function  logout(){
-      fetch(`/logout`, {
+      fetch(`${URL}/logout`, {
       method: "DELETE",
       credentials: "include"
     }).then((r) => console.log("logged out"));
