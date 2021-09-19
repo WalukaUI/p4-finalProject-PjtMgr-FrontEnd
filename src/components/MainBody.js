@@ -22,7 +22,7 @@ function MainBody() {
   
   const [user, setUser] = useState(null);
   const [isloggedin, setisloggedin] = useState(null);
-
+// "proxy": "https://project-manager-bkend.herokuapp.com",
   const URL = "https://project-manager-bkend.herokuapp.com";
   //const URL="http://localhost:3000"
   // auto-login // ${URL}
