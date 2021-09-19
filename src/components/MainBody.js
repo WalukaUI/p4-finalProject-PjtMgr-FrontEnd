@@ -39,7 +39,7 @@ function MainBody() {
 
    // logout //
   function  logout(){
-      fetch(`${URL}/logout`, {
+      fetch(`/logout`, {
       method: "DELETE",
       credentials: "include"
     }).then((r) => console.log("logged out"));

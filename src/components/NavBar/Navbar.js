@@ -15,9 +15,9 @@ function Nav2({ setUser, logout ,isloggedin, setisloggedin}) {
 
   //   //login
 
-    const URL = "https://project-manager-bkend.herokuapp.com";
+    //const URL = "https://project-manager-bkend.herokuapp.com";
     // const URL = "http://localhost:3000";
-    fetch(`${URL}/login`, {
+    fetch(`/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
