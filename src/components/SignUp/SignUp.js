@@ -12,7 +12,6 @@ function SignUp({ setUser, user }) {
   function handleSubmit(e) {
     e.preventDefault();
     fetch(`${URL}/signup`, {
-      mode: 'no-cors',
       method: "POST",
       headers: {
         "Content-Type": "application/json",
