@@ -22,6 +22,8 @@ function MainBody() {
   const [user, setUser] = useState(null);
   const [isloggedin, setisloggedin] = useState(null);
 
+
+  const URL="http://localhost:3000"
   // auto-login //
   useEffect(() => {
     fetch("http://localhost:3000/me").then((r) => {
@@ -42,11 +44,16 @@ function MainBody() {
     }).then((r) => console.log("logged out"));
     setisloggedin(false)
   }
+
   
   return (
     <div className="Login-component">
       <Router>
-        <Navbar setUser={setUser} logout={logout} isloggedin={isloggedin} setisloggedin={setisloggedin}/>
+        <Navbar setUser={setUser} 
+        logout={logout} 
+        isloggedin={isloggedin} 
+        setisloggedin={setisloggedin} 
+        />
         <div className="row mainRow">
           <div className="col-md-3  mainDiv1">
             <a href="/countries" className="headderBtn">

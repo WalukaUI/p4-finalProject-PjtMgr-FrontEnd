@@ -1,4 +1,5 @@
 import { Nav, Navbar, Container } from "react-bootstrap";
+import { Redirect } from 'react-router'
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import "./Navbar.css";
@@ -9,10 +10,11 @@ function Nav2({ setUser, logout ,isloggedin, setisloggedin}) {
   const [password, setPassword] = useState("");
   const [errors,setErrors]=useState(null)
 
+
   function handleSubmit(e) {
     e.preventDefault();
 
-    //login
+  //   //login
 
     fetch("http://localhost:3000/login", {
       method: "POST",
@@ -29,7 +31,8 @@ function Nav2({ setUser, logout ,isloggedin, setisloggedin}) {
         res.json().then((user) => {
           setLogin(!login);
           setisloggedin(true)
-         return setUser(user);
+          setUser(user)
+          
         });
       } else {
         res.json().then((err) => {
@@ -40,6 +43,7 @@ function Nav2({ setUser, logout ,isloggedin, setisloggedin}) {
       }
     });
   }
+
   function handlelogout(e) {
     e.preventDefault();
     logout();
@@ -48,6 +52,7 @@ function Nav2({ setUser, logout ,isloggedin, setisloggedin}) {
     e.preventDefault();
     setLogin(!login);
   }
+
 
   return login ? (
     <>
@@ -72,6 +77,7 @@ function Nav2({ setUser, logout ,isloggedin, setisloggedin}) {
                   <input
                     name="product_price"
                     value={password}
+                    type="password"
                     className="form-control form-control-sm"
                     placeholder="Password"
                     onChange={(e) => setPassword(e.target.value)}
@@ -138,7 +144,7 @@ function Nav2({ setUser, logout ,isloggedin, setisloggedin}) {
                   <Nav.Link href="/cities">Cities</Nav.Link>
                   <Nav.Link href="/employees">Employees</Nav.Link>
                 </Nav>
-                {isloggedin !== true ?
+                 {isloggedin !== true ?
                                 <Nav.Link href="/Login">
                                 <button className="btn btn-warning" onClick={setLoginState}>
                                  Log in
@@ -149,7 +155,8 @@ function Nav2({ setUser, logout ,isloggedin, setisloggedin}) {
                                Log Out
                               </button>
                             </Nav.Link>
-              }
+              } 
+
               {isloggedin !== true ? 
                 <Nav.Link href="/Signup">
                   <button className="btn btn-warning" href="/signup">
