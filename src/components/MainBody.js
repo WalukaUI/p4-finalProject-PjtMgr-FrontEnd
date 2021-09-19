@@ -15,6 +15,7 @@ import Cities from "./Cities/Cities";
 import Employees from "./Employees/Employees";
 import Home from "./Home/Home";
 import SignUp from "./SignUp/SignUp";
+import DepartmentEmployees from "./Departments/DepartmentEmployees"
 
 
 function MainBody() {
@@ -72,6 +73,9 @@ function MainBody() {
               <Route path="/departments" exact>
                 <div className="hedderdiv"><h5>Departments of the Company</h5></div>
                 <Departments setisloggedin={setisloggedin}/>
+              </Route>
+              <Route path="/employees/:id" exact>
+                <DepartmentEmployees />
               </Route>
               <Route path="/cities" exact>
               <div className="hedderdiv"><h5>Business Opearting Cities of the Company</h5></div>

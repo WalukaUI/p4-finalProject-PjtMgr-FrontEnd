@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import Loading from "../LoadingAnimation/Loading";
+import DepartmentCard from "./DepartmentCard"
 import "./Departments.css";
 
 function Departments({setisloggedin}) {
   const [departments, setDepartments] = useState(null);
+ 
 
   // const URL = "https://project-manager-bkend.herokuapp.com";
   const URL = "http://localhost:3000";
@@ -24,23 +26,20 @@ function Departments({setisloggedin}) {
     });
   }, []);
 
+  //-------------------Supportive Fuctions-----------------------
+
+ 
+
   return (
     <>
+
       {departments !== null ? (
-        departments.map((c, idx) => {
+        departments.map((card, idx) => {
           return (
-            <div
-              className="card text-white bg-secondary mb-3 dptcard"
-              key={c.name + idx}
-            >
-              <div className="card-header">{c.name}</div>
-              <div className="card-body">
-                <h6 className="card-title">
-                  Department Manager: {c.dept_manager_name}
-                </h6>
-                <button className="btn btn-light">Edit</button>
-              </div>
-            </div>
+            <DepartmentCard 
+             key={card.name + idx}
+             card={card}
+            />
           );
         })
       ) : (

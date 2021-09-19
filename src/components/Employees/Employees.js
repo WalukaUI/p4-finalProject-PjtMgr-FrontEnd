@@ -1,67 +1,66 @@
 import React, { useEffect, useState } from "react";
-import EmployeeCard from "./EmployeeCard"
-import Loading from "../LoadingAnimation/Loading"
+import EmployeeCard from "./EmployeeCard";
+import Loading from "../LoadingAnimation/Loading";
 import "./Employees.css";
 
-
-function Employees({setisloggedin}) {
+function Employees({ setisloggedin }) {
   const [employees, setEmployees] = useState(null);
-  const [addEmployeeForm, setAddEmpForm]=useState(false)
+  const [addEmployeeForm, setAddEmpForm] = useState(false);
   const [addEmployee, setAddEmployee] = useState({});
 
-// const URL = "https://project-manager-bkend.herokuapp.com";
+  // const URL = "https://project-manager-bkend.herokuapp.com";
   const URL = "http://localhost:3000";
 
-//GET EMPLOYEES
+  //GET EMPLOYEES
   useEffect(() => {
     fetch(`${URL}/employees`, {
       method: "GET",
       headers: { "Content-Type": "application/json" },
-      credentials: "include"
-    })
-      .then((res) => {
-        if (res.ok) {
-          res.json().then((data) => {
-          setisloggedin(true)
-           return setEmployees(data)
-          });
-        } 
-      });
-      
+      credentials: "include",
+    }).then((res) => {
+      if (res.ok) {
+        res.json().then((data) => {
+          setisloggedin(true);
+          return setEmployees(data);
+        });
+      }
+    });
   }, []);
 
-//DELETE EMPLOYEE
+  //DELETE EMPLOYEE
 
-function deleteEmployee(id) {
-  fetch(`${URL}/employees/${id}`, { method: "DELETE",credentials: "include" });
-  const newEmp = employees.filter((person) => person.id !== id);
-  setEmployees(newEmp);
-}
-
-//PATCH EMPLOYEE
-
-function updateEmployee(employeObject,id) {
-  let data = { ...employeObject, ["id"]: id};
-
-  fetch(`${URL}/employees/${id}`, {
-    method: "PATCH",
-    headers: {
-      Accept: "application/json",
-      "Content-Type": "application/json"
-    },
-    credentials: "include",
-    body: JSON.stringify(data),
-  })
-    .then((res) => res.json())
-    .then((emp) => {
-   
-      const newEmployee = employees.filter(
-        (person) => person.id !== employeObject.id
-      );
-     
-      setEmployees([...newEmployee, emp]);
+  function deleteEmployee(id) {
+    fetch(`${URL}/employees/${id}`, {
+      method: "DELETE",
+      credentials: "include",
     });
-}
+    const newEmp = employees.filter((person) => person.id !== id);
+    setEmployees(newEmp);
+  }
+
+  //PATCH EMPLOYEE
+
+  function updateEmployee(employeObject, id) {
+    let data = { ...employeObject, ["id"]: id };
+
+    fetch(`${URL}/employees/${id}`, {
+      method: "PATCH",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+      body: JSON.stringify(data),
+    })
+      .then((res) => res.json())
+      .then((emp) => {
+        const newEmployee = employees.filter(
+          (person) => person.id !== employeObject.id
+        );
+
+        setEmployees([...newEmployee, emp]);
+      });
+  }
   //CREATE EMPLOYEE
 
   function createEmployee(newEmpObject) {
@@ -79,24 +78,26 @@ function updateEmployee(employeObject,id) {
   }
 
   //-----------------supportive functions--------------------------
-function toggleForm(e) {
-  e.preventDefault();
-  setAddEmpForm(!addEmployeeForm);
-}
+  
+  function toggleForm(e) {
+    e.preventDefault();
+    setAddEmpForm(!addEmployeeForm);
+  }
 
-function createNewEmployee(e) {
-  e.preventDefault();
-  setAddEmpForm(!addEmployeeForm);
-  createEmployee(addEmployee);
-}
+  function createNewEmployee(e) {
+    e.preventDefault();
+    setAddEmpForm(!addEmployeeForm);
+    createEmployee(addEmployee);
+  }
 
-function handleAddEmployee(e) {
-  e.preventDefault();
-  let newEmp = { ...addEmployee, [e.target.name]: e.target.value };
-  setAddEmployee(newEmp);
-}
-  return (<> 
-        <div className="formDiv">
+  function handleAddEmployee(e) {
+    e.preventDefault();
+    let newEmp = { ...addEmployee, [e.target.name]: e.target.value };
+    setAddEmployee(newEmp);
+  }
+  return (
+    <>
+      <div className="formDiv">
         <div>
           <button
             className={`btn btn-outline-${addEmployeeForm ? "danger" : "info"}`}
@@ -136,40 +137,40 @@ function handleAddEmployee(e) {
               />
             </label>
             <label>
-                  Department
-                  <select
-                    className="form-select"
-                    name="department_id"
-                    aria-label="Default select example"
-                    onChange={handleAddEmployee}
-                  >
-                    <option value="1">BUILDING CONSTRUCTION</option>
-                    <option value="2">ROADS & BRIDGES</option>
-                    <option value="3">PROPERTY DEVELOPMENT</option>
-                    <option value="4">PRECASTING</option>
-                  </select>
-                </label>
-                <label>
-                  City
-                  <select
-                    className="form-select"
-                    name="city_id"
-                    aria-label="Default select example"
-                    onChange={handleAddEmployee}
-                  >
-                    <option value="1">Curt</option>
-                    <option value="2">Leah</option>
-                    <option value="3">Vesta</option>
-                    <option value="4">NYC</option>
-                    <option value="5">Chicago</option>
-                    <option value="6">Indiana</option>
-                    <option value="7">Chuck</option>
-                    <option value="8">Nicolas</option>
-                    <option value="9">Trenton</option>
-                    <option value="10">Keli</option>
-                    <option value="11">Hyman</option>
-                  </select>
-                </label>
+              Department
+              <select
+                className="form-select"
+                name="department_id"
+                aria-label="Default select example"
+                onChange={handleAddEmployee}
+              >
+                <option value="1">BUILDING CONSTRUCTION</option>
+                <option value="2">ROADS & BRIDGES</option>
+                <option value="3">PROPERTY DEVELOPMENT</option>
+                <option value="4">PRECASTING</option>
+              </select>
+            </label>
+            <label>
+              City
+              <select
+                className="form-select"
+                name="city_id"
+                aria-label="Default select example"
+                onChange={handleAddEmployee}
+              >
+                <option value="1">Curt</option>
+                <option value="2">Leah</option>
+                <option value="3">Vesta</option>
+                <option value="4">NYC</option>
+                <option value="5">Chicago</option>
+                <option value="6">Indiana</option>
+                <option value="7">Chuck</option>
+                <option value="8">Nicolas</option>
+                <option value="9">Trenton</option>
+                <option value="10">Keli</option>
+                <option value="11">Hyman</option>
+              </select>
+            </label>
             <div className="col-sm">
               <button className=" btn btn-success createEmpBtn" type="submit">
                 Create Employee
@@ -178,20 +179,24 @@ function handleAddEmployee(e) {
           </form>
         </div>
       </div>
-  
-  {employees !== null?  
-    employees.map((card,idx) => {
-    return <EmployeeCard
-        key={card.id}
-        idx={idx}
-        card={card}
-        deleteEmployee={deleteEmployee}
-        updateEmployee={updateEmployee}
-      />
-    
-    }):<Loading />}
-  </>
-  )
+
+      {employees !== null ? (
+        employees.map((card, idx) => {
+          return (
+            <EmployeeCard
+              key={card.id}
+              idx={idx}
+              card={card}
+              deleteEmployee={deleteEmployee}
+              updateEmployee={updateEmployee}
+            />
+          );
+        })
+      ) : (
+        <Loading />
+      )}
+    </>
+  );
 }
 
 export default Employees;
