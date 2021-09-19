@@ -62,7 +62,23 @@ function updateEmployee(employeObject,id) {
       setEmployees([...newEmployee, emp]);
     });
 }
+  //CREATE EMPLOYEE
 
+  function createEmployee(newEmpObject) {
+    fetch(`${URL}/employees`, {
+      method: "POST",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+      },
+      credentials: "include",
+      body: JSON.stringify(newEmpObject),
+    })
+      .then((res) => res.json())
+      .then((newPerson) => setEmployees([...employees, newPerson]));
+  }
+
+  //-----------------supportive functions--------------------------
 function toggleForm(e) {
   e.preventDefault();
   setAddEmpForm(!addEmployeeForm);
@@ -91,7 +107,7 @@ function handleAddEmployee(e) {
         </div>
         <div className={addEmployeeForm ? "display formDiv" : "hidden"}>
           <form onSubmit={createNewEmployee}>
-            <label className="text-white">
+            <label>
               Name
               <input
                 className="form-control form-control-sm"
@@ -101,7 +117,7 @@ function handleAddEmployee(e) {
                 onChange={handleAddEmployee}
               />
             </label>
-            <label className="text-white">
+            <label>
               Role
               <input
                 className="form-control form-control-sm"
@@ -110,7 +126,7 @@ function handleAddEmployee(e) {
                 onChange={handleAddEmployee}
               />
             </label>
-            <label className="text-white">
+            <label>
               Section
               <input
                 className="form-control form-control-sm"
@@ -119,7 +135,7 @@ function handleAddEmployee(e) {
                 onChange={handleAddEmployee}
               />
             </label>
-            <label className="text-white">
+            <label>
                   Department
                   <select
                     className="form-select"
@@ -155,8 +171,8 @@ function handleAddEmployee(e) {
                   </select>
                 </label>
             <div className="col-sm">
-              <button className=" btn btn-success" type="submit">
-                Create Player
+              <button className=" btn btn-success createEmpBtn" type="submit">
+                Create Employee
               </button>
             </div>
           </form>
