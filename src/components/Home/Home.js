@@ -22,10 +22,6 @@ function Home() {
        <img src="./img/homeimg/project.jpg" alt="mgt" className="homeImage"/></a>
     </div>
     <div className="homeCards">
-      <a href="/countries">Countries
-       <img src="./img/homeimg/country.jpg" alt="mgt" className="homeImage"/></a>
-    </div>
-    <div className="homeCards">
       <a href="/cities">Cities
        <img src="./img/homeimg/extra.jpg" alt="mgt" className="homeImage"/></a>
     </div>
