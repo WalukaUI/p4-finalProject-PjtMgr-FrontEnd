@@ -6,6 +6,8 @@ import "./Employees.css";
 
 function Employees({setisloggedin}) {
   const [employees, setEmployees] = useState(null);
+  const [addEmployeeForm, setAddEmpForm]=useState(false)
+  const [addEmployee, setAddEmployee] = useState({});
 
 // const URL = "https://project-manager-bkend.herokuapp.com";
   const URL = "http://localhost:3000";
@@ -61,7 +63,105 @@ function updateEmployee(employeObject,id) {
     });
 }
 
+function toggleForm(e) {
+  e.preventDefault();
+  setAddEmpForm(!addEmployeeForm);
+}
+
+function createNewEmployee(e) {
+  e.preventDefault();
+  setAddEmpForm(!addEmployeeForm);
+  createEmployee(addEmployee);
+}
+
+function handleAddEmployee(e) {
+  e.preventDefault();
+  let newEmp = { ...addEmployee, [e.target.name]: e.target.value };
+  setAddEmployee(newEmp);
+}
   return (<> 
+        <div className="formDiv">
+        <div>
+          <button
+            className={`btn btn-outline-${addEmployeeForm ? "danger" : "info"}`}
+            onClick={toggleForm}
+          >
+            {addEmployeeForm ? "Cancel" : "Add a new Employee"}
+          </button>
+        </div>
+        <div className={addEmployeeForm ? "display formDiv" : "hidden"}>
+          <form onSubmit={createNewEmployee}>
+            <label className="text-white">
+              Name
+              <input
+                className="form-control form-control-sm"
+                type="text"
+                name="name"
+                placeholder="Name"
+                onChange={handleAddEmployee}
+              />
+            </label>
+            <label className="text-white">
+              Role
+              <input
+                className="form-control form-control-sm"
+                name="role"
+                placeholder="Role"
+                onChange={handleAddEmployee}
+              />
+            </label>
+            <label className="text-white">
+              Section
+              <input
+                className="form-control form-control-sm"
+                name="section"
+                placeholder="Section"
+                onChange={handleAddEmployee}
+              />
+            </label>
+            <label className="text-white">
+                  Department
+                  <select
+                    className="form-select"
+                    name="department_id"
+                    aria-label="Default select example"
+                    onChange={handleAddEmployee}
+                  >
+                    <option value="1">BUILDING CONSTRUCTION</option>
+                    <option value="2">ROADS & BRIDGES</option>
+                    <option value="3">PROPERTY DEVELOPMENT</option>
+                    <option value="4">PRECASTING</option>
+                  </select>
+                </label>
+                <label>
+                  City
+                  <select
+                    className="form-select"
+                    name="city_id"
+                    aria-label="Default select example"
+                    onChange={handleAddEmployee}
+                  >
+                    <option value="1">Curt</option>
+                    <option value="2">Leah</option>
+                    <option value="3">Vesta</option>
+                    <option value="4">NYC</option>
+                    <option value="5">Chicago</option>
+                    <option value="6">Indiana</option>
+                    <option value="7">Chuck</option>
+                    <option value="8">Nicolas</option>
+                    <option value="9">Trenton</option>
+                    <option value="10">Keli</option>
+                    <option value="11">Hyman</option>
+                  </select>
+                </label>
+            <div className="col-sm">
+              <button className=" btn btn-success" type="submit">
+                Create Player
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
   
   {employees !== null?  
     employees.map((card,idx) => {
