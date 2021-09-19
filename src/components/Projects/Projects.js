@@ -4,10 +4,11 @@ import "./Projects.css";
 
 function Projects({setisloggedin}) {
   const [projects, setProjects] = useState(null);
-  // let URL="https://project-manager-bkend.herokuapp.com"
-
+  
   useEffect(() => {
-    let URL="http://localhost:3000"
+    let URL="https://project-manager-bkend.herokuapp.com"
+    //let URL="http://localhost:3000"
+
     fetch(`${URL}/projects`, {
       method: "GET",
       headers: { "Content-Type": "application/json" },

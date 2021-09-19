@@ -6,9 +6,11 @@ function SignUp({ setUser, user }) {
   const [password, setPassword] = useState("");
   const [pwverification, setpwVerification] = useState("");
 
+  //const URL="http://localhost:3000"
+  const URL = "https://project-manager-bkend.herokuapp.com";
   function handleSubmit(e) {
     e.preventDefault();
-    fetch("http://localhost:3000/signup", {
+    fetch(`${URL}/signup`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

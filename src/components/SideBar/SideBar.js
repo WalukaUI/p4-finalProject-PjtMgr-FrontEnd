@@ -5,9 +5,8 @@ import "./SideBar.css";
 function SideBar({user}) {
   const [country, setCountry] = useState(null);
 
-  // const URL = "https://project-manager-bkend.herokuapp.com";
-
-  const URL = "http://localhost:3000";
+  const URL = "https://project-manager-bkend.herokuapp.com";
+  //const URL = "http://localhost:3000";
 
   
   useEffect(() => {

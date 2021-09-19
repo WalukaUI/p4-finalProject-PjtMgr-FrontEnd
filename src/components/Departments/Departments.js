@@ -7,8 +7,8 @@ function Departments({setisloggedin}) {
   const [departments, setDepartments] = useState(null);
  
 
-  // const URL = "https://project-manager-bkend.herokuapp.com";
-  const URL = "http://localhost:3000";
+  const URL = "https://project-manager-bkend.herokuapp.com";
+  //const URL = "http://localhost:3000";
 
   useEffect(() => {
     fetch(`${URL}/departments`, {
