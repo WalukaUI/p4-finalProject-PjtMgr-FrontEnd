@@ -20,9 +20,7 @@ function Departments({setisloggedin}) {
           setisloggedin(true)
           setDepartments(data)
         });
-      } else {
-        console.log(res);
-      }
+      } 
     });
   }, []);
 

@@ -18,9 +18,7 @@ function Cities({setisloggedin}) {
           setisloggedin(true)
           setCities(data)
         });
-      } else {
-        console.log(res);
-      }
+      } 
     });
   },[]);
 

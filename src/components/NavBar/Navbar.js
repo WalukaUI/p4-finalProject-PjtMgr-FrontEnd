@@ -1,5 +1,4 @@
 import { Nav, Navbar, Container } from "react-bootstrap";
-import { Redirect } from 'react-router'
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import "./Navbar.css";
@@ -37,7 +36,6 @@ function Nav2({ setUser, logout ,isloggedin, setisloggedin}) {
       } else {
         res.json().then((err) => {
           setisloggedin(false)
-          console.log(err);
           setErrors(err.error);
         });
       }

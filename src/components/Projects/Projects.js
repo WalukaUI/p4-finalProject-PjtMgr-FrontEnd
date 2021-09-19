@@ -5,8 +5,9 @@ import "./Projects.css";
 function Projects({setisloggedin}) {
   const [projects, setProjects] = useState(null);
   // let URL="https://project-manager-bkend.herokuapp.com"
-  let URL="http://localhost:3000"
+
   useEffect(() => {
+    let URL="http://localhost:3000"
     fetch(`${URL}/projects`, {
       method: "GET",
       headers: { "Content-Type": "application/json" },
@@ -18,9 +19,7 @@ function Projects({setisloggedin}) {
           setisloggedin(true)
           setProjects(data)
         });
-      } else {
-        console.log(res);
-      }
+      } 
     });
   },[]);
 

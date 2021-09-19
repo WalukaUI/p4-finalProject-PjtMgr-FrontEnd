@@ -26,7 +26,7 @@ function MainBody() {
   const URL="http://localhost:3000"
   // auto-login //
   useEffect(() => {
-    fetch("http://localhost:3000/me").then((r) => {
+    fetch(`${URL}/me`).then((r) => {
       if (r.ok) {
         
         r.json().then((user) =>{ 
@@ -38,7 +38,7 @@ function MainBody() {
 
    // logout //
   function  logout(){
-      fetch("http://localhost:3000/logout", {
+      fetch(`${URL}/logout`, {
       method: "DELETE",
       credentials: "include"
     }).then((r) => console.log("logged out"));
