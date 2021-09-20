@@ -8,7 +8,6 @@ function SideBar({ user }) {
   const [country, setCountry] = useState(null);
   useEffect(() => {
     fetch(BASE_URL + `/countries`, {
-      mode: "no-cors",
       method: "GET",
       headers: { "Content-Type": "application/json" },
       credentials: "include",
