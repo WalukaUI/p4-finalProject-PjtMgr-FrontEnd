@@ -25,7 +25,8 @@ function MainBody() {
 // "proxy": "https://project-manager-bkend.herokuapp.com",
   const URL = "https://project-manager-bkend.herokuapp.com";
   //const URL="http://localhost:3000"
-  // auto-login // ${URL}
+  
+  // auto-login // 
   useEffect(() => {
     fetch(`${URL}/me`).then((r) => {
       if (r.ok) {

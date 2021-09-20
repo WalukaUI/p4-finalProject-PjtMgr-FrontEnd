@@ -13,11 +13,11 @@ function Nav2({ setUser, logout ,isloggedin, setisloggedin}) {
   function handleSubmit(e) {
     e.preventDefault();
 
-  //   //login
+  //login
 
-    //const URL = "https://project-manager-bkend.herokuapp.com";
+    const URL = "https://project-manager-bkend.herokuapp.com";
     // const URL = "http://localhost:3000";
-    fetch(`/login`, {
+    fetch(`${URL}/login`, {
       method: "POST",
       mode: 'no-cors',
       headers: {

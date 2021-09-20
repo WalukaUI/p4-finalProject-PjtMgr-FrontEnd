@@ -8,7 +8,6 @@ function SignUp({ setUser, user }) {
 
   //const URL="http://localhost:3000"
   const URL = "https://project-manager-bkend.herokuapp.com";
-  //${URL}
   function handleSubmit(e) {
     e.preventDefault();
     fetch(`${URL}/signup`, {
