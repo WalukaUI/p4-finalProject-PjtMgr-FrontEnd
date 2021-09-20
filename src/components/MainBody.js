@@ -18,6 +18,8 @@ import SignUp from "./SignUp/SignUp";
 import DepartmentEmployees from "./Departments/DepartmentEmployees";
 import CountriesCities from "./SideBar/CountriesCities"
 import EmployeesOftheCity from "./Cities/EmployeesOftheCity"
+import ProjectsOfdEmployee from "./Employees/EmployeeProjects"
+import EmployeesOfdProject from "./Projects/EmployeesOfdProject"
 
 function MainBody() {
   const [user, setUser] = useState(null);
@@ -85,6 +87,12 @@ function MainBody() {
               </Route>
               <Route path="/cities/:id" exact>
                 <EmployeesOftheCity />
+              </Route>
+              <Route path="/employees/:id/projects" exact>
+                <ProjectsOfdEmployee />
+              </Route>
+              <Route path="/projects/:id/employees" exact>
+                <EmployeesOfdProject />
               </Route>
               <Route path="/cities" exact>
                 <div className="hedderdiv">

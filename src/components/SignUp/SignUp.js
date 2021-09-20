@@ -1,13 +1,17 @@
 import React, { useState } from "react";
+import { useHistory} from "react-router-dom"
 import "./SignUp.css";
 
 function SignUp({ setUser, user }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [pwverification, setpwVerification] = useState("");
+  const [errors,setErrors]=useState(null)
 
   //const URL="http://localhost:3000"
   //const URL = "https://project-manager-bkend.herokuapp.com"; ${URL}
+  const history=useHistory()
+
   function handleSubmit(e) {
     e.preventDefault();
     fetch(`/signup`, {
@@ -25,9 +29,12 @@ function SignUp({ setUser, user }) {
       if (res.ok) {
         res.json().then((user) => {
           setUser(user);
+          history.push('/')
         });
-      } else{
-        console.log(res);
+      } else {
+        res.json().then((err) => {
+          setErrors(err.error);
+        });
       }
     });
   }
@@ -72,12 +79,6 @@ function SignUp({ setUser, user }) {
               placeholder="Password"
             />
           </div>
-          <div className="form-group form-check">
-            <input type="checkbox" className="form-check-input" />
-            <label className="form-check-label">
-              I Agreed to terms and Conditions
-            </label>
-          </div>
           <button type="submit" className="btn btn-primary">
             Submit
           </button>
@@ -86,7 +87,9 @@ function SignUp({ setUser, user }) {
         <div>
           <h1>{user.name}, You are signed in</h1>
         </div>
+        
       )}
+      <div>{errors? errors.map((e)=><p style={{color:"red", marginTop:"10px"}}>{e}</p>) :null}</div>
     </>
   );
 }

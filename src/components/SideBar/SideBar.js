@@ -32,7 +32,7 @@ function SideBar({user}) {
           return (
             <div className="countryBtnDiv myButton" key={card.name + idx}>
               <Link to={`/countries/${card.id}`}>
-              <a className="countryBtn" >
+              <a className="countryBtn" autofocus>
                 {card.name}
               </a>
               </Link>
@@ -44,7 +44,7 @@ function SideBar({user}) {
           <span className="sr-only"></span>
         </div>
         <div className="row text-center" >
-          <h3>   Loading...</h3>
+          <h3> Loading...</h3>
         </div>
       </div>}
         

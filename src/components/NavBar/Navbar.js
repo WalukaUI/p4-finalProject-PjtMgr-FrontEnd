@@ -1,4 +1,5 @@
 import { Nav, Navbar, Container } from "react-bootstrap";
+import { useHistory} from "react-router-dom"
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import "./Navbar.css";
@@ -20,14 +21,13 @@ function Nav2({ setUser, logout ,isloggedin, setisloggedin}) {
     
     fetch(`/login`, {
       method: "POST",
-      mode: 'no-cors',
       headers: {
         "Content-Type": "application/json",
       },
       credentials: "include",
       body: JSON.stringify({
         name: name,
-        password: password,
+        password: password
       })
     }).then((res) => {
       if (res.ok) {
@@ -45,10 +45,12 @@ function Nav2({ setUser, logout ,isloggedin, setisloggedin}) {
       }
     });
   }
-
+  const history=useHistory()
   function handlelogout(e) {
     e.preventDefault();
     logout();
+    localStorage.clear()
+    history.push('/login')
   }
   function setLoginState(e) {
     e.preventDefault();

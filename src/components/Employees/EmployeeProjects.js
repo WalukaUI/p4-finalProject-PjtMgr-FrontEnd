@@ -3,44 +3,43 @@ import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import Loading from "../LoadingAnimation/Loading";
 
-function EmployeesOftheCity(){
+function ProjectsOfdEmployee(){
 
-    const [empofCity, setEmpofCity] = useState(null);
+    const [empsProjects, setEmpsProjects] = useState(null);
 
     const params = useParams();
     useEffect(() => {
       //const URL = "https://project-manager-bkend.herokuapp.com"; ${URL}
       //const URL = "http://localhost:3000";
-      fetch(`/cities/${params.id}`, {
+      fetch(`/employees/${params.id}/projects`, {
         method: "GET",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
       })
         .then((r) => r.json())
-        .then((data) => setEmpofCity(data.employees));
+        .then((data) => setEmpsProjects(data));
     }, [params.id]);
 
     return (
         <>
-          <h2>Employees of the City</h2>
-          {empofCity !== null ? (
-            empofCity.map((emp) => {
+          <h2>Projects of the Employee</h2>
+          {empsProjects !== null ? (
+            empsProjects.map((pjt) => {
               return (
                 <div>
                   <div
                     className="card border-secondary mb-3 dptEmpcard"
                     style={{ minWidth: "18rem" }}
                   >
-                    <div className="card-header">City Name: {emp.name}</div>
+                    <div className="card-header">Project Name: {pjt.name}</div>
                     <div className="card-body text-secondary">
                       <h5 className="card-title">
-                        Role: {emp.role}
+                        Cost: ${pjt.cost} million
                       </h5>
-                      <p className="card-text">Section: {emp.section? emp.section: "N/A"}</p>
-                      <p className="card-text">Department: {emp.department_id}</p>
+                      <p className="card-text">Sector: {pjt.sector}</p>
                       <div>
-                      <Link to={`/employees/${emp.id}/projects`}>
-                        <a className="btn btn-info">Projects</a>
+                      <Link to={`/projects/${pjt.id}/employees`}>
+                        <a className="btn btn-info">Employees</a>
                       </Link>
                       </div>
                     </div>
@@ -56,4 +55,4 @@ function EmployeesOftheCity(){
     
 }
 
-export default EmployeesOftheCity
+export default ProjectsOfdEmployee
