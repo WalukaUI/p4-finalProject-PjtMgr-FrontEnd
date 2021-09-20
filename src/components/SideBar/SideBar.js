@@ -2,11 +2,12 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
 import "./SideBar.css";
+import BASE_URL from "../../constraints/URL"
 
 function SideBar({ user }) {
   const [country, setCountry] = useState(null);
   useEffect(() => {
-    fetch(`/countries`, {
+    fetch(BASE_URL + `/countries`, {
       mode: "no-cors",
       method: "GET",
       headers: { "Content-Type": "application/json" },

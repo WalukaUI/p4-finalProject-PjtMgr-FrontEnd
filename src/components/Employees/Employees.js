@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import EmployeeCard from "./EmployeeCard";
 import Loading from "../LoadingAnimation/Loading";
 import "./Employees.css";
+import BASE_URL from "../../constraints/URL"
 
 function Employees({ setisloggedin }) {
   const [employees, setEmployees] = useState(null);
@@ -10,7 +11,7 @@ function Employees({ setisloggedin }) {
 
   //GET EMPLOYEES
   useEffect(() => {
-    fetch(`/employees`, {
+    fetch(BASE_URL + `/employees`, {
       method: "GET",
       headers: { "Content-Type": "application/json" },
       credentials: "include",
@@ -22,12 +23,12 @@ function Employees({ setisloggedin }) {
         });
       }
     });
-  }, []);
+  }, [setisloggedin]);
 
   //DELETE EMPLOYEE ${URL}
 
   function deleteEmployee(id) {
-    fetch(`/employees/${id}`, {
+    fetch(BASE_URL + `/employees/${id}`, {
       method: "DELETE",
       credentials: "include",
     });
@@ -38,9 +39,9 @@ function Employees({ setisloggedin }) {
   //PATCH EMPLOYEE ${URL}
 
   function updateEmployee(employeObject, id) {
-    let data = { ...employeObject, ["id"]: id };
+    let data = { ...employeObject, "id": id };
 
-    fetch(`/employees/${id}`, {
+    fetch(BASE_URL + `/employees/${id}`, {
       method: "PATCH",
       headers: {
         Accept: "application/json",
@@ -61,7 +62,7 @@ function Employees({ setisloggedin }) {
   //CREATE EMPLOYEE  ${URL}
 
   function createEmployee(newEmpObject) {
-    fetch(`/employees`, {
+    fetch(BASE_URL + `/employees`, {
       method: "POST",
       headers: {
         Accept: "application/json",

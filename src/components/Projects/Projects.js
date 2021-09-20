@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import Loading from "../LoadingAnimation/Loading";
 import "./Projects.css";
+import BASE_URL from "../../constraints/URL"
 
 function Projects({ setisloggedin }) {
   const [projects, setProjects] = useState(null);
 
   useEffect(() => {
-    fetch(`/projects`, {
+    fetch(BASE_URL + `/projects`, {
       method: "GET",
       headers: { "Content-Type": "application/json" },
       credentials: "include",
@@ -18,7 +19,7 @@ function Projects({ setisloggedin }) {
         });
       }
     });
-  }, []);
+  }, [setisloggedin]);
 
   return (
     <>

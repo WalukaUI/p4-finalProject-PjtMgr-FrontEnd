@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Loading from "../LoadingAnimation/Loading";
 import "./DepartmentEmployees.css";
+import BASE_URL from "../../constraints/URL"
 
 function DepartmentEmployees() {
   const [dptEmployees, setDptEmployees] = useState(null);
@@ -9,7 +10,7 @@ function DepartmentEmployees() {
   const params = useParams();
   useEffect(() => {
 
-    fetch(`/departments/${params.id}`, {
+    fetch(BASE_URL + `/departments/${params.id}`, {
       method: "GET",
       headers: { "Content-Type": "application/json" },
       credentials: "include",

@@ -2,13 +2,14 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import Loading from "../LoadingAnimation/Loading";
+import BASE_URL from "../../constraints/URL"
 
 function CountriesCities() {
   const [cntyCities, setCntyCities] = useState(null);
 
   const params = useParams();
   useEffect(() => {
-    fetch(`/countries/${params.id}`, {
+    fetch(BASE_URL + `/countries/${params.id}`, {
       method: "GET",
       headers: { "Content-Type": "application/json" },
       credentials: "include",

@@ -1,13 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import Loading from "../LoadingAnimation/Loading";
+import BASE_URL from "../../constraints/URL"
 
 function EmployeesOfdProject(){
     const [projectsofEmps, setProjectsofEmps] = useState(null);
 
     const params = useParams();
     useEffect(() => {
-      fetch(`/projects/${params.id}/employees`, {
+      fetch(BASE_URL + `/projects/${params.id}/employees`, {
         method: "GET",
         headers: { "Content-Type": "application/json" },
         credentials: "include",

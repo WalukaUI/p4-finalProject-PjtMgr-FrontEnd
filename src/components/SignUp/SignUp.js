@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import "./SignUp.css";
+import BASE_URL from "../../constraints/URL"
 
 function SignUp({ setUser, user, setisloggedin }) {
   const [username, setUsername] = useState("");
@@ -8,11 +9,12 @@ function SignUp({ setUser, user, setisloggedin }) {
   const [pwverification, setpwVerification] = useState("");
   const [errors, setErrors] = useState(null);
 
+
   const history = useHistory();
 
   function handleSubmit(e) {
     e.preventDefault();
-    fetch(`/signup`, {
+    fetch(BASE_URL + `/signup`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

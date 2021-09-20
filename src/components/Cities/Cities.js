@@ -1,12 +1,13 @@
 import React, { useEffect, useState } from "react";
 import Loading from "../LoadingAnimation/Loading";
 import "./Cities.css";
+import BASE_URL from "../../constraints/URL"
 
 function Cities({ setisloggedin }) {
   const [cities, setCities] = useState(null);
 
   useEffect(() => {
-    fetch(`/cities`, {
+    fetch(BASE_URL + `/cities`, {
       method: "GET",
       headers: { "Content-Type": "application/json" },
       credentials: "include",
@@ -18,7 +19,7 @@ function Cities({ setisloggedin }) {
         });
       }
     });
-  }, []);
+  }, [setisloggedin]);
 
   return (
     <>

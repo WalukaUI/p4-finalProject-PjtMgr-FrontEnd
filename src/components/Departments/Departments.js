@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Loading from "../LoadingAnimation/Loading";
 import DepartmentCard from "./DepartmentCard"
 import "./Departments.css";
+import BASE_URL from "../../constraints/URL"
 
 function Departments({setisloggedin}) {
   const [departments, setDepartments] = useState(null);
@@ -9,7 +10,7 @@ function Departments({setisloggedin}) {
 
 
   useEffect(() => {
-    fetch(`/departments`, {
+    fetch(BASE_URL + `/departments`, {
       method: "GET",
       headers: { "Content-Type": "application/json" },
       credentials: "include"
@@ -22,7 +23,7 @@ function Departments({setisloggedin}) {
         });
       } 
     });
-  }, []);
+  }, [setisloggedin]);
 
 
   return (

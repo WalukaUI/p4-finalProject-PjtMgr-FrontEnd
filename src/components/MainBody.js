@@ -20,18 +20,19 @@ import CountriesCities from "./SideBar/CountriesCities";
 import EmployeesOftheCity from "./Cities/EmployeesOftheCity";
 import ProjectsOfdEmployee from "./Employees/EmployeeProjects";
 import EmployeesOfdProject from "./Projects/EmployeesOfdProject";
+import BASE_URL from "../constraints/URL"
 
 function MainBody() {
   const [user, setUser] = useState(null);
   const [isloggedin, setisloggedin] = useState(null);
 
-  //const URL = "https://project-manager-bkend.herokuapp.com"; ${URL}
+  //const URL = "https://project-manager-bkend.herokuapp.com"; 
   //const URL = "http://localhost:3000";
   //const URL = process.env.REACT_APP_BASE_URL
 
   // auto-login
   useEffect(() => {
-    fetch(`/me`).then((r) => {
+    fetch(BASE_URL + `/me`).then((r) => {
       if (r.ok) {
         r.json().then((user) => {
           setisloggedin(true);
@@ -43,7 +44,7 @@ function MainBody() {
 
   // logout //${URL}
   function logout() {
-    fetch(`/logout`, {
+    fetch(BASE_URL + `/logout`, {
       method: "DELETE",
       credentials: "include",
     }).then((r) => console.log("logged out"));

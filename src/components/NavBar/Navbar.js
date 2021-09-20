@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import "./Navbar.css";
+import BASE_URL from "../../constraints/URL"
 
 function Nav2({ setUser, logout, isloggedin, setisloggedin }) {
   const [login, setLogin] = useState(false);
@@ -15,7 +16,7 @@ function Nav2({ setUser, logout, isloggedin, setisloggedin }) {
 
     //login
 
-    fetch(`/login`, {
+    fetch(BASE_URL + `/login`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -26,6 +27,7 @@ function Nav2({ setUser, logout, isloggedin, setisloggedin }) {
         password: password,
       }),
     }).then((res) => {
+      console.log(res)
       if (res.ok) {
         res.json().then((user) => {
           setLogin(!login);
