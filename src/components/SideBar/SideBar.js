@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from "react";
+import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
 import "./SideBar.css";
 
 function SideBar({user}) {
   const [country, setCountry] = useState(null);
 
-  const URL = "https://project-manager-bkend.herokuapp.com";
-  //const URL = "http://localhost:3000";
+  //const URL = "https://project-manager-bkend.herokuapp.com";
+  //const URL = "http://localhost:3000"; ${URL}
 
   
   useEffect(() => {
-    fetch(`${URL}/countries`, {
+    fetch(`/countries`, {
       mode: 'no-cors',
       method: "GET",
       headers: { "Content-Type": "application/json" },
@@ -27,12 +28,14 @@ function SideBar({user}) {
     <>
       <div className="cardDiv">
         {country !== null ?   
-        country.map((c, idx) => {
+        country.map((card, idx) => {
           return (
-            <div className="countryBtnDiv" key={c.name + idx}>
-              <a href="/home" className="myButton " >
-                {c.name}
+            <div className="countryBtnDiv myButton" key={card.name + idx}>
+              <Link to={`/countries/${card.id}`}>
+              <a className="countryBtn" >
+                {card.name}
               </a>
+              </Link>
             </div>
           );
         })

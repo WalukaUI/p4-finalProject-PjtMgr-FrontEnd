@@ -46,6 +46,7 @@
 	padding:9px 23px;
 	text-decoration:none;
 	text-shadow:0px 1px 0px #263666;
+  padding-left: 40%;
 }
 .myButton:hover {
 	background:linear-gradient(to bottom, #0688fa 5%, #b6def5 100%);
@@ -59,3 +60,7 @@
   display: flex;
   width: 100%;
 }
+.countryBtn{
+  color: #f4f6f8;
+}
+

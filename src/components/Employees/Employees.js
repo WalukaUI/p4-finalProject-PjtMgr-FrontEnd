@@ -8,12 +8,11 @@ function Employees({ setisloggedin }) {
   const [addEmployeeForm, setAddEmpForm] = useState(false);
   const [addEmployee, setAddEmployee] = useState({});
 
-  const URL = "https://project-manager-bkend.herokuapp.com";
-  //const URL = "http://localhost:3000";
+   //const URL = "https://project-manager-bkend.herokuapp.com"  ${URL}
 
   //GET EMPLOYEES
   useEffect(() => {
-    fetch(`${URL}/employees`, {
+    fetch(`/employees`, {
       method: "GET",
       headers: { "Content-Type": "application/json" },
       credentials: "include",
@@ -27,10 +26,10 @@ function Employees({ setisloggedin }) {
     });
   }, []);
 
-  //DELETE EMPLOYEE
+  //DELETE EMPLOYEE ${URL}
 
   function deleteEmployee(id) {
-    fetch(`${URL}/employees/${id}`, {
+    fetch(`/employees/${id}`, {
       method: "DELETE",
       credentials: "include",
     });
@@ -38,12 +37,12 @@ function Employees({ setisloggedin }) {
     setEmployees(newEmp);
   }
 
-  //PATCH EMPLOYEE
+  //PATCH EMPLOYEE ${URL}
 
   function updateEmployee(employeObject, id) {
     let data = { ...employeObject, ["id"]: id };
 
-    fetch(`${URL}/employees/${id}`, {
+    fetch(`/employees/${id}`, {
       method: "PATCH",
       headers: {
         Accept: "application/json",
@@ -61,10 +60,10 @@ function Employees({ setisloggedin }) {
         setEmployees([...newEmployee, emp]);
       });
   }
-  //CREATE EMPLOYEE
+  //CREATE EMPLOYEE  ${URL}
 
   function createEmployee(newEmpObject) {
-    fetch(`${URL}/employees`, {
+    fetch(`/employees`, {
       method: "POST",
       headers: {
         Accept: "application/json",

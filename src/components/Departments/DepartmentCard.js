@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 
 function DepartmentCard({ card }) {
@@ -14,7 +14,7 @@ function DepartmentCard({ card }) {
 
           <Link to={`/employees/${card.id}`}>
             <button className="btn btn-warning">
-              Employeees
+              Employees
             </button>
           </Link>
         </div>

@@ -6,10 +6,11 @@ function Projects({setisloggedin}) {
   const [projects, setProjects] = useState(null);
   
   useEffect(() => {
-    let URL="https://project-manager-bkend.herokuapp.com"
-    //let URL="http://localhost:3000"
+    
+    //let URL="https://project-manager-bkend.herokuapp.com" ${URL}
+  
 
-    fetch(`${URL}/projects`, {
+    fetch(`/projects`, {
       method: "GET",
       headers: { "Content-Type": "application/json" },
       credentials: "include"

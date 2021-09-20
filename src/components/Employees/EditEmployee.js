@@ -2,14 +2,13 @@ import React from "react";
 import "./EditEmployee.css";
 
 function EditEmployee({
-    card,
-    display,
-    setDisplay,
+  card,
+  display,
+  setDisplay,
   updateData,
   setUpdateData,
   updateEmployee,
 }) {
-  
   function updateEmpHandler(e) {
     e.preventDefault();
     updateEmployee(updateData, card.id);
@@ -21,7 +20,7 @@ function EditEmployee({
   }
   function handleChangeData(e) {
     e.preventDefault();
-    let newData = { ...updateData, [e.target.name]: e.target.value};
+    let newData = { ...updateData, [e.target.name]: e.target.value };
     setUpdateData(newData);
   }
   if (!updateData) return null;
@@ -45,7 +44,7 @@ function EditEmployee({
                   />
                 </label>
                 <label>
-                 Role
+                  Role
                   <input
                     name="role"
                     className="form-control form-control-sm"
@@ -104,12 +103,18 @@ function EditEmployee({
                 <div className="container">
                   <div className="row">
                     <div className="col-sm">
-                      <button className=" btn btn-success  formBtns" type="submit">
+                      <button
+                        className=" btn btn-success  formBtns"
+                        type="submit"
+                      >
                         Update Employee
                       </button>
                     </div>
                     <div className="col-sm">
-                      <button className="btn btn-danger  formBtns" onClick={togglePopup}>
+                      <button
+                        className="btn btn-danger  formBtns"
+                        onClick={togglePopup}
+                      >
                         Cancel
                       </button>
                     </div>

@@ -1,4 +1,4 @@
-import React, { useState,  useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import {
   BrowserRouter as Router,
   Route,
@@ -15,82 +15,100 @@ import Cities from "./Cities/Cities";
 import Employees from "./Employees/Employees";
 import Home from "./Home/Home";
 import SignUp from "./SignUp/SignUp";
-import DepartmentEmployees from "./Departments/DepartmentEmployees"
-
+import DepartmentEmployees from "./Departments/DepartmentEmployees";
+import CountriesCities from "./SideBar/CountriesCities"
+import EmployeesOftheCity from "./Cities/EmployeesOftheCity"
 
 function MainBody() {
-  
   const [user, setUser] = useState(null);
   const [isloggedin, setisloggedin] = useState(null);
-// "proxy": "https://project-manager-bkend.herokuapp.com",
-  const URL = "https://project-manager-bkend.herokuapp.com";
-  //const URL="http://localhost:3000"
-  
-  // auto-login // 
+
+  //const URL = "https://project-manager-bkend.herokuapp.com"  ${URL}
+
+  // auto-login
   useEffect(() => {
-    fetch(`${URL}/me`).then((r) => {
+    fetch(`/me`).then((r) => {
       if (r.ok) {
-        
-        r.json().then((user) =>{ 
-          setisloggedin(true)
-          setUser(user)});
+        r.json().then((user) => {
+          setisloggedin(true);
+          setUser(user);
+        });
       }
     });
   }, []);
 
-   // logout //
-  function  logout(){
-      fetch(`${URL}/logout`, {
+  // logout //${URL}
+  function logout() {
+    fetch(`/logout`, {
       method: "DELETE",
-      credentials: "include"
+      credentials: "include",
     }).then((r) => console.log("logged out"));
-    setisloggedin(false)
+    setisloggedin(false);
   }
 
-  
   return (
     <div className="Login-component">
       <Router>
-        <Navbar setUser={setUser} 
-        logout={logout} 
-        isloggedin={isloggedin} 
-        setisloggedin={setisloggedin} 
+        <Navbar
+          setUser={setUser}
+          logout={logout}
+          isloggedin={isloggedin}
+          setisloggedin={setisloggedin}
         />
         <div className="row mainRow">
           <div className="col-md-3  mainDiv1">
             <a href="/countries" className="headderBtn">
               Business Operating Countries
             </a>
-              <SideBar user={user} setisloggedin={setisloggedin}/>
+            <SideBar user={user} setisloggedin={setisloggedin} />
           </div>
           <div className="col-md-9 mainDiv2">
             <Switch>
-        
               <Route path="/projects" exact>
-              <div className="hedderdiv"><h5>All Projects of the Company</h5></div>
-                <Projects setisloggedin={setisloggedin}/>
+                <div className="hedderdiv">
+                  <h5>All Projects of the Company</h5>
+                </div>
+                <Projects setisloggedin={setisloggedin} />
               </Route>
-       
+
               <Route path="/departments" exact>
-                <div className="hedderdiv"><h5>Departments of the Company</h5></div>
-                <Departments setisloggedin={setisloggedin}/>
+                <div className="hedderdiv">
+                  <h5>Departments of the Company</h5>
+                </div>
+                <Departments setisloggedin={setisloggedin} />
               </Route>
               <Route path="/employees/:id" exact>
                 <DepartmentEmployees />
               </Route>
+              <Route path="/countries/:id" exact>
+                <CountriesCities />
+              </Route>
+              <Route path="/cities/:id" exact>
+                <EmployeesOftheCity />
+              </Route>
               <Route path="/cities" exact>
-              <div className="hedderdiv"><h5>Business Opearting Cities of the Company</h5></div>
-                <Cities setisloggedin={setisloggedin}/>
+                <div className="hedderdiv">
+                  <h5>Business Opearting Cities of the Company</h5>
+                </div>
+                <Cities setisloggedin={setisloggedin} />
               </Route>
               <Route path="/employees" exact>
-              <div className="hedderdiv"><h5>All Employees of the Company</h5></div>
-                <Employees setisloggedin={setisloggedin}/>
+                <div className="hedderdiv">
+                  <h5>All Employees of the Company</h5>
+                </div>
+                <Employees setisloggedin={setisloggedin} />
               </Route>
               <Route path="/signup" exact>
-                <SignUp setUser={setUser} user={user} setisloggedin={setisloggedin}/>
+                <SignUp
+                  setUser={setUser}
+                  user={user}
+                  setisloggedin={setisloggedin}
+                />
               </Route>
               <Route path="/" exact>
-              <div className="hedderdiv"><h5>Welcome to T&T Project Manager</h5></div>
+                <div className="hedderdiv">
+                  <h5>Welcome to T&T Project Manager</h5>
+                </div>
                 <Home />
               </Route>
               <Redirect to="/" />

@@ -14,10 +14,11 @@ function Nav2({ setUser, logout ,isloggedin, setisloggedin}) {
     e.preventDefault();
 
   //login
+    //const URL = process.env.REACT_APP_BASE_URL
 
-    const URL = "https://project-manager-bkend.herokuapp.com";
-    // const URL = "http://localhost:3000";
-    fetch(`${URL}/login`, {
+    //let URL="https://project-manager-bkend.herokuapp.com" ${URL}
+    
+    fetch(`/login`, {
       method: "POST",
       mode: 'no-cors',
       headers: {

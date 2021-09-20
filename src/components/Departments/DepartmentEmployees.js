@@ -8,7 +8,7 @@ function DepartmentEmployees() {
 
   const params = useParams();
   useEffect(() => {
-    //const URL = "https://project-manager-bkend.herokuapp.com";
+    //const URL = "https://project-manager-bkend.herokuapp.com"; ${URL}
     //const URL = "http://localhost:3000";
     fetch(`/departments/${params.id}`, {
       method: "GET",

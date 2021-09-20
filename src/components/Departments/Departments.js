@@ -7,11 +7,10 @@ function Departments({setisloggedin}) {
   const [departments, setDepartments] = useState(null);
  
 
- const URL = "https://project-manager-bkend.herokuapp.com"
-  //const URL = "http://localhost:3000";
+ //const URL = "https://project-manager-bkend.herokuapp.com" ${URL}
 
   useEffect(() => {
-    fetch(`${URL}/departments`, {
+    fetch(`/departments`, {
       method: "GET",
       headers: { "Content-Type": "application/json" },
       credentials: "include"
