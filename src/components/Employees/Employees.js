@@ -8,8 +8,6 @@ function Employees({ setisloggedin }) {
   const [addEmployeeForm, setAddEmpForm] = useState(false);
   const [addEmployee, setAddEmployee] = useState({});
 
-   //const URL = "https://project-manager-bkend.herokuapp.com"  ${URL}
-
   //GET EMPLOYEES
   useEffect(() => {
     fetch(`/employees`, {

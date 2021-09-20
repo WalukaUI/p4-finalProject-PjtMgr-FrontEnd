@@ -62,6 +62,7 @@
 }
 .countryBtn{
   color: #f4f6f8;
+  text-decoration: none;
 }
 .active {
   color: #F00;

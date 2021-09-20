@@ -9,8 +9,7 @@ function EmployeesOftheCity(){
 
     const params = useParams();
     useEffect(() => {
-      //const URL = "https://project-manager-bkend.herokuapp.com"; ${URL}
-      //const URL = "http://localhost:3000";
+
       fetch(`/cities/${params.id}`, {
         method: "GET",
         headers: { "Content-Type": "application/json" },
@@ -24,9 +23,9 @@ function EmployeesOftheCity(){
         <>
           <h2>Employees of the City</h2>
           {empofCity !== null ? (
-            empofCity.map((emp) => {
+            empofCity.map((emp,idx) => {
               return (
-                <div>
+                <div key={emp.name + idx}>
                   <div
                     className="card border-secondary mb-3 dptEmpcard"
                     style={{ minWidth: "18rem" }}
@@ -39,8 +38,8 @@ function EmployeesOftheCity(){
                       <p className="card-text">Section: {emp.section? emp.section: "N/A"}</p>
                       <p className="card-text">Department: {emp.department_id}</p>
                       <div>
-                      <Link to={`/employees/${emp.id}/projects`}>
-                        <a className="btn btn-info">Projects</a>
+                      <Link to={`/employees/${emp.id}/projects`} className="btn btn-info">
+                        Projects
                       </Link>
                       </div>
                     </div>

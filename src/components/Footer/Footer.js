@@ -20,13 +20,12 @@ function Footer() {
                 <p>Project Management System</p>
               </div>
 
-              <div className="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4 text-center" >
+              <div className="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4 text-center">
                 <h6 className="text-uppercase fw-bold mb-4 footerTopics">
                   USEFUL LINKS
                 </h6>
                 <p>
                   <p className="text-reset">Branches Contact details</p>
-                
                 </p>
               </div>
 

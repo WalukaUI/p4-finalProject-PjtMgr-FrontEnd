@@ -1,16 +1,14 @@
 import React, { useState } from "react";
-import { useHistory} from "react-router-dom"
+import { useHistory } from "react-router-dom";
 import "./SignUp.css";
 
-function SignUp({ setUser, user }) {
+function SignUp({ setUser, user, setisloggedin }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [pwverification, setpwVerification] = useState("");
-  const [errors,setErrors]=useState(null)
+  const [errors, setErrors] = useState(null);
 
-  //const URL="http://localhost:3000"
-  //const URL = "https://project-manager-bkend.herokuapp.com"; ${URL}
-  const history=useHistory()
+  const history = useHistory();
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -23,13 +21,14 @@ function SignUp({ setUser, user }) {
       body: JSON.stringify({
         name: username,
         password: password,
-        password_confirmation: pwverification
+        password_confirmation: pwverification,
       }),
     }).then((res) => {
       if (res.ok) {
         res.json().then((user) => {
+          setisloggedin(true);
           setUser(user);
-          history.push('/')
+          history.push("/");
         });
       } else {
         res.json().then((err) => {
@@ -87,9 +86,14 @@ function SignUp({ setUser, user }) {
         <div>
           <h1>{user.name}, You are signed in</h1>
         </div>
-        
       )}
-      <div>{errors? errors.map((e)=><p style={{color:"red", marginTop:"10px"}}>{e}</p>) :null}</div>
+      <div>
+        {errors
+          ? errors.map((e) => (
+              <p style={{ color: "red", marginTop: "10px" }}>{e}</p>
+            ))
+          : null}
+      </div>
     </>
   );
 }

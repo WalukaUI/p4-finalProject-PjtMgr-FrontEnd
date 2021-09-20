@@ -1,24 +1,20 @@
 import { Nav, Navbar, Container } from "react-bootstrap";
-import { useHistory} from "react-router-dom"
+import { useHistory } from "react-router-dom";
 import React, { useState } from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import "./Navbar.css";
 
-function Nav2({ setUser, logout ,isloggedin, setisloggedin}) {
+function Nav2({ setUser, logout, isloggedin, setisloggedin }) {
   const [login, setLogin] = useState(false);
   const [name, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  const [errors,setErrors]=useState(null)
-
+  const [errors, setErrors] = useState(null);
 
   function handleSubmit(e) {
     e.preventDefault();
 
-  //login
-    //const URL = process.env.REACT_APP_BASE_URL
+    //login
 
-    //let URL="https://project-manager-bkend.herokuapp.com" ${URL}
-    
     fetch(`/login`, {
       method: "POST",
       headers: {
@@ -27,36 +23,34 @@ function Nav2({ setUser, logout ,isloggedin, setisloggedin}) {
       credentials: "include",
       body: JSON.stringify({
         name: name,
-        password: password
-      })
+        password: password,
+      }),
     }).then((res) => {
       if (res.ok) {
         res.json().then((user) => {
           setLogin(!login);
-          setisloggedin(true)
-          setUser(user)
-          
+          setisloggedin(true);
+          setUser(user);
         });
       } else {
         res.json().then((err) => {
-          setisloggedin(false)
+          setisloggedin(false);
           setErrors(err.error);
         });
       }
     });
   }
-  const history=useHistory()
+  const history = useHistory();
   function handlelogout(e) {
     e.preventDefault();
     logout();
-    localStorage.clear()
-    history.push('/login')
+    localStorage.clear();
+    history.push("/login");
   }
   function setLoginState(e) {
     e.preventDefault();
     setLogin(!login);
   }
-
 
   return login ? (
     <>
@@ -111,7 +105,9 @@ function Nav2({ setUser, logout ,isloggedin, setisloggedin}) {
               </div>
             </form>
             <div>
-              {errors? <p style={{color:"red", marginTop:"10px"}}>{errors}</p> :null}
+              {errors ? (
+                <p style={{ color: "red", marginTop: "10px" }}>{errors}</p>
+              ) : null}
             </div>
           </div>
         </div>
@@ -148,25 +144,27 @@ function Nav2({ setUser, logout ,isloggedin, setisloggedin}) {
                   <Nav.Link href="/cities">Cities</Nav.Link>
                   <Nav.Link href="/employees">Employees</Nav.Link>
                 </Nav>
-                 {isloggedin !== true ?
-                                <Nav.Link href="/Login">
-                                <button className="btn btn-warning" onClick={setLoginState}>
-                                 Log in
-                                </button>
-                              </Nav.Link>:
-                              <Nav.Link href="/">
-                              <button className="btn btn-warning" onClick={handlelogout}>
-                               Log Out
-                              </button>
-                            </Nav.Link>
-              } 
+                {isloggedin !== true ? (
+                  <Nav.Link href="/Login">
+                    <button className="btn btn-warning" onClick={setLoginState}>
+                      Log in
+                    </button>
+                  </Nav.Link>
+                ) : (
+                  <Nav.Link href="/">
+                    <button className="btn btn-warning" onClick={handlelogout}>
+                      Log Out
+                    </button>
+                  </Nav.Link>
+                )}
 
-              {isloggedin !== true ? 
-                <Nav.Link href="/Signup">
-                  <button className="btn btn-warning" href="/signup">
-                    Sign up
-                  </button>
-                </Nav.Link>: null}
+                {isloggedin !== true ? (
+                  <Nav.Link href="/Signup">
+                    <button className="btn btn-warning" href="/signup">
+                      Sign up
+                    </button>
+                  </Nav.Link>
+                ) : null}
               </Navbar.Collapse>
             </div>
           </Container>

@@ -7,7 +7,6 @@ function Departments({setisloggedin}) {
   const [departments, setDepartments] = useState(null);
  
 
- //const URL = "https://project-manager-bkend.herokuapp.com" ${URL}
 
   useEffect(() => {
     fetch(`/departments`, {
@@ -25,9 +24,6 @@ function Departments({setisloggedin}) {
     });
   }, []);
 
-  //-------------------Supportive Fuctions-----------------------
-
- 
 
   return (
     <>

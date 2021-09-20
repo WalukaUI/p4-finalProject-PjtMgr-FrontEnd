@@ -8,8 +8,6 @@ function CountriesCities() {
 
   const params = useParams();
   useEffect(() => {
-    //const URL = "https://project-manager-bkend.herokuapp.com"; ${URL}
-    //const URL = "http://localhost:3000";
     fetch(`/countries/${params.id}`, {
       method: "GET",
       headers: { "Content-Type": "application/json" },
@@ -37,9 +35,9 @@ function CountriesCities() {
                   </h5>
                   <p className="card-text">Country Id: {city.country_id}</p>
                   <div>
-                  <Link to={`/cities/${city.id}`}>
-                    <a className="btn btn-info">Employees</a>
-                  </Link>
+                    <Link to={`/cities/${city.id}`} className="btn btn-info">
+                      Employees
+                    </Link>
                   </div>
                 </div>
               </div>

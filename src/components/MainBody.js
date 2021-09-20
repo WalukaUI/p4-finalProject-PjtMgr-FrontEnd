@@ -16,16 +16,18 @@ import Employees from "./Employees/Employees";
 import Home from "./Home/Home";
 import SignUp from "./SignUp/SignUp";
 import DepartmentEmployees from "./Departments/DepartmentEmployees";
-import CountriesCities from "./SideBar/CountriesCities"
-import EmployeesOftheCity from "./Cities/EmployeesOftheCity"
-import ProjectsOfdEmployee from "./Employees/EmployeeProjects"
-import EmployeesOfdProject from "./Projects/EmployeesOfdProject"
+import CountriesCities from "./SideBar/CountriesCities";
+import EmployeesOftheCity from "./Cities/EmployeesOftheCity";
+import ProjectsOfdEmployee from "./Employees/EmployeeProjects";
+import EmployeesOfdProject from "./Projects/EmployeesOfdProject";
 
 function MainBody() {
   const [user, setUser] = useState(null);
   const [isloggedin, setisloggedin] = useState(null);
 
-  //const URL = "https://project-manager-bkend.herokuapp.com"  ${URL}
+  //const URL = "https://project-manager-bkend.herokuapp.com"; ${URL}
+  //const URL = "http://localhost:3000";
+  //const URL = process.env.REACT_APP_BASE_URL
 
   // auto-login
   useEffect(() => {

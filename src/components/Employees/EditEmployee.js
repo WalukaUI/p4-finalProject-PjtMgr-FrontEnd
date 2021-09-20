@@ -87,17 +87,17 @@ function EditEmployee({
                     aria-label="Default select example"
                     onChange={handleChangeData}
                   >
-                    <option value="1">Curt</option>
-                    <option value="2">Leah</option>
-                    <option value="3">Vesta</option>
-                    <option value="4">NYC</option>
-                    <option value="5">Chicago</option>
-                    <option value="6">Indiana</option>
-                    <option value="7">Chuck</option>
-                    <option value="8">Nicolas</option>
-                    <option value="9">Trenton</option>
-                    <option value="10">Keli</option>
-                    <option value="11">Hyman</option>
+                    <option value="1">Javier</option>
+                    <option value="2">Louie</option>
+                    <option value="3">Jennifer</option>
+                    <option value="4">Lou</option>
+                    <option value="5">Gene</option>
+                    <option value="6">Zaida</option>
+                    <option value="7">Jessie</option>
+                    <option value="8">Georgianne</option>
+                    <option value="9">Tracey</option>
+                    <option value="10">Kristel</option>
+                    <option value="11">Elfreda</option>
                   </select>
                 </label>
                 <div className="container">
