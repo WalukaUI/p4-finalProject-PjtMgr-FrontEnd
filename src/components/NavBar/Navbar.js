@@ -5,8 +5,8 @@ import "bootstrap/dist/css/bootstrap.css";
 import "./Navbar.css";
 import BASE_URL from "../../constraints/URL"
 
-function Nav2({ setUser, logout, isloggedin, setisloggedin }) {
-  const [login, setLogin] = useState(false);
+
+function Nav2({ setUser, logout, isloggedin, setisloggedin, login, setLogin }) {
   const [name, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [errors, setErrors] = useState(null);
@@ -27,7 +27,6 @@ function Nav2({ setUser, logout, isloggedin, setisloggedin }) {
         password: password,
       }),
     }).then((res) => {
-      console.log(res)
       if (res.ok) {
         res.json().then((user) => {
           setLogin(!login);
@@ -42,7 +41,7 @@ function Nav2({ setUser, logout, isloggedin, setisloggedin }) {
       }
     });
   }
-  const history = useHistory();
+   const history = useHistory();
   function handlelogout(e) {
     e.preventDefault();
     logout();
@@ -116,7 +115,7 @@ function Nav2({ setUser, logout, isloggedin, setisloggedin }) {
       </div>
     </>
   ) : (
-    <>
+       <>
       <div className="navDiv">
         <Navbar
           collapseOnSelect
@@ -149,7 +148,7 @@ function Nav2({ setUser, logout, isloggedin, setisloggedin }) {
                 {isloggedin !== true ? (
                   <Nav.Link href="/Login">
                     <button className="btn btn-warning" onClick={setLoginState}>
-                      Log in
+                    Log in
                     </button>
                   </Nav.Link>
                 ) : (
@@ -173,7 +172,7 @@ function Nav2({ setUser, logout, isloggedin, setisloggedin }) {
         </Navbar>
       </div>
     </>
-  );
+  )
 }
 
 export default Nav2;

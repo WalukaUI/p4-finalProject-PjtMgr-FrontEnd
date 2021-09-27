@@ -33,7 +33,7 @@ function MainBody() {
 
   // auto-login
   useEffect(() => {
-    fetch(BASE_URL + `/me`,{mode: 'no-cors'}).then((r) => {
+    fetch(BASE_URL + `fetch(BASE_URL + `,mode:"no-cors").then((r) => {
       if (r.ok) {
         r.json().then((user) => {
           setisloggedin(true);
