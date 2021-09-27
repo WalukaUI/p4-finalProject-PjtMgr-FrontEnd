@@ -25,7 +25,7 @@ function Employees({ setisloggedin, setLogin, login }) {
         setLogin(!login)
       }
     });
-  }, [setisloggedin, login, setLogin]);
+  }, [setisloggedin, setLogin]);
 
   //DELETE EMPLOYEE ${URL}
 

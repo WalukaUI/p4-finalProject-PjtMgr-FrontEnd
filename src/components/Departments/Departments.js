@@ -25,7 +25,7 @@ function Departments({setisloggedin, setLogin, login}) {
         setLogin(!login)
       }
     });
-  }, [setisloggedin,setLogin, login]);
+  }, [setisloggedin,setLogin]);
 
 
   return (

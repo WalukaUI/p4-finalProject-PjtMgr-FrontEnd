@@ -21,7 +21,7 @@ function Projects({ setisloggedin, setLogin, login,user }) {
         setLogin(!login)
       }
     });
-  }, [setisloggedin,setLogin, login]);
+  }, [setisloggedin,setLogin]);
 
   return (
     <>

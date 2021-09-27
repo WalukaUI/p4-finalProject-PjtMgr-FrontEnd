@@ -21,7 +21,7 @@ function Cities({ setisloggedin,  setLogin, login }) {
         setLogin(!login)
       }
     });
-  }, [setisloggedin, login, setLogin]);
+  }, [setisloggedin, setLogin]);
 
   return (
     <>
