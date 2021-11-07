@@ -3,10 +3,15 @@ Frontend of project manager App
 
 URl = https://tnt-project-manager.netlify.app/
 
+video demonstration
+https://www.loom.com/share/1046770d6b524b7c9246e51dc5497073?sharedAppSource=personal_library
 
 🌟****MVC***🌟
 
-Login functionality
+Login functionality,
+
+Create an account for login
+
 
 ### Show below things ###
 
