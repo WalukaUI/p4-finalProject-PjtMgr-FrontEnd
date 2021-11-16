@@ -25,9 +25,11 @@ function SideBar({ user }) {
           country.map((card, idx) => {
             return (
               <div className="countryBtnDiv myButton" key={card.name + idx}>
-                <Link to={`/countries/${card.id}`} className="countryBtn">
+                {user ? <Link to={`/countries/${card.id}`} className="countryBtn">
                   {card.name}
-                </Link>
+                </Link>: <Link to="/login" className="countryBtn">
+                  {card.name}
+                </Link>}
               </div>
             );
           })
