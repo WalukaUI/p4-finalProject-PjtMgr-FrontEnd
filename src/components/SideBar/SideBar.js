@@ -27,7 +27,7 @@ function SideBar({ user }) {
               <div className="countryBtnDiv myButton" key={card.name + idx}>
                 {user ? <Link to={`/countries/${card.id}`} className="countryBtn">
                   {card.name}
-                </Link>: <Link to="/login" className="countryBtn">
+                </Link>: <Link to="/Login" className="countryBtn">
                   {card.name}
                 </Link>}
               </div>
