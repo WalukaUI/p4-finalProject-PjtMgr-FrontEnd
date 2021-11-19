@@ -41,7 +41,7 @@ function Login({setUser, setisloggedin}){
         e.preventDefault()
         history.push('/')
     }
-    return <div className="formDiv div1">
+    return <div className="loginformDiv div1">
             <form onSubmit={handleSubmit}>
               <h4>Log In</h4>
               <div className="form-group row">

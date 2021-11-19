@@ -1,12 +1,15 @@
-.formDiv {
+.loginformDiv {
+  padding:5%;
   width: 50%;
+  min-height: 350px;
 }
 .loginFormBtns {
   margin-top: 10px;
 }
 @media only screen and (max-width: 768px) {
-  .formDiv {
+  .loginformDiv {
     width: 100%;
     padding: 5%;
+    min-height: auto;
   }
 }
