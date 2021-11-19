@@ -15,6 +15,7 @@ import Cities from "./Cities/Cities";
 import Employees from "./Employees/Employees";
 import Home from "./Home/Home";
 import SignUp from "./SignUp/SignUp";
+import Login from "./Login/login";
 import DepartmentEmployees from "./Departments/DepartmentEmployees";
 import CountriesCities from "./SideBar/CountriesCities";
 import EmployeesOftheCity from "./Cities/EmployeesOftheCity";
@@ -27,11 +28,12 @@ function MainBody() {
   const [login, setLogin] = useState(false);
   const [isloggedin, setisloggedin] = useState(null);
 
-  //const URL = "https://project-manager-bkend.herokuapp.com"; 
-  //const URL = "http://localhost:3000";
-  //const URL = process.env.REACT_APP_BASE_URL
+  //supportive functions-----------
+  function setLoginState() {
+    setLogin(!login);
+  }
 
-  // auto-login
+  // auto-login----------------
   useEffect(() => {
     fetch(BASE_URL + `/me`,{mode: 'no-cors'}).then((r) => {
       if (r.ok) {
@@ -43,7 +45,7 @@ function MainBody() {
     });
   }, []);
 
-  // logout //${URL}
+  // logout //${URL}-------------
   function logout() {
     fetch(BASE_URL + `/logout`, {
       method: "DELETE",
@@ -52,23 +54,26 @@ function MainBody() {
     setisloggedin(false);
   }
 
+
+
   return (
     <div className="Login-component">
       <Router>
         <Navbar
-          setUser={setUser}
+          //setUser={setUser}
           logout={logout}
           isloggedin={isloggedin}
-          setisloggedin={setisloggedin}
-          login={login}
-          setLogin={setLogin}
+          //setisloggedin={setisloggedin}
+          //login={login}
+          //setLogin={setLogin}
+          setLoginState={setLoginState}
         />
         <div className="row mainRow">
           <div className="col-md-3  mainDiv1">
             <a href="/countries" className="headderBtn">
               Business Operating Countries
             </a>
-            <SideBar user={user} setisloggedin={setisloggedin} />
+            <SideBar user={user} isloggedin={isloggedin} setisloggedin={setisloggedin} />
           </div>
           <div className="col-md-9 mainDiv2">
             <Switch>
@@ -117,6 +122,15 @@ function MainBody() {
                   setUser={setUser}
                   user={user}
                   setisloggedin={setisloggedin}
+                />
+              </Route>
+              <Route path="/login" exact>
+                <Login
+                  setUser={setUser}
+                  user={user}
+                  setisloggedin={setisloggedin}          
+                  login={login}
+                  setLogin={setLogin}
                 />
               </Route>
               <Route path="/" exact>

@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import "./SideBar.css";
 import BASE_URL from "../../constraints/URL"
 
-function SideBar({ user }) {
+function SideBar({ user, isloggedin }) {
   const [country, setCountry] = useState(null);
   useEffect(() => {
     fetch(BASE_URL + `/countries`, {
@@ -25,11 +25,12 @@ function SideBar({ user }) {
           country.map((card, idx) => {
             return (
               <div className="countryBtnDiv myButton" key={card.name + idx}>
-                {user ? <Link to={`/countries/${card.id}`} className="countryBtn">
+                {isloggedin === true ?
+                 <Link to={`/countries/${card.id}`} className="countryBtn">
                   {card.name}
-                </Link>: <Link to="/Login" className="countryBtn">
+                </Link> : <a href="/Login" className="countryBtn">
                   {card.name}
-                </Link>}
+                </a> }
               </div>
             );
           })
