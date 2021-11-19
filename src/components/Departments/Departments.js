@@ -4,7 +4,7 @@ import DepartmentCard from "./DepartmentCard"
 import "./Departments.css";
 import BASE_URL from "../../constraints/URL"
 
-function Departments({setisloggedin, setLogin, login}) {
+function Departments({setisloggedin}) {
   const [departments, setDepartments] = useState(null);
  
 
@@ -21,11 +21,9 @@ function Departments({setisloggedin, setLogin, login}) {
           setisloggedin(true)
           setDepartments(data)
         });
-      }else{
-        setLogin(!login)
       }
     });
-  }, [setisloggedin,setLogin]);
+  }, [setisloggedin]);
 
 
   return (

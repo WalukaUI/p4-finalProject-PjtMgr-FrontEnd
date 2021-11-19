@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
 import "./SideBar.css";
 import BASE_URL from "../../constraints/URL"
 
-function SideBar({ user, isloggedin }) {
+function SideBar({ setLoginState, isloggedin }) {
   const [country, setCountry] = useState(null);
+  const history = useHistory();
+
   useEffect(() => {
     fetch(BASE_URL + `/countries`, {
       method: "GET",
@@ -18,6 +20,7 @@ function SideBar({ user, isloggedin }) {
     });
   }, []);
 
+
   return (
     <>
       <div className="cardDiv">
@@ -28,7 +31,7 @@ function SideBar({ user, isloggedin }) {
                 {isloggedin === true ?
                  <Link to={`/countries/${card.id}`} className="countryBtn">
                   {card.name}
-                </Link> : <a href="/Login" className="countryBtn">
+                </Link> : <a href="/login" className="countryBtn">
                   {card.name}
                 </a> }
               </div>

@@ -25,15 +25,10 @@ import BASE_URL from "../constraints/URL"
 
 function MainBody() {
   const [user, setUser] = useState(null);
-  const [login, setLogin] = useState(false);
   const [isloggedin, setisloggedin] = useState(null);
 
-  //supportive functions-----------
-  function setLoginState() {
-    setLogin(!login);
-  }
-
   // auto-login----------------
+
   useEffect(() => {
     fetch(BASE_URL + `/me`,{mode: 'no-cors'}).then((r) => {
       if (r.ok) {
@@ -46,6 +41,7 @@ function MainBody() {
   }, []);
 
   // logout //${URL}-------------
+
   function logout() {
     fetch(BASE_URL + `/logout`, {
       method: "DELETE",
@@ -54,26 +50,20 @@ function MainBody() {
     setisloggedin(false);
   }
 
-
-
   return (
     <div className="Login-component">
       <Router>
         <Navbar
-          //setUser={setUser}
           logout={logout}
           isloggedin={isloggedin}
-          //setisloggedin={setisloggedin}
-          //login={login}
-          //setLogin={setLogin}
-          setLoginState={setLoginState}
+        
         />
         <div className="row mainRow">
           <div className="col-md-3  mainDiv1">
             <a href="/countries" className="headderBtn">
               Business Operating Countries
             </a>
-            <SideBar user={user} isloggedin={isloggedin} setisloggedin={setisloggedin} />
+            <SideBar isloggedin={isloggedin} setisloggedin={setisloggedin} />
           </div>
           <div className="col-md-9 mainDiv2">
             <Switch>
@@ -81,14 +71,14 @@ function MainBody() {
                 <div className="hedderdiv">
                   <h5>All Projects of the Company</h5>
                 </div>
-                <Projects setisloggedin={setisloggedin} setLogin={setLogin} login={login}/>
+                <Projects setisloggedin={setisloggedin}/>
               </Route>
 
               <Route path="/departments" exact>
                 <div className="hedderdiv">
                   <h5>Departments of the Company</h5>
                 </div>
-                <Departments setisloggedin={setisloggedin} setLogin={setLogin} login={login}/>
+                <Departments setisloggedin={setisloggedin}/>
               </Route>
               <Route path="/employees/:id" exact>
                 <DepartmentEmployees />
@@ -109,13 +99,13 @@ function MainBody() {
                 <div className="hedderdiv">
                   <h5>Business Opearting Cities of the Company</h5>
                 </div>
-                <Cities setisloggedin={setisloggedin} setLogin={setLogin} login={login}/>
+                <Cities setisloggedin={setisloggedin}/>
               </Route>
               <Route path="/employees" exact>
                 <div className="hedderdiv">
                   <h5>All Employees of the Company</h5>
                 </div>
-                <Employees setisloggedin={setisloggedin} setLogin={setLogin} login={login}/>
+                <Employees setisloggedin={setisloggedin}/>
               </Route>
               <Route path="/signup" exact>
                 <SignUp
@@ -129,8 +119,6 @@ function MainBody() {
                   setUser={setUser}
                   user={user}
                   setisloggedin={setisloggedin}          
-                  login={login}
-                  setLogin={setLogin}
                 />
               </Route>
               <Route path="/" exact>

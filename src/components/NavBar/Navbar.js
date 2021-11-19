@@ -6,7 +6,7 @@ import "./Navbar.css";
 
 
 
-function Nav2({ logout, isloggedin, setLoginState}) {
+function Nav2({ logout, isloggedin}) {
 
    const history = useHistory();
 
@@ -15,12 +15,6 @@ function Nav2({ logout, isloggedin, setLoginState}) {
     logout();
     localStorage.clear();
     history.push("/");
-  }
-
-  function setloginwindow(e){
-    e.preventDefault();
-    history.push("/login");
-    setLoginState()
   }
 
   return <><div className="navDiv">
@@ -47,14 +41,14 @@ function Nav2({ logout, isloggedin, setLoginState}) {
               <Navbar.Toggle aria-controls="responsive-navbar-nav" />
               <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="me-auto">
-                  <Nav.Link href="/projects">Projects</Nav.Link>
-                  <Nav.Link href="/departments">Departments</Nav.Link>
-                  <Nav.Link href="/cities">Cities</Nav.Link>
-                  <Nav.Link href="/employees">Employees</Nav.Link>
+                  <Nav.Link href={isloggedin ?"/projects": "/login"}>Projects</Nav.Link>
+                  <Nav.Link href={isloggedin ?"/departments": "/login"}>Departments</Nav.Link>
+                  <Nav.Link href={isloggedin ?"/cities": "/login"}>Cities</Nav.Link>
+                  <Nav.Link href={isloggedin ?"/employees": "/login"}>Employees</Nav.Link>
                 </Nav>
                 {isloggedin !== true ? (
                   <Nav.Link href="/Login">
-                    <button className="btn btn-warning" onClick={setloginwindow} href="/login">
+                    <button className="btn btn-warning"  href="/login">
                     Log in
                     </button>
                   </Nav.Link>

@@ -1,17 +1,17 @@
-.logoImageNav2{
-    width: 20%;
-    border-radius: 50%;
-    padding-right: 5px;
+.logoImageNav2 {
+  width: 20%;
+  border-radius: 50%;
+  padding-right: 5px;
 }
-.org_name{
-    font-size: 30px;
+.org_name {
+  font-size: 30px;
 }
-.navCollaps{
-    width: 100%;
-    padding-left: 70px;
+.navCollaps {
+  width: 100%;
+  padding-left: 70px;
 }
 @media only screen and (max-width: 767px) {
-    .org_name{
-        font-size: 25px;
-    }
+  .org_name {
+    font-size: 25px;
   }
+}

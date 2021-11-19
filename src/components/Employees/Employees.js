@@ -4,7 +4,7 @@ import Loading from "../LoadingAnimation/Loading";
 import "./Employees.css";
 import BASE_URL from "../../constraints/URL"
 
-function Employees({ setisloggedin, setLogin, login }) {
+function Employees({ setisloggedin}) {
   const [employees, setEmployees] = useState(null);
   const [addEmployeeForm, setAddEmpForm] = useState(false);
   const [addEmployee, setAddEmployee] = useState({});
@@ -21,11 +21,9 @@ function Employees({ setisloggedin, setLogin, login }) {
           setisloggedin(true);
           return setEmployees(data);
         });
-      }else{
-        setLogin(!login)
       }
     });
-  }, [setisloggedin, setLogin]);
+  }, [setisloggedin]);
 
   //DELETE EMPLOYEE ${URL}
 

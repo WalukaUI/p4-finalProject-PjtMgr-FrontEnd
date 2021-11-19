@@ -24,7 +24,6 @@ import BASE_URL from "../constraints/URL"
 
 function MainBody() {
   const [user, setUser] = useState(null);
-  const [login, setLogin] = useState(false);
   const [isloggedin, setisloggedin] = useState(null);
 
   //const URL = "https://project-manager-bkend.herokuapp.com"; 
@@ -60,8 +59,6 @@ function MainBody() {
           logout={logout}
           isloggedin={isloggedin}
           setisloggedin={setisloggedin}
-          login={login}
-          setLogin={setLogin}
         />
         <div className="row mainRow">
           <div className="col-md-3  mainDiv1">
@@ -76,14 +73,14 @@ function MainBody() {
                 <div className="hedderdiv">
                   <h5>All Projects of the Company</h5>
                 </div>
-                <Projects setisloggedin={setisloggedin} setLogin={setLogin} login={login}/>
+                <Projects setisloggedin={setisloggedin}/>
               </Route>
 
               <Route path="/departments" exact>
                 <div className="hedderdiv">
                   <h5>Departments of the Company</h5>
                 </div>
-                <Departments setisloggedin={setisloggedin} setLogin={setLogin} login={login}/>
+                <Departments setisloggedin={setisloggedin}/>
               </Route>
               <Route path="/employees/:id" exact>
                 <DepartmentEmployees />
@@ -104,13 +101,13 @@ function MainBody() {
                 <div className="hedderdiv">
                   <h5>Business Opearting Cities of the Company</h5>
                 </div>
-                <Cities setisloggedin={setisloggedin} setLogin={setLogin} login={login}/>
+                <Cities setisloggedin={setisloggedin}/>
               </Route>
               <Route path="/employees" exact>
                 <div className="hedderdiv">
                   <h5>All Employees of the Company</h5>
                 </div>
-                <Employees setisloggedin={setisloggedin} setLogin={setLogin} login={login}/>
+                <Employees setisloggedin={setisloggedin}/>
               </Route>
               <Route path="/signup" exact>
                 <SignUp

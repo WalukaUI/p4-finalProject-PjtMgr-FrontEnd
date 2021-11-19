@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import "./login.css";
 import BASE_URL from "../../constraints/URL"
 
-function Login({setUser, setisloggedin, login, setLogin }){
+function Login({setUser, setisloggedin}){
     const [name, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [errors, setErrors] = useState(null);
@@ -24,9 +24,9 @@ function Login({setUser, setisloggedin, login, setLogin }){
       }).then((res) => {
         if (res.ok) {
           res.json().then((user) => {
-            setLogin(!login);
             setisloggedin(true);
             setUser(user);
+            history.push('/')
           });
         } else {
           res.json().then((err) => {
@@ -40,11 +40,8 @@ function Login({setUser, setisloggedin, login, setLogin }){
     function canclelogin(e){
         e.preventDefault()
         history.push('/')
-        setLogin(!login)
     }
-    return login ? <div className="popup-box">
-        <div className="popup-inner">
-          <div className="formDiv div1">
+    return <div className="formDiv div1">
             <form onSubmit={handleSubmit}>
               <h4>Log In</h4>
               <div className="form-group row">
@@ -98,8 +95,6 @@ function Login({setUser, setisloggedin, login, setLogin }){
               ) : null}
             </div>
           </div>
-        </div>
-      </div>: ""
 }
 
 export default Login
