@@ -18,7 +18,7 @@ function Home({user}) {
        <img src="./img/homeimg/dpt.jpg" alt="mgt" className="homeImage"/></a>
     </div>
     <div className="homeCards">
-      <a href="/projects">Projects{user?"wooo":"nope"}
+      <a href="/projects">Projects
        <img src="./img/homeimg/project.jpg" alt="mgt" className="homeImage"/></a>
     </div>
     <div className="homeCards">

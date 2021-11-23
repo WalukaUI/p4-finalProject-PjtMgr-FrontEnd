@@ -6,7 +6,7 @@ import "./Navbar.css";
 
 
 
-function Nav2({ user, logout, isloggedin}) {
+function Nav2({ user, logout}) {
 
   const history = useHistory();
 
@@ -41,11 +41,15 @@ function Nav2({ user, logout, isloggedin}) {
               <Navbar.Toggle aria-controls="responsive-navbar-nav" />
               <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="me-auto">
-                  <Nav.Link href={isloggedin ?"/projects": "/login"}>Projects</Nav.Link>
-                  <Nav.Link href={isloggedin ?"/departments": "/login"}>Departments</Nav.Link>
-                  <Nav.Link href={isloggedin ?"/cities": "/login"}>Cities</Nav.Link>
-                  <Nav.Link href={isloggedin ?"/employees": "/login"}>Employees</Nav.Link>
+                  <Nav.Link href={user ?"/projects": "/login"}>Projects</Nav.Link>
+                  <Nav.Link href={user ?"/departments": "/login"}>Departments</Nav.Link>
+                  <Nav.Link href={user ?"/cities": "/login"}>Cities</Nav.Link>
+                  <Nav.Link href={user ?"/employees": "/login"}>Employees</Nav.Link>
+                  
                 </Nav>
+                {user?<button className="btn btn-light"  style={{cursor: "auto"}} href="/login">
+                    You are Logged in as "{user.name}"
+                    </button>:"" }
                 {!user ? (
                   <Nav.Link href="/Login">
                     <button className="btn btn-warning"  href="/login">
