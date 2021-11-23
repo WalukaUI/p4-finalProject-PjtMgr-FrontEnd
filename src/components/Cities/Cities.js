@@ -3,7 +3,7 @@ import Loading from "../LoadingAnimation/Loading";
 import "./Cities.css";
 import BASE_URL from "../../constraints/URL"
 
-function Cities({ setisloggedin}) {
+function Cities() {
   const [cities, setCities] = useState(null);
 
   useEffect(() => {
@@ -14,12 +14,11 @@ function Cities({ setisloggedin}) {
     }).then((res) => {
       if (res.ok) {
         res.json().then((data) => {
-          setisloggedin(true);
           setCities(data);
         });
       }
     });
-  }, [setisloggedin]);
+  }, []);
 
   return (
     <>

@@ -103,13 +103,13 @@ function MainBody() {
                 <div className="hedderdiv">
                   <h5>Business Opearting Cities of the Company</h5>
                 </div>
-                <Cities setisloggedin={setisloggedin}/>
+                <Cities/>
               </Route>
               <Route path="/employees" exact>
                 <div className="hedderdiv">
                   <h5>All Employees of the Company</h5>
                 </div>
-                <Employees setisloggedin={setisloggedin}/>
+                <Employees />
               </Route>
               <Route path="/signup" exact>
                 <SignUp
