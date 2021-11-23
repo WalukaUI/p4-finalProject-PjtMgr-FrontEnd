@@ -25,7 +25,6 @@ import BASE_URL from "../constraints/URL"
 
 function MainBody() {
   const [user, setUser] = useState(null);
-  const [isloggedin, setisloggedin] = useState(null);
 
   // auto-login----------------
 
@@ -37,7 +36,6 @@ function MainBody() {
     }).then((r) => {
       if (r.ok) {
         r.json().then((user) => {
-          setisloggedin(true);
           setUser(user);
         });
       }
@@ -52,7 +50,6 @@ function MainBody() {
       credentials: "include",
     }).then((r) => console.log("logged out"));
     setUser(false)
-    setisloggedin(false);
   }
 
   return (
@@ -115,7 +112,6 @@ function MainBody() {
                 <SignUp
                   setUser={setUser}
                   user={user}
-                  setisloggedin={setisloggedin}
                 />
               </Route>
               <Route path="/login" exact>
