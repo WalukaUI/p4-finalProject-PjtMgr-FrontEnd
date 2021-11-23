@@ -4,11 +4,9 @@ import DepartmentCard from "./DepartmentCard"
 import "./Departments.css";
 import BASE_URL from "../../constraints/URL"
 
-function Departments({setisloggedin}) {
+function Departments() {
   const [departments, setDepartments] = useState(null);
  
-
-
   useEffect(() => {
     fetch(BASE_URL + `/departments`, {
       method: "GET",
@@ -18,12 +16,11 @@ function Departments({setisloggedin}) {
     .then((res) => {
       if (res.ok) {
         res.json().then((data) => {
-          setisloggedin(true)
           setDepartments(data)
         });
       }
     });
-  }, [setisloggedin]);
+  }, []);
 
 
   return (

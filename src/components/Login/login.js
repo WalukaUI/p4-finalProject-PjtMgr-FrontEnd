@@ -3,7 +3,7 @@ import { useHistory } from "react-router-dom";
 import "./login.css";
 import BASE_URL from "../../constraints/URL"
 
-function Login({setUser, setisloggedin}){
+function Login({setUser}){
     const [name, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [errors, setErrors] = useState(null);
@@ -24,13 +24,11 @@ function Login({setUser, setisloggedin}){
       }).then((res) => {
         if (res.ok) {
           res.json().then((user) => {
-            setisloggedin(true);
             setUser(user);
             history.push('/')
           });
         } else {
           res.json().then((err) => {
-            setisloggedin(false);
             setErrors(err.error);
           });
         }

@@ -3,7 +3,7 @@ import Loading from "../LoadingAnimation/Loading";
 import "./Projects.css";
 import BASE_URL from "../../constraints/URL"
 
-function Projects({ setisloggedin}) {
+function Projects() {
   const [projects, setProjects] = useState(null);
 
   useEffect(() => {
@@ -14,12 +14,11 @@ function Projects({ setisloggedin}) {
     }).then((res) => {
       if (res.ok) {
         res.json().then((data) => {
-          setisloggedin(true);
           setProjects(data);
         });
       }
     });
-  }, [setisloggedin]);
+  }, []);
 
   return (
     <>

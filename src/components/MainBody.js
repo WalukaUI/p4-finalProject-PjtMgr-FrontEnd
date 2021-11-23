@@ -75,14 +75,14 @@ function MainBody() {
                 <div className="hedderdiv">
                   <h5>All Projects of the Company</h5>
                 </div>
-                <Projects setisloggedin={setisloggedin}/>
+                <Projects />
               </Route>
 
               <Route path="/departments" exact>
                 <div className="hedderdiv">
                   <h5>Departments of the Company</h5>
                 </div>
-                <Departments setisloggedin={setisloggedin}/>
+                <Departments />
               </Route>
               <Route path="/employees/:id" exact>
                 <DepartmentEmployees />
@@ -121,8 +121,7 @@ function MainBody() {
               <Route path="/login" exact>
                 <Login
                   setUser={setUser}
-                  user={user}
-                  setisloggedin={setisloggedin}          
+         
                 />
               </Route>
               <Route path="/" exact>
