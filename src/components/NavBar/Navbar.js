@@ -6,9 +6,9 @@ import "./Navbar.css";
 
 
 
-function Nav2({ logout, isloggedin}) {
+function Nav2({ user, logout, isloggedin}) {
 
-   const history = useHistory();
+  const history = useHistory();
 
   function handlelogout(e) {
     e.preventDefault();
@@ -46,7 +46,7 @@ function Nav2({ logout, isloggedin}) {
                   <Nav.Link href={isloggedin ?"/cities": "/login"}>Cities</Nav.Link>
                   <Nav.Link href={isloggedin ?"/employees": "/login"}>Employees</Nav.Link>
                 </Nav>
-                {isloggedin !== true ? (
+                {!user ? (
                   <Nav.Link href="/Login">
                     <button className="btn btn-warning"  href="/login">
                     Log in
@@ -60,7 +60,7 @@ function Nav2({ logout, isloggedin}) {
                   </Nav.Link>
                 )}
 
-                {isloggedin !== true ? (
+                {!user ? (
                   <Nav.Link href="/Signup">
                     <button className="btn btn-warning" href="/signup">
                       Sign up

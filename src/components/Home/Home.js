@@ -1,7 +1,7 @@
 import React from "react";
 import "./Home.css";
 
-function Home() {
+function Home({user}) {
 
   return (<>
   <div className="homeDiv">
@@ -18,7 +18,7 @@ function Home() {
        <img src="./img/homeimg/dpt.jpg" alt="mgt" className="homeImage"/></a>
     </div>
     <div className="homeCards">
-      <a href="/projects">Projects
+      <a href="/projects">Projects{user?"wooo":"nope"}
        <img src="./img/homeimg/project.jpg" alt="mgt" className="homeImage"/></a>
     </div>
     <div className="homeCards">

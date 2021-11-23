@@ -30,7 +30,11 @@ function MainBody() {
   // auto-login----------------
 
   useEffect(() => {
-    fetch(BASE_URL + `/me`,{mode: 'no-cors'}).then((r) => {
+    fetch(BASE_URL + `/me`,{
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+    }).then((r) => {
       if (r.ok) {
         r.json().then((user) => {
           setisloggedin(true);
@@ -47,6 +51,7 @@ function MainBody() {
       method: "DELETE",
       credentials: "include",
     }).then((r) => console.log("logged out"));
+    setUser(false)
     setisloggedin(false);
   }
 
@@ -54,6 +59,7 @@ function MainBody() {
     <div className="Login-component">
       <Router>
         <Navbar
+          user={user}
           logout={logout}
           isloggedin={isloggedin}
         
@@ -125,7 +131,7 @@ function MainBody() {
                 <div className="hedderdiv">
                   <h5>Welcome to T&T Project Manager</h5>
                 </div>
-                <Home />
+                <Home user={user}/>
               </Route>
               <Redirect to="/" />
             </Switch>
