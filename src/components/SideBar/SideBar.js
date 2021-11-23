@@ -4,7 +4,7 @@ import "bootstrap/dist/css/bootstrap.css";
 import "./SideBar.css";
 import BASE_URL from "../../constraints/URL"
 
-function SideBar({ setLoginState, isloggedin }) {
+function SideBar({ user }) {
   const [country, setCountry] = useState(null);
   const history = useHistory();
 
@@ -28,7 +28,7 @@ function SideBar({ setLoginState, isloggedin }) {
           country.map((card, idx) => {
             return (
               <div className="countryBtnDiv myButton" key={card.name + idx}>
-                {isloggedin === true ?
+                {user ?
                  <Link to={`/countries/${card.id}`} className="countryBtn">
                   {card.name}
                 </Link> : <a href="/login" className="countryBtn">

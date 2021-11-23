@@ -60,16 +60,14 @@ function MainBody() {
       <Router>
         <Navbar
           user={user}
-          logout={logout}
-          isloggedin={isloggedin}
-        
+          logout={logout}    
         />
         <div className="row mainRow">
           <div className="col-md-3  mainDiv1">
             <a href="/countries" className="headderBtn">
               Business Operating Countries
             </a>
-            <SideBar isloggedin={isloggedin} setisloggedin={setisloggedin} />
+            <SideBar user={user} />
           </div>
           <div className="col-md-9 mainDiv2">
             <Switch>
