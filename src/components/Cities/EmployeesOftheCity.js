@@ -22,7 +22,7 @@ function EmployeesOftheCity(){
 
     return (
         <>
-          <h2>Employees of the City</h2>
+          <h2>Employees of the City/Branch</h2>
           {empofCity !== null ? (
             empofCity.map((emp,idx) => {
               return (
@@ -31,7 +31,7 @@ function EmployeesOftheCity(){
                     className="card border-secondary mb-3 dptEmpcard"
                     style={{ minWidth: "18rem" }}
                   >
-                    <div className="card-header">City Name: {emp.name}</div>
+                    <div className="card-header">Employee Name: {emp.name}</div>
                     <div className="card-body text-secondary">
                       <h5 className="card-title">
                         Role: {emp.role}
