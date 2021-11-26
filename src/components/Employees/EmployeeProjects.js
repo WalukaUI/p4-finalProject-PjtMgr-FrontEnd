@@ -35,7 +35,7 @@ function ProjectsOfdEmployee() {
                   <p className="card-text">Sector: {pjt.sector}</p>
                   <div>
                     <Link to={`/projects/${pjt.id}/employees`}  className="btn btn-info">
-                      Employees
+                      Employees of the Project
                     </Link>
                   </div>
                 </div>

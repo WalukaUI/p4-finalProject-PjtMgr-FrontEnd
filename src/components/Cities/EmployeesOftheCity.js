@@ -40,7 +40,7 @@ function EmployeesOftheCity(){
                       <p className="card-text">Department: {emp.department_id}</p>
                       <div>
                       <Link to={`/employees/${emp.id}/projects`} className="btn btn-info">
-                        Projects
+                        Employee's Projects
                       </Link>
                       </div>
                     </div>
