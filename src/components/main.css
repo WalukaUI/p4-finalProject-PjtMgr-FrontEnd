@@ -6,6 +6,11 @@
   flex-wrap: wrap;
   justify-content: space-evenly;
   padding-top: 10px;
+  min-height: 400px;
+}
+.mainDiv1{
+  position: relative;
+  background-color: #d8ebf7;
 }
 @media only screen and (max-width: 576px) {
   .mainRow {
@@ -13,6 +18,7 @@
   }
   .mainDiv2 {
     padding-right: 0px !important;
+    min-height: auto;
   }
   .mainDiv1 {
     padding-right: 0px !important;

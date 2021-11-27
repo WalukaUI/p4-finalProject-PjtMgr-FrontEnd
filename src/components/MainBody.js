@@ -61,10 +61,13 @@ function MainBody() {
         />
         <div className="row mainRow">
           <div className="col-md-3  mainDiv1">
+           
+
             <a href="/countries" className="headderBtn">
               Business Operating Countries
             </a>
             <SideBar user={user} />
+
           </div>
           <div className="col-md-9 mainDiv2">
             <Switch>

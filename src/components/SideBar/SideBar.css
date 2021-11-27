@@ -8,6 +8,8 @@
   justify-content:space-evenly;
   color: black;
   padding-bottom: 25px;
+  position: sticky;
+  top: 0;
 }
 .cardChild {
   width: 100%;
