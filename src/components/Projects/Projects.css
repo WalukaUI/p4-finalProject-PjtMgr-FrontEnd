@@ -2,3 +2,6 @@
     display: flex;
     width: 18rem;
 }
+.project-edit-btn{
+    margin-right: 10px;
+}
