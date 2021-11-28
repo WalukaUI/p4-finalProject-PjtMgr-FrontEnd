@@ -20,7 +20,7 @@ function ProjectsOfdEmployee() {
 
   return (
     <>
-      <h2>Projects of the Employee</h2>
+      <h4 style={{display: "inline-block", width: "100%", paddingBottom: "5%", textAlign: "center"}}>Projects of the Employee</h4>
       {empsProjects !== null ? (
         empsProjects.map((pjt) => {
           return (

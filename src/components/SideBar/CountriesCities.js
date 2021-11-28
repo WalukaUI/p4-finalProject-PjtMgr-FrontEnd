@@ -20,7 +20,7 @@ function CountriesCities() {
 
   return (
     <>
-      <h2>Cities of the Country</h2>
+      <h4 style={{display: "inline-block", width: "100%", textAlign: "center"}}>Cities of the Country</h4>
       {cntyCities !== null ? (
         cntyCities.map((city) => {
           return (

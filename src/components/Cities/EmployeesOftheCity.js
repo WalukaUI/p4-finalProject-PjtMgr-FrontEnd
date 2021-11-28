@@ -22,7 +22,7 @@ function EmployeesOftheCity(){
 
     return (
         <>
-          <h2>Employees of the City/Branch</h2>
+          <h4 style={{display: "inline-block", width: "100%", paddingBottom: "5%", textAlign: "center"}}>Employees of the City/Branch</h4>
           {empofCity !== null ? (
             empofCity.map((emp,idx) => {
               return (
