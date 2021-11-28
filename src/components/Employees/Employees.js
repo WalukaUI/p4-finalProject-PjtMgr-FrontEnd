@@ -24,9 +24,10 @@ function Employees() {
       }
     });
   }, []);
-  //GET Cities---------------
-  useEffect(() => {
-    fetch(BASE_URL + `/cities`, {
+  //GET Cities--------------------
+
+    useEffect(() => {
+       fetch(BASE_URL + `/cities`, {
       method: "GET",
       headers: { "Content-Type": "application/json" },
       credentials: "include",
@@ -38,9 +39,10 @@ function Employees() {
       }
     });
   }, []);
-    //GET EMPLOYEES
+    //GET EMPLOYEES----------------
+
     useEffect(() => {
-      fetch(BASE_URL + `/cities`, {
+      fetch(BASE_URL + `/employees`, {
         method: "GET",
         headers: { "Content-Type": "application/json" },
         credentials: "include",
@@ -53,7 +55,7 @@ function Employees() {
       });
     }, []);
 
-  //DELETE EMPLOYEE ${URL}
+  //DELETE EMPLOYEE ${URL}----------
 
   function deleteEmployee(id) {
     fetch(BASE_URL + `/employees/${id}`, {
@@ -64,7 +66,7 @@ function Employees() {
     setEmployees(newEmp);
   }
 
-  //PATCH EMPLOYEE ${URL}
+  //PATCH EMPLOYEE ${URL}------------
 
   function updateEmployee(employeObject, id) {
     let data = { ...employeObject, "id": id };
@@ -87,7 +89,7 @@ function Employees() {
         setEmployees([...newEmployee, emp]);
       });
   }
-  //CREATE EMPLOYEE  ${URL}
+  //CREATE EMPLOYEE  ${URL}-------------
 
   function createEmployee(newEmpObject) {
     fetch(BASE_URL + `/employees`, {
@@ -121,6 +123,7 @@ function Employees() {
     let newEmp = { ...addEmployee, [e.target.name]: e.target.value };
     setAddEmployee(newEmp);
   }
+
   return (
     <>
       <div className="formDiv">
@@ -211,6 +214,7 @@ function Employees() {
           return (
             <EmployeeCard
               key={card.id}
+              cities={cities}
               idx={idx}
               card={card}
               deleteEmployee={deleteEmployee}

@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import Editemployee from "./EditEmployee";
 
-function EmployeeCard({ card, idx, deleteEmployee, updateEmployee }) {
+function EmployeeCard({ card, idx, cities, deleteEmployee, updateEmployee }) {
   const [display, setDisplay] = useState(false);
   const [updateData, setUpdateData] = useState(null);
 
@@ -9,6 +9,13 @@ function EmployeeCard({ card, idx, deleteEmployee, updateEmployee }) {
     e.preventDefault();
     setUpdateData(card);
     setDisplay(!display);
+  }
+
+  //City Name-----------------
+
+  function getCityName() {
+    let ctyName = cities.filter((c) => c.id === card.city_id);
+    return ctyName ? ctyName[0].name : "N/A";
   }
 
   return (
@@ -32,7 +39,7 @@ function EmployeeCard({ card, idx, deleteEmployee, updateEmployee }) {
             Section: {card.section ? card.section : "N/A"}
           </h6>
           <p>Department: {card.department_id}</p>
-          <p>City: {card.city_id}</p>
+          <p>City: {card ? getCityName() : "N/A"}</p>
           <button className="btn btn-light" onClick={toggleDisplay}>
             Edit
           </button>
