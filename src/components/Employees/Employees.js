@@ -6,10 +6,11 @@ import BASE_URL from "../../constraints/URL"
 
 function Employees() {
   const [employees, setEmployees] = useState(null);
+  const [cities, setCities] = useState(null);
   const [addEmployeeForm, setAddEmpForm] = useState(false);
   const [addEmployee, setAddEmployee] = useState({});
 
-  //GET EMPLOYEES
+  //GET EMPLOYEES--------------
   useEffect(() => {
     fetch(BASE_URL + `/employees`, {
       method: "GET",
@@ -23,6 +24,34 @@ function Employees() {
       }
     });
   }, []);
+  //GET Cities---------------
+  useEffect(() => {
+    fetch(BASE_URL + `/cities`, {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+    }).then((res) => {
+      if (res.ok) {
+        res.json().then((data) => {
+          setCities(data);
+        });
+      }
+    });
+  }, []);
+    //GET EMPLOYEES
+    useEffect(() => {
+      fetch(BASE_URL + `/cities`, {
+        method: "GET",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+      }).then((res) => {
+        if (res.ok) {
+          res.json().then((data) => {
+            return setEmployees(data);
+          });
+        }
+      });
+    }, []);
 
   //DELETE EMPLOYEE ${URL}
 
