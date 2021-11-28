@@ -29,7 +29,7 @@ function EmployeesOftheCity(){
                 <div key={emp.name + idx}>
                   <div
                     className="card border-secondary mb-3 dptEmpcard"
-                    style={{ minWidth: "18rem" }}
+                    style={{ minWidth: "18rem", backgroundColor: "#D6FBF5" , opacity: "0.95"}}
                   >
                     <div className="card-header">Employee Name: {emp.name}</div>
                     <div className="card-body text-secondary">

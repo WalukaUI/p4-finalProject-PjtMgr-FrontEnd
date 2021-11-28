@@ -33,7 +33,7 @@ function EditEmployee({
           <div className="formDiv div1">
             <form onSubmit={updateEmpHandler}>
               <h4>Update Employee Details</h4>
-              <div className="form-group row">
+              <div className="form-group row employeeEditPopUp">
                 <label>
                   Name
                   <input

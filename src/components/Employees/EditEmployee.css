@@ -6,6 +6,12 @@
   .hidden{
    display: none;
   }
+  .employeeEditPopUp input{
+  width: 90%;
+  }
+  .employeeEditPopUp select{
+    width: 90%;
+  }
   .popup-box {
     color: black;
     position: fixed;
