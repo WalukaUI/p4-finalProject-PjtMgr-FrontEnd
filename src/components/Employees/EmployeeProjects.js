@@ -3,6 +3,8 @@ import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import Loading from "../LoadingAnimation/Loading";
 import BASE_URL from "../../constraints/URL"
+import "./Employees.css";
+
 
 function ProjectsOfdEmployee() {
   const [empsProjects, setEmpsProjects] = useState(null);
@@ -20,7 +22,8 @@ function ProjectsOfdEmployee() {
 
   return (
     <>
-      <h4 style={{display: "inline-block", width: "100%", paddingBottom: "5%", textAlign: "center"}}>Projects of the Employee</h4>
+      <h4 style={{display: "inline-block", width: "100%", paddingBottom: "5%", 
+      textAlign: "center"}}>Projects of the Employee</h4>
       {empsProjects !== null ? (
         empsProjects.map((pjt) => {
           return (

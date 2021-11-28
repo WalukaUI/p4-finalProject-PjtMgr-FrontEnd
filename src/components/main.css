@@ -7,6 +7,9 @@
   justify-content: space-evenly;
   padding-top: 10px;
   min-height: 400px;
+  background-image: url("./bk1.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
 }
 .mainDiv1{
   position: relative;

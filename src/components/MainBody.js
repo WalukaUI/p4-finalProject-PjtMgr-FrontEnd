@@ -69,7 +69,7 @@ function MainBody() {
             <SideBar user={user} />
 
           </div>
-          <div className="col-md-9 mainDiv2">
+          <div className="col-md-9 mainDiv2 bkground">
             <Switch>
               <Route path="/projects" exact>
                 <div className="hedderdiv">
