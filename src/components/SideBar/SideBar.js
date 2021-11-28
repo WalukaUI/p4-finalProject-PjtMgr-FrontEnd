@@ -1,12 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Link, useHistory } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
 import "./SideBar.css";
 import BASE_URL from "../../constraints/URL"
 
 function SideBar({ user }) {
   const [country, setCountry] = useState(null);
-  const history = useHistory();
+  const [activate, setActivate]=useState(false)
 
   useEffect(() => {
     fetch(BASE_URL + `/countries`, {
@@ -21,6 +21,12 @@ function SideBar({ user }) {
   }, []);
 
 
+  //Add active class to btn's-----------------
+
+  function cahngeColor(e){
+   setActivate(e)
+  }
+
   return (
     <>
       <div className="cardDiv">
@@ -29,7 +35,7 @@ function SideBar({ user }) {
             return (
               <div className="countryBtnDiv myButton" key={card.name + idx}>
                 {user ?
-                 <Link to={`/countries/${card.id}`} className="countryBtn">
+                 <Link to={`/countries/${card.id}`} className={activate === card.name ?"countryBtn active": "countryBtn"} onClick={()=>cahngeColor(card.name)}>
                   {card.name}
                 </Link> : <a href="/login" className="countryBtn">
                   {card.name}
