@@ -21,7 +21,7 @@ function DepartmentEmployees({dept,cities}) {
 
   return (
     <>
-      <h2>Department {params.id} employees</h2>
+      <h3 style={{textAlign: "center", width: "100%", paddingBottom: "2rem"}}>Employees of {dept.map((d)=> d.id==params.id? d.name.toLowerCase():null)} department</h3>
       {dptEmployees !== null ? (
         dptEmployees.map((emp) => {
           return (
