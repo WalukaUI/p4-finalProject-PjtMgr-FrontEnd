@@ -1,27 +1,12 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
 import "./SideBar.css";
-import BASE_URL from "../../constraints/URL"
 
-function SideBar({ user }) {
-  const [country, setCountry] = useState(null);
+function SideBar({ user, countries }) {
   const [activate, setActivate]=useState(false)
 
-  useEffect(() => {
-    fetch(BASE_URL + `/countries`, {
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
-      credentials: "include",
-    }).then((r) => {
-      if (r.ok) {
-        r.json().then((data) => setCountry(data));
-      }
-    });
-  }, []);
-
-
-  //Add active class to btn's-----------------
+  //Add active class to buttons-----------------
 
   function cahngeColor(e){
    setActivate(e)
@@ -30,8 +15,8 @@ function SideBar({ user }) {
   return (
     <>
       <div className="cardDiv">
-        {country !== null ? (
-          country.map((card, idx) => {
+        {countries !== null ? (
+          countries.map((card, idx) => {
             return (
               <div className="countryBtnDiv myButton" key={card.name + idx}>
                 {user ?

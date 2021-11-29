@@ -1,25 +1,8 @@
-import React, { useEffect, useState } from "react";
 import Loading from "../LoadingAnimation/Loading";
 import "./Projects.css";
-import BASE_URL from "../../constraints/URL"
 
-function Projects() {
-  const [projects, setProjects] = useState(null);
-
-  useEffect(() => {
-    fetch(BASE_URL + `/projects`, {
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
-      credentials: "include",
-    }).then((res) => {
-      if (res.ok) {
-        res.json().then((data) => {
-          setProjects(data);
-        });
-      }
-    });
-  }, []);
-
+function Projects({projects}) {
+  
   return (
     <>
       {projects !== null ? (

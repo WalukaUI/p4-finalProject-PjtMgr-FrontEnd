@@ -152,7 +152,7 @@ function MainBody() {
             <a href="/countries" className="headderBtn">
               Business Operating Countries
             </a>
-            <SideBar user={user} />
+            <SideBar user={user} countries={countries}/>
 
           </div>
           <div className="col-md-9 mainDiv2 bkground">
@@ -161,7 +161,9 @@ function MainBody() {
                 <div className="hedderdiv">
                   <h5>All Projects of the Company</h5>
                 </div>
-                <Projects />
+                <Projects 
+                projects={projects}
+                />
               </Route>
 
               <Route path="/departments" exact>
@@ -212,6 +214,8 @@ function MainBody() {
                   <h5 style={{color:"white"}}>All Employees of the Company</h5>
                 </div>
                 <Employees 
+                setEmployees={setEmployees}
+                employees={employees}
                 depts={depts}
                 cities={cities}/>
               </Route>

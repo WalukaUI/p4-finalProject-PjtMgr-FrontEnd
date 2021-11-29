@@ -4,45 +4,13 @@ import Loading from "../LoadingAnimation/Loading";
 import "./Employees.css";
 import BASE_URL from "../../constraints/URL"
 
-function Employees({cities, depts}) {
-  const [employees, setEmployees] = useState(null);
+function Employees({cities, depts, employees, setEmployees}) {
   const [addEmployeeForm, setAddEmpForm] = useState(false);
   const [addEmployee, setAddEmployee] = useState({});
 
   let roles=["manager", "civil engineer", "Admin officer", "elecrical enginner",
    "supervisor","HR officer", "supervisor", "technical officer"]
   let sections=["Audit", "Finance", "Security", "Transport", "HR", "Purchasing"]
-
-  //GET EMPLOYEES--------------
-  useEffect(() => {
-    fetch(BASE_URL + `/employees`, {
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
-      credentials: "include",
-    }).then((res) => {
-      if (res.ok) {
-        res.json().then((data) => {
-          return setEmployees(data);
-        });
-      }
-    });
-  }, []);
-
-    //GET EMPLOYEES----------------
-
-     useEffect(() => {
-      fetch(BASE_URL + `/employees`, {
-        method: "GET",
-        headers: { "Content-Type": "application/json" },
-        credentials: "include",
-      }).then((res) => {
-        if (res.ok) {
-          res.json().then((data) => {
-            return setEmployees(data);
-          });
-        }
-      });
-    }, []);
 
   //DELETE EMPLOYEE ${URL}----------
 
