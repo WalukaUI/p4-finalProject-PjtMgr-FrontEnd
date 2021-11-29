@@ -6,23 +6,23 @@ function Home({user}) {
   return (<>
   <div className="homeDiv">
     <div className="homeCards">
-       <a href="/countries">Countries
+       <a href={user?"/countries":"/login"}>Countries
        <img src="./img/homeimg/city.jpg" alt="mgt" className="homeImage"/></a>
     </div>
     <div className="homeCards">
-      <a href="/employees" >Employees
+      <a href={user?"/employees":"/login"}>Employees
        <img src="./img/homeimg/employee.jpg" alt="mgt" className="homeImage"/></a>
     </div>
     <div className="homeCards">
-      <a href="/departments">Departments
+      <a href={user?"/departments":"/login"}>Departments
        <img src="./img/homeimg/dpt.jpg" alt="mgt" className="homeImage"/></a>
     </div>
     <div className="homeCards">
-      <a href="/projects">Projects
+      <a href={user?"/projects":"/login"}>Projects
        <img src="./img/homeimg/project.jpg" alt="mgt" className="homeImage"/></a>
     </div>
     <div className="homeCards">
-      <a href="/cities">Cities
+      <a href={user?"/cities":"/login"}>Cities
        <img src="./img/homeimg/extra.jpg" alt="mgt" className="homeImage"/></a>
     </div>
   </div>
