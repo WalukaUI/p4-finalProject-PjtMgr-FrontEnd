@@ -73,7 +73,7 @@ function MainBody() {
    });
  }, []);
 
-     //GET Depts--------------------
+     //GET Departments--------------------
 
      useEffect(async () => {
       await fetch(BASE_URL + `/departments`, {
@@ -168,7 +168,9 @@ function MainBody() {
                 <div className="hedderdiv">
                   <h5>Departments of the Company</h5>
                 </div>
-                <Departments />
+                <Departments 
+                 departments={depts}
+                />
               </Route>
               <Route path="/employees/:id" exact>
                 <DepartmentEmployees 
@@ -201,7 +203,9 @@ function MainBody() {
                 <div className="hedderdiv">
                   <h5>Business Opearting Cities of the Company</h5>
                 </div>
-                <Cities/>
+                <Cities
+                cities={cities}
+                />
               </Route>
               <Route path="/employees" exact>
                 <div className="hedderdiv">

@@ -1,27 +1,8 @@
-import React, { useEffect, useState } from "react";
 import Loading from "../LoadingAnimation/Loading";
 import DepartmentCard from "./DepartmentCard"
 import "./Departments.css";
-import BASE_URL from "../../constraints/URL"
 
-function Departments() {
-  const [departments, setDepartments] = useState(null);
- 
-  useEffect(() => {
-    fetch(BASE_URL + `/departments`, {
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
-      credentials: "include"
-    })
-    .then((res) => {
-      if (res.ok) {
-        res.json().then((data) => {
-          setDepartments(data)
-        });
-      }
-    });
-  }, []);
-
+function Departments({departments}) {
 
   return (
     <>

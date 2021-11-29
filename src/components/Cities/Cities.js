@@ -1,24 +1,7 @@
-import React, { useEffect, useState } from "react";
 import Loading from "../LoadingAnimation/Loading";
 import "./Cities.css";
-import BASE_URL from "../../constraints/URL"
 
-function Cities() {
-  const [cities, setCities] = useState(null);
-
-  useEffect(() => {
-    fetch(BASE_URL + `/cities`, {
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
-      credentials: "include",
-    }).then((res) => {
-      if (res.ok) {
-        res.json().then((data) => {
-          setCities(data);
-        });
-      }
-    });
-  }, []);
+function Cities({cities}) {
 
   return (
     <>
