@@ -4,6 +4,8 @@ import "./EditEmployee.css";
 function EditEmployee({
   card,
   display,
+  cities,
+  depts,
   setDisplay,
   updateData,
   setUpdateData,
@@ -72,10 +74,8 @@ function EditEmployee({
                     aria-label="Default select example"
                     onChange={handleChangeData}
                   >
-                    <option value="1">BUILDING CONSTRUCTION</option>
-                    <option value="2">ROADS & BRIDGES</option>
-                    <option value="3">PROPERTY DEVELOPMENT</option>
-                    <option value="4">PRECASTING</option>
+                    {depts.map((dpt)=>dpt.id===card.department_id?<option value={dpt.name}>{dpt.name}</option>:null )}
+                    {depts.map((dpt)=>dpt.id!==card.department_id?<option value={dpt.name}>{dpt.name}</option>:null )}
                   </select>
                 </label>
                 <label>
@@ -87,17 +87,8 @@ function EditEmployee({
                     aria-label="Default select example"
                     onChange={handleChangeData}
                   >
-                    <option value="1">Javier</option>
-                    <option value="2">Louie</option>
-                    <option value="3">Jennifer</option>
-                    <option value="4">Lou</option>
-                    <option value="5">Gene</option>
-                    <option value="6">Zaida</option>
-                    <option value="7">Jessie</option>
-                    <option value="8">Georgianne</option>
-                    <option value="9">Tracey</option>
-                    <option value="10">Kristel</option>
-                    <option value="11">Elfreda</option>
+                    {cities.map((cty)=>cty.id===card.city_id?<option value="1">{cty.name}</option>:null )}
+                    {cities.map((cty)=>cty.id!==card.city_id?<option value="1">{cty.name}</option>:null )}
                   </select>
                 </label>
                 <div className="container">

@@ -25,6 +25,8 @@ import BASE_URL from "../constraints/URL"
 
 function MainBody() {
   const [user, setUser] = useState(null);
+  const [cities, setCities] = useState([]);
+  const [depts, setDepts] = useState([]);
 
   // auto-login----------------
 
@@ -51,6 +53,39 @@ function MainBody() {
     }).then((r) => console.log("logged out"));
     setUser(false)
   }
+
+    //GET Cities--------------------
+
+    useEffect(async () => {
+      await fetch(BASE_URL + `/cities`, {
+     method: "GET",
+     headers: { "Content-Type": "application/json" },
+     credentials: "include",
+   }).then((res) => {
+     if (res.ok) {
+       res.json().then((data) => {
+         setCities(data);
+       });
+     }
+   });
+ }, []);
+
+     //GET Depts--------------------
+
+     useEffect(async () => {
+      await fetch(BASE_URL + `/departments`, {
+     method: "GET",
+     headers: { "Content-Type": "application/json" },
+     credentials: "include",
+   }).then((res) => {
+     if (res.ok) {
+       res.json().then((data) => {
+        setDepts(data);
+       });
+     }
+   });
+ }, []);
+
 
   return (
     <div className="Login-component">
@@ -109,7 +144,9 @@ function MainBody() {
                 <div className="hedderdiv">
                   <h5>All Employees of the Company</h5>
                 </div>
-                <Employees />
+                <Employees 
+                depts={depts}
+                cities={cities}/>
               </Route>
               <Route path="/signup" exact>
                 <SignUp

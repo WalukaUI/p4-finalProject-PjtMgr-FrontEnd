@@ -4,9 +4,9 @@ import Loading from "../LoadingAnimation/Loading";
 import "./Employees.css";
 import BASE_URL from "../../constraints/URL"
 
-function Employees() {
+function Employees({cities, depts}) {
   const [employees, setEmployees] = useState(null);
-  const [cities, setCities] = useState(null);
+  // const [cities, setCities] = useState([]);
   const [addEmployeeForm, setAddEmpForm] = useState(false);
   const [addEmployee, setAddEmployee] = useState({});
 
@@ -24,24 +24,25 @@ function Employees() {
       }
     });
   }, []);
-  //GET Cities--------------------
+  // //GET Cities--------------------
 
-    useEffect(() => {
-       fetch(BASE_URL + `/cities`, {
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
-      credentials: "include",
-    }).then((res) => {
-      if (res.ok) {
-        res.json().then((data) => {
-          setCities(data);
-        });
-      }
-    });
-  }, []);
+  //   useEffect(async () => {
+  //      await fetch(BASE_URL + `/cities`, {
+  //     method: "GET",
+  //     headers: { "Content-Type": "application/json" },
+  //     credentials: "include",
+  //   }).then((res) => {
+  //     if (res.ok) {
+  //       res.json().then((data) => {
+  //         console.log(data);
+  //         setCities(data);
+  //       });
+  //     }
+  //   });
+  // }, []);
     //GET EMPLOYEES----------------
 
-    useEffect(() => {
+     useEffect(() => {
       fetch(BASE_URL + `/employees`, {
         method: "GET",
         headers: { "Content-Type": "application/json" },
@@ -124,7 +125,7 @@ function Employees() {
     setAddEmployee(newEmp);
   }
 
-  return (
+   return (
     <>
       <div className="formDiv">
         <div>
@@ -215,6 +216,7 @@ function Employees() {
             <EmployeeCard
               key={card.id}
               cities={cities}
+              depts={depts}
               idx={idx}
               card={card}
               deleteEmployee={deleteEmployee}
