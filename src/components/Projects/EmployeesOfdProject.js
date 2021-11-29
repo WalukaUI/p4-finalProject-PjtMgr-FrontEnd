@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import Loading from "../LoadingAnimation/Loading";
 import BASE_URL from "../../constraints/URL"
 
-function EmployeesOfdProject(){
+function EmployeesOfdProject({projects}){
     const [projectsofEmps, setProjectsofEmps] = useState(null);
 
     const params = useParams();
@@ -19,7 +19,7 @@ function EmployeesOfdProject(){
 
     return (
         <>
-          <h4 style={{display: "inline-block", width: "100%", paddingBottom: "5%", textAlign: "center"}}>Employees of the Project</h4>
+          <h4 style={{display: "inline-block", width: "100%", paddingBottom: "5%", textAlign: "center"}}>Employees of Project {projects.map((p)=>p.id==params.id?p.name:null)}</h4>
           {projectsofEmps !== null ? (
             projectsofEmps.map((emp) => {
               return (

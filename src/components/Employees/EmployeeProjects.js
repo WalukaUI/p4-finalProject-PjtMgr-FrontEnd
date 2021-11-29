@@ -6,7 +6,7 @@ import BASE_URL from "../../constraints/URL"
 import "./Employees.css";
 
 
-function ProjectsOfdEmployee() {
+function ProjectsOfdEmployee({employees}) {
   const [empsProjects, setEmpsProjects] = useState(null);
 
   const params = useParams();
@@ -23,7 +23,7 @@ function ProjectsOfdEmployee() {
   return (
     <>
       <h4 style={{display: "inline-block", width: "100%", paddingBottom: "5%", 
-      textAlign: "center"}}>Projects of the Employee</h4>
+      textAlign: "center"}}>Projects of {employees.map((e)=>e.id==params.id?e.name:null)}(Employee)</h4>
       {empsProjects !== null ? (
         empsProjects.map((pjt) => {
           return (

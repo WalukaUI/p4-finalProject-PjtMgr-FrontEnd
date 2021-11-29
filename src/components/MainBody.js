@@ -27,7 +27,9 @@ function MainBody() {
   const [user, setUser] = useState(null);
   const [cities, setCities] = useState([]);
   const [depts, setDepts] = useState([]);
+  const [employees, setEmployees] = useState([]);
   const [countries, setCountries]=useState([])
+  const [projects,setProjects]=useState([])
 
   // auto-login----------------
 
@@ -104,6 +106,37 @@ function MainBody() {
    });
  }, []);
 
+      //GET Employees--------------------
+
+      useEffect(async () => {
+        await fetch(BASE_URL + `/employees`, {
+       method: "GET",
+       headers: { "Content-Type": "application/json" },
+       credentials: "include",
+     }).then((res) => {
+       if (res.ok) {
+         res.json().then((data) => {
+          setEmployees(data);
+         });
+       }
+     });
+   }, []);
+
+   //GET Projects--------------------
+
+   useEffect(async () => {
+    await fetch(BASE_URL + `/projects`, {
+   method: "GET",
+   headers: { "Content-Type": "application/json" },
+   credentials: "include",
+ }).then((res) => {
+   if (res.ok) {
+     res.json().then((data) => {
+      setProjects(data);
+     });
+   }
+ });
+}, []);
 
   return (
     <div className="Login-component">
@@ -151,13 +184,18 @@ function MainBody() {
               <Route path="/cities/:id" exact>
                 <EmployeesOftheCity 
                 depts={depts}
+                cities={cities}
                 />
               </Route>
               <Route path="/employees/:id/projects" exact>
-                <ProjectsOfdEmployee />
+                <ProjectsOfdEmployee 
+                employees={employees}
+                />
               </Route>
               <Route path="/projects/:id/employees" exact>
-                <EmployeesOfdProject />
+                <EmployeesOfdProject 
+                projects={projects}
+                />
               </Route>
               <Route path="/cities" exact>
                 <div className="hedderdiv">

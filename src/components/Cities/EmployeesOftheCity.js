@@ -4,11 +4,12 @@ import { useParams } from "react-router-dom";
 import Loading from "../LoadingAnimation/Loading";
 import BASE_URL from "../../constraints/URL"
 
-function EmployeesOftheCity({depts}){
+function EmployeesOftheCity({depts, cities}){
 
     const [empofCity, setEmpofCity] = useState(null);
 
     const params = useParams();
+    
     useEffect(() => {
 
       fetch(BASE_URL + `/cities/${params.id}`, {
@@ -22,7 +23,8 @@ function EmployeesOftheCity({depts}){
 
     return (
         <>
-          <h4 style={{display: "inline-block", width: "100%", paddingBottom: "5%", textAlign: "center"}}>Employees of the City/Branch</h4>
+          <h4 style={{display: "inline-block", width: "100%", paddingBottom: "5%", textAlign: "center"}}>
+            Employees of the {cities.map((c)=>c.id==params.id? c.name:null)}(City)</h4>
           {empofCity !== null ? (
             empofCity.map((emp,idx) => {
               return (
