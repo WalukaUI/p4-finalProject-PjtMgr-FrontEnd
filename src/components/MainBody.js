@@ -120,7 +120,10 @@ function MainBody() {
                 <Departments />
               </Route>
               <Route path="/employees/:id" exact>
-                <DepartmentEmployees />
+                <DepartmentEmployees 
+                dept={depts}
+                cities={cities}
+                />
               </Route>
               <Route path="/countries/:id" exact>
                 <CountriesCities />

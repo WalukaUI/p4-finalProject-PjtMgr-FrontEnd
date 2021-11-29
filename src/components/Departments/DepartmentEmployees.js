@@ -4,7 +4,7 @@ import Loading from "../LoadingAnimation/Loading";
 import "./DepartmentEmployees.css";
 import BASE_URL from "../../constraints/URL"
 
-function DepartmentEmployees() {
+function DepartmentEmployees({dept,cities}) {
   const [dptEmployees, setDptEmployees] = useState(null);
 
   const params = useParams();
@@ -36,8 +36,8 @@ function DepartmentEmployees() {
                   <p className="card-text">
                     Section: {emp.section ? emp.section : "N/A"}
                   </p>
-                  <p className="card-text">Department: {emp.department_id}</p>
-                  <p className="card-text">City: {emp.city_id}</p>
+                  <p className="card-text">Department: {dept.map((e)=>e.id===emp.department_id? e.name:null) }</p>
+                  <p className="card-text">City: {cities.map((e)=>e.id===emp.city_id? e.name:null)}</p>
                 </div>
               </div>
             </div>
