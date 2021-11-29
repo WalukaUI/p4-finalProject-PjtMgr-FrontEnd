@@ -27,6 +27,7 @@ function MainBody() {
   const [user, setUser] = useState(null);
   const [cities, setCities] = useState([]);
   const [depts, setDepts] = useState([]);
+  const [countries, setCountries]=useState([])
 
   // auto-login----------------
 
@@ -86,6 +87,23 @@ function MainBody() {
    });
  }, []);
 
+ 
+     //GET countries--------------------
+
+     useEffect(async () => {
+      await fetch(BASE_URL + `/countries`, {
+     method: "GET",
+     headers: { "Content-Type": "application/json" },
+     credentials: "include",
+   }).then((res) => {
+     if (res.ok) {
+       res.json().then((data) => {
+        setCountries(data);
+       });
+     }
+   });
+ }, []);
+
 
   return (
     <div className="Login-component">
@@ -126,10 +144,14 @@ function MainBody() {
                 />
               </Route>
               <Route path="/countries/:id" exact>
-                <CountriesCities />
+                <CountriesCities 
+                countries={countries}
+                />
               </Route>
               <Route path="/cities/:id" exact>
-                <EmployeesOftheCity />
+                <EmployeesOftheCity 
+                depts={depts}
+                />
               </Route>
               <Route path="/employees/:id/projects" exact>
                 <ProjectsOfdEmployee />

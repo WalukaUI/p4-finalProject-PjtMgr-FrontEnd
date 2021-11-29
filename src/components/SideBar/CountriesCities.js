@@ -4,10 +4,11 @@ import { useParams } from "react-router-dom";
 import Loading from "../LoadingAnimation/Loading";
 import BASE_URL from "../../constraints/URL"
 
-function CountriesCities() {
+function CountriesCities({countries}) {
   const [cntyCities, setCntyCities] = useState(null);
-
+  
   const params = useParams();
+  let num=params.id
   useEffect(() => {
     fetch(BASE_URL + `/countries/${params.id}`, {
       method: "GET",
@@ -20,7 +21,7 @@ function CountriesCities() {
 
   return (
     <>
-      <h4 style={{display: "inline-block", width: "100%", textAlign: "center"}}>Cities of the Country</h4>
+      <h4 style={{display: "inline-block", width: "100%", textAlign: "center"}}>Cities of {countries.map((c)=>c.id==num? c.name:null)}</h4>
       {cntyCities !== null ? (
         cntyCities.map((city) => {
           return (
@@ -34,7 +35,7 @@ function CountriesCities() {
                   <h5 className="card-title">
                     Branch Name: {city.branch_name}
                   </h5>
-                  <p className="card-text">Country Id: {city.country_id}</p>
+                  <p className="card-text">Country: {countries.map((c)=>c.id===city.country_id? c.name:null)}</p>
                   <div>
                     <Link to={`/cities/${city.id}`} className="btn btn-info">
                       Employees

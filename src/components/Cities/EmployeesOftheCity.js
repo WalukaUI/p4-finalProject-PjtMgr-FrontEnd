@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import Loading from "../LoadingAnimation/Loading";
 import BASE_URL from "../../constraints/URL"
 
-function EmployeesOftheCity(){
+function EmployeesOftheCity({depts}){
 
     const [empofCity, setEmpofCity] = useState(null);
 
@@ -37,7 +37,7 @@ function EmployeesOftheCity(){
                         Role: {emp.role}
                       </h5>
                       <p className="card-text">Section: {emp.section? emp.section: "N/A"}</p>
-                      <p className="card-text">Department: {emp.department_id}</p>
+                      <p className="card-text">Department: {depts.map((d)=>d.id===emp.department_id? d.name:null)}</p>
                       <div>
                       <Link to={`/employees/${emp.id}/projects`} className="btn btn-info">
                         Employee's Projects
