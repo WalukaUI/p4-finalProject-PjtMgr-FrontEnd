@@ -74,8 +74,8 @@ function EditEmployee({
                     aria-label="Default select example"
                     onChange={handleChangeData}
                   >
-                    {depts.map((dpt)=>dpt.id===card.department_id?<option value={dpt.name}>{dpt.name}</option>:null )}
-                    {depts.map((dpt)=>dpt.id!==card.department_id?<option value={dpt.name}>{dpt.name}</option>:null )}
+                    {depts.map((dpt)=>dpt.id===card.department_id?<option value={dpt.id}>{dpt.name}</option>:null )}
+                    {depts.map((dpt)=>dpt.id!==card.department_id?<option value={dpt.id}>{dpt.name}</option>:null )}
                   </select>
                 </label>
                 <label>
@@ -87,8 +87,8 @@ function EditEmployee({
                     aria-label="Default select example"
                     onChange={handleChangeData}
                   >
-                    {cities.map((cty)=>cty.id===card.city_id?<option value="1">{cty.name}</option>:null )}
-                    {cities.map((cty)=>cty.id!==card.city_id?<option value="1">{cty.name}</option>:null )}
+                    {cities.map((cty)=>cty.id===card.city_id?<option value={cty.id}>{cty.name}</option>:null )}
+                    {cities.map((cty)=>cty.id!==card.city_id?<option value={cty.id}>{cty.name}</option>:null )}
                   </select>
                 </label>
                 <div className="container">

@@ -159,12 +159,19 @@ function Employees({cities, depts}) {
             </label>
             <label>
               Section
-              <input
-                className="form-control form-control-sm"
+                <select
+                className="form-select"
                 name="section"
-                placeholder="Section"
                 onChange={handleAddEmployee}
-              />
+              >
+                <option value={null}>Select</option>
+                <option value="Purchasing">Purchasing</option>
+                <option value="Audit">Audit</option>
+                <option value="HR">HR</option>
+                <option value="Transport">Transport</option>
+                <option value="Security">Security</option>
+                <option value="Finance"> Finance</option>
+              </select>
             </label>
             <label>
               Department
@@ -174,10 +181,7 @@ function Employees({cities, depts}) {
                 aria-label="Default select example"
                 onChange={handleAddEmployee}
               >
-                <option value="1">BUILDING CONSTRUCTION</option>
-                <option value="2">ROADS & BRIDGES</option>
-                <option value="3">PROPERTY DEVELOPMENT</option>
-                <option value="4">PRECASTING</option>
+                {depts.map((dpt)=><option value={dpt.id}>{dpt.name}</option>)}
               </select>
             </label>
             <label>
@@ -188,17 +192,7 @@ function Employees({cities, depts}) {
                 aria-label="Default select example"
                 onChange={handleAddEmployee}
               >
-                <option value="1">Curt</option>
-                <option value="2">Leah</option>
-                <option value="3">Vesta</option>
-                <option value="4">NYC</option>
-                <option value="5">Chicago</option>
-                <option value="6">Indiana</option>
-                <option value="7">Chuck</option>
-                <option value="8">Nicolas</option>
-                <option value="9">Trenton</option>
-                <option value="10">Keli</option>
-                <option value="11">Hyman</option>
+              {cities.map((cty)=><option value={cty.id}>{cty.name}</option>)}
               </select>
             </label>
             <div className="col-sm">
