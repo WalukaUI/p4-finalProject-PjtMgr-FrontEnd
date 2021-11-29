@@ -142,7 +142,7 @@ function MainBody() {
               </Route>
               <Route path="/employees" exact>
                 <div className="hedderdiv">
-                  <h5>All Employees of the Company</h5>
+                  <h5 style={{color:"white"}}>All Employees of the Company</h5>
                 </div>
                 <Employees 
                 depts={depts}

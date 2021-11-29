@@ -6,9 +6,12 @@ import BASE_URL from "../../constraints/URL"
 
 function Employees({cities, depts}) {
   const [employees, setEmployees] = useState(null);
-  // const [cities, setCities] = useState([]);
   const [addEmployeeForm, setAddEmpForm] = useState(false);
   const [addEmployee, setAddEmployee] = useState({});
+
+  let roles=["manager", "civil engineer", "Admin officer", "elecrical enginner",
+   "supervisor","HR officer", "supervisor", "technical officer"]
+  let sections=["Audit", "Finance", "Security", "Transport", "HR", "Purchasing"]
 
   //GET EMPLOYEES--------------
   useEffect(() => {
@@ -24,22 +27,7 @@ function Employees({cities, depts}) {
       }
     });
   }, []);
-  // //GET Cities--------------------
 
-  //   useEffect(async () => {
-  //      await fetch(BASE_URL + `/cities`, {
-  //     method: "GET",
-  //     headers: { "Content-Type": "application/json" },
-  //     credentials: "include",
-  //   }).then((res) => {
-  //     if (res.ok) {
-  //       res.json().then((data) => {
-  //         console.log(data);
-  //         setCities(data);
-  //       });
-  //     }
-  //   });
-  // }, []);
     //GET EMPLOYEES----------------
 
      useEffect(() => {
@@ -127,7 +115,7 @@ function Employees({cities, depts}) {
 
    return (
     <>
-      <div className="formDiv">
+      <div className="formDiv createEmployee">
         <div>
           <button
             className={`btn btn-outline-${addEmployeeForm ? "danger" : "info"}`}
@@ -141,7 +129,7 @@ function Employees({cities, depts}) {
             <label>
               Name
               <input
-                className="form-control form-control-sm"
+                className="form-control form-control"
                 type="text"
                 name="name"
                 placeholder="Name"
@@ -150,12 +138,14 @@ function Employees({cities, depts}) {
             </label>
             <label>
               Role
-              <input
-                className="form-control form-control-sm"
+              <select
+                className="form-select"
                 name="role"
-                placeholder="Role"
                 onChange={handleAddEmployee}
-              />
+              >
+                <option value={null}>Select</option>
+               {roles.map((role)=><option value={role}>{role}</option>)}
+              </select>
             </label>
             <label>
               Section
@@ -165,12 +155,7 @@ function Employees({cities, depts}) {
                 onChange={handleAddEmployee}
               >
                 <option value={null}>Select</option>
-                <option value="Purchasing">Purchasing</option>
-                <option value="Audit">Audit</option>
-                <option value="HR">HR</option>
-                <option value="Transport">Transport</option>
-                <option value="Security">Security</option>
-                <option value="Finance"> Finance</option>
+                {sections.map((section)=><option value={section}>{section}</option>)}
               </select>
             </label>
             <label>
