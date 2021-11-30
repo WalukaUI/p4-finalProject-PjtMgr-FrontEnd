@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import EmployeeCard from "./EmployeeCard";
 import Loading from "../LoadingAnimation/Loading";
 import "./Employees.css";

@@ -19,7 +19,7 @@ function EmployeesOfdProject({projects}){
 
     return (
         <>
-          <h4 style={{display: "inline-block", width: "100%", paddingBottom: "5%", textAlign: "center"}}>Employees of Project {projects.map((p)=>p.id==params.id?p.name:null)}</h4>
+          <h4 style={{display: "inline-block", width: "100%", paddingBottom: "5%", textAlign: "center"}}>Employees of Project {projects.map((p)=>p.id===parseInt(params.id)?p.name:null)}</h4>
           {projectsofEmps !== null ? (
             projectsofEmps.map((emp) => {
               return (

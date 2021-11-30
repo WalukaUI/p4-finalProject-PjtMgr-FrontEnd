@@ -59,8 +59,8 @@ function MainBody() {
 
     //GET Cities--------------------
 
-    useEffect(async () => {
-      await fetch(BASE_URL + `/cities`, {
+    useEffect( () => {
+     fetch(BASE_URL + `/cities`, {
      method: "GET",
      headers: { "Content-Type": "application/json" },
      credentials: "include",
@@ -75,8 +75,8 @@ function MainBody() {
 
      //GET Departments--------------------
 
-     useEffect(async () => {
-      await fetch(BASE_URL + `/departments`, {
+     useEffect(() => {
+     fetch(BASE_URL + `/departments`, {
      method: "GET",
      headers: { "Content-Type": "application/json" },
      credentials: "include",
@@ -92,8 +92,8 @@ function MainBody() {
  
      //GET countries--------------------
 
-     useEffect(async () => {
-      await fetch(BASE_URL + `/countries`, {
+     useEffect(() => {
+     fetch(BASE_URL + `/countries`, {
      method: "GET",
      headers: { "Content-Type": "application/json" },
      credentials: "include",
@@ -108,8 +108,8 @@ function MainBody() {
 
       //GET Employees--------------------
 
-      useEffect(async () => {
-        await fetch(BASE_URL + `/employees`, {
+      useEffect(() => {
+       fetch(BASE_URL + `/employees`, {
        method: "GET",
        headers: { "Content-Type": "application/json" },
        credentials: "include",
@@ -124,8 +124,8 @@ function MainBody() {
 
    //GET Projects--------------------
 
-   useEffect(async () => {
-    await fetch(BASE_URL + `/projects`, {
+   useEffect(() => {
+   fetch(BASE_URL + `/projects`, {
    method: "GET",
    headers: { "Content-Type": "application/json" },
    credentials: "include",

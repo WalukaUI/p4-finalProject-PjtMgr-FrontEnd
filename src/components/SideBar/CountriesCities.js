@@ -21,7 +21,7 @@ function CountriesCities({countries}) {
 
   return (
     <>
-      <h4 style={{display: "inline-block", width: "100%", textAlign: "center"}}>Cities of {countries.map((c)=>c.id==num? c.name:null)}</h4>
+      <h4 style={{display: "inline-block", width: "100%", textAlign: "center"}}>Cities of {countries.map((c)=>c.id===parseInt(num)? c.name:null)}</h4>
       {cntyCities !== null ? (
         cntyCities.map((city) => {
           return (

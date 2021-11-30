@@ -24,7 +24,7 @@ function EmployeesOftheCity({depts, cities}){
     return (
         <>
           <h4 style={{display: "inline-block", width: "100%", paddingBottom: "5%", textAlign: "center"}}>
-            Employees of the {cities.map((c)=>c.id==params.id? c.name:null)}(City)</h4>
+            Employees of the {cities.map((c)=>c.id===parseInt(params.id)? c.name:null)}(City)</h4>
           {empofCity !== null ? (
             empofCity.map((emp,idx) => {
               return (

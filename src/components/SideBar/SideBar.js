@@ -15,7 +15,7 @@ function SideBar({ user, countries }) {
   return (
     <>
       <div className="cardDiv">
-        {countries !== null ? (
+        { countries.length > 0 ? (
           countries.map((card, idx) => {
             return (
               <div className="countryBtnDiv myButton" key={card.name + idx}>
