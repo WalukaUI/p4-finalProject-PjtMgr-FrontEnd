@@ -1,12 +1,10 @@
 import React, { useEffect, useState } from "react";
-import { Link } from "react-router-dom";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import Loading from "../LoadingAnimation/Loading";
-import BASE_URL from "../../constraints/URL"
+import BASE_URL from "../../constraints/URL";
 import "./Employees.css";
 
-
-function ProjectsOfdEmployee({employees}) {
+function ProjectsOfdEmployee({ employees }) {
   const [empsProjects, setEmpsProjects] = useState(null);
 
   const params = useParams();
@@ -22,8 +20,18 @@ function ProjectsOfdEmployee({employees}) {
 
   return (
     <>
-      <h4 style={{display: "inline-block", width: "100%", paddingBottom: "5%", 
-      textAlign: "center"}}>Projects of {employees.map((e)=>e.id===parseInt(params.id)?e.name:null)}(Employee)</h4>
+      <h4
+        style={{
+          display: "inline-block",
+          width: "100%",
+          paddingBottom: "5%",
+          textAlign: "center",
+        }}
+      >
+        Projects of{" "}
+        {employees.map((e) => (e.id === parseInt(params.id) ? e.name : null))}
+        (Employee)
+      </h4>
       {empsProjects !== null ? (
         empsProjects.map((pjt) => {
           return (
@@ -37,7 +45,10 @@ function ProjectsOfdEmployee({employees}) {
                   <h5 className="card-title">Cost: ${pjt.cost} million</h5>
                   <p className="card-text">Sector: {pjt.sector}</p>
                   <div>
-                    <Link to={`/projects/${pjt.id}/employees`}  className="btn btn-info">
+                    <Link
+                      to={`/projects/${pjt.id}/employees`}
+                      className="btn btn-info"
+                    >
                       Employees of the Project
                     </Link>
                   </div>

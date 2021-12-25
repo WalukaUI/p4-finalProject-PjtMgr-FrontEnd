@@ -1,30 +1,39 @@
-import React, { useState } from "react";
+import React from "react";
 import { Link } from "react-router-dom";
 import "bootstrap/dist/css/bootstrap.css";
 import "./SideBar.css";
 
-function SideBar({ user, countries }) {
-  const [activate, setActivate]=useState(false)
-
+function SideBar({ user, countries, activate, setActivate }) {
   //Add active class to buttons-----------------
 
-  function cahngeColor(e){
-   setActivate(e)
+  function cahngeColor(e) {
+    setActivate(e);
   }
 
   return (
     <>
       <div className="cardDiv">
-        { countries.length > 0 ? (
+        {countries.length > 0 ? (
           countries.map((card, idx) => {
             return (
               <div className="countryBtnDiv myButton" key={card.name + idx}>
-                {user ?
-                 <Link to={`/countries/${card.id}`} className={activate === card.name ?"countryBtn active": "countryBtn"} onClick={()=>cahngeColor(card.name)}>
-                  {card.name}
-                </Link> : <a href="/login" className="countryBtn">
-                  {card.name}
-                </a> }
+                {user ? (
+                  <Link
+                    to={`/countries/${card.id}`}
+                    className={
+                      activate === card.name
+                        ? "countryBtn active"
+                        : "countryBtn"
+                    }
+                    onClick={() => cahngeColor(card.name)}
+                  >
+                    {card.name}
+                  </Link>
+                ) : (
+                  <a href="/login" className="countryBtn">
+                    {card.name}
+                  </a>
+                )}
               </div>
             );
           })

@@ -21,20 +21,24 @@ import CountriesCities from "./SideBar/CountriesCities";
 import EmployeesOftheCity from "./Cities/EmployeesOftheCity";
 import ProjectsOfdEmployee from "./Employees/EmployeeProjects";
 import EmployeesOfdProject from "./Projects/EmployeesOfdProject";
-import BASE_URL from "../constraints/URL"
+import BASE_URL from "../constraints/URL";
 
 function MainBody() {
   const [user, setUser] = useState(null);
   const [cities, setCities] = useState([]);
   const [depts, setDepts] = useState([]);
   const [employees, setEmployees] = useState([]);
-  const [countries, setCountries]=useState([])
-  const [projects,setProjects]=useState([])
+  const [countries, setCountries] = useState([]);
+  const [projects, setProjects] = useState([]);
+  const [activate, setActivate] = useState(false);
 
+  function links() {
+    return activate;
+  }
   // auto-login----------------
 
   useEffect(() => {
-    fetch(BASE_URL + `/me`,{
+    fetch(BASE_URL + `/me`, {
       method: "GET",
       headers: { "Content-Type": "application/json" },
       credentials: "include",
@@ -54,192 +58,180 @@ function MainBody() {
       method: "DELETE",
       credentials: "include",
     }).then((r) => console.log("logged out"));
-    setUser(false)
+    setUser(false);
   }
 
-    //GET Cities--------------------
+  //GET Cities--------------------
 
-    useEffect( () => {
-     fetch(BASE_URL + `/cities`, {
-     method: "GET",
-     headers: { "Content-Type": "application/json" },
-     credentials: "include",
-   }).then((res) => {
-     if (res.ok) {
-       res.json().then((data) => {
-         setCities(data);
-       });
-     }
-   });
- }, []);
+  useEffect(() => {
+    fetch(BASE_URL + `/cities`, {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+    }).then((res) => {
+      if (res.ok) {
+        res.json().then((data) => {
+          setCities(data);
+        });
+      }
+    });
+  }, []);
 
-     //GET Departments--------------------
+  //GET Departments--------------------
 
-     useEffect(() => {
-     fetch(BASE_URL + `/departments`, {
-     method: "GET",
-     headers: { "Content-Type": "application/json" },
-     credentials: "include",
-   }).then((res) => {
-     if (res.ok) {
-       res.json().then((data) => {
-        setDepts(data);
-       });
-     }
-   });
- }, []);
+  useEffect(() => {
+    fetch(BASE_URL + `/departments`, {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+    }).then((res) => {
+      if (res.ok) {
+        res.json().then((data) => {
+          setDepts(data);
+        });
+      }
+    });
+  }, []);
 
- 
-     //GET countries--------------------
+  //GET countries--------------------
 
-     useEffect(() => {
-     fetch(BASE_URL + `/countries`, {
-     method: "GET",
-     headers: { "Content-Type": "application/json" },
-     credentials: "include",
-   }).then((res) => {
-     if (res.ok) {
-       res.json().then((data) => {
-        setCountries(data);
-       });
-     }
-   });
- }, []);
+  useEffect(() => {
+    fetch(BASE_URL + `/countries`, {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+    }).then((res) => {
+      if (res.ok) {
+        res.json().then((data) => {
+          setCountries(data);
+        });
+      }
+    });
+  }, []);
 
-      //GET Employees--------------------
+  //GET Employees--------------------
 
-      useEffect(() => {
-       fetch(BASE_URL + `/employees`, {
-       method: "GET",
-       headers: { "Content-Type": "application/json" },
-       credentials: "include",
-     }).then((res) => {
-       if (res.ok) {
-         res.json().then((data) => {
+  useEffect(() => {
+    fetch(BASE_URL + `/employees`, {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+    }).then((res) => {
+      if (res.ok) {
+        res.json().then((data) => {
           setEmployees(data);
-         });
-       }
-     });
-   }, []);
+        });
+      }
+    });
+  }, []);
 
-   //GET Projects--------------------
+  //GET Projects--------------------
 
-   useEffect(() => {
-   fetch(BASE_URL + `/projects`, {
-   method: "GET",
-   headers: { "Content-Type": "application/json" },
-   credentials: "include",
- }).then((res) => {
-   if (res.ok) {
-     res.json().then((data) => {
-      setProjects(data);
-     });
-   }
- });
-}, []);
+  useEffect(() => {
+    fetch(BASE_URL + `/projects`, {
+      method: "GET",
+      headers: { "Content-Type": "application/json" },
+      credentials: "include",
+    }).then((res) => {
+      if (res.ok) {
+        res.json().then((data) => {
+          setProjects(data);
+        });
+      }
+    });
+  }, []);
 
   return (
     <div className="Login-component">
       <Router>
-        <Navbar
-          user={user}
-          logout={logout}    
-        />
+        <Navbar user={user} logout={logout} />
         <div className="row mainRow">
           <div className="col-md-3  mainDiv1">
-           
-
             <a href="/countries" className="headderBtn">
               Business Operating Countries
             </a>
-            <SideBar user={user} countries={countries}/>
-
+            <SideBar
+              user={user}
+              countries={countries}
+              activate={activate}
+              setActivate={setActivate}
+            />
           </div>
           <div className="col-md-9 mainDiv2 bkground">
+            <div style={{ backgroundColor: "red", width: "100%" }}>
+              {links()}
+            </div>
             <Switch>
               <Route path="/projects" exact>
                 <div className="hedderdiv">
                   <h5>All Projects of the Company</h5>
                 </div>
-                <Projects 
-                projects={projects}
-                />
+                <Projects projects={projects} />
               </Route>
 
               <Route path="/departments" exact>
                 <div className="hedderdiv">
                   <h5>Departments of the Company</h5>
                 </div>
-                <Departments 
-                 departments={depts}
-                />
+                <Departments departments={depts} />
               </Route>
               <Route path="/employees/:id" exact>
-                <DepartmentEmployees 
-                dept={depts}
-                cities={cities}
-                />
+                <DepartmentEmployees dept={depts} cities={cities} />
               </Route>
               <Route path="/countries/:id" exact>
-                <CountriesCities 
-                countries={countries}
-                />
+                <CountriesCities countries={countries} />
               </Route>
               <Route path="/cities/:id" exact>
-                <EmployeesOftheCity 
-                depts={depts}
-                cities={cities}
-                />
+                <EmployeesOftheCity depts={depts} cities={cities} />
               </Route>
               <Route path="/employees/:id/projects" exact>
-                <ProjectsOfdEmployee 
-                employees={employees}
-                />
+                <ProjectsOfdEmployee employees={employees} />
               </Route>
               <Route path="/projects/:id/employees" exact>
-                <EmployeesOfdProject 
-                projects={projects}
-                />
+                <EmployeesOfdProject projects={projects} />
               </Route>
               <Route path="/cities" exact>
                 <div className="hedderdiv">
                   <h5>Business Opearting Cities of the Company</h5>
                 </div>
-                <Cities
-                cities={cities}
-                />
+                <Cities cities={cities} />
               </Route>
               <Route path="/employees" exact>
                 <div className="hedderdiv">
-                  <h5 style={{color:"white"}}>All Employees of the Company</h5>
+                  <h5 style={{ color: "white" }}>
+                    All Employees of the Company
+                  </h5>
                 </div>
-                <Employees 
-                setEmployees={setEmployees}
-                employees={employees}
-                depts={depts}
-                cities={cities}/>
+                <Employees
+                  setEmployees={setEmployees}
+                  employees={employees}
+                  depts={depts}
+                  cities={cities}
+                />
               </Route>
               <Route path="/signup" exact>
-                <SignUp
-                  setUser={setUser}
-                  user={user}
-                />
+                <SignUp setUser={setUser} user={user} />
               </Route>
               <Route path="/login" exact>
-                <Login
-                  setUser={setUser}
-         
-                />
+                <Login setUser={setUser} />
               </Route>
               <Route path="/" exact>
                 <div className="hedderdiv">
                   <h5>Welcome to T&T Project Manager</h5>
                 </div>
-                <Home user={user}/>
+                <Home user={user} />
               </Route>
               <Redirect to="/" />
             </Switch>
-            <small style={{width: "100%", fontSize: "0.5rem"}}>Photo by <a href="https://unsplash.com/@nordwood?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">NordWood Themes</a> on <a href="https://unsplash.com/s/photos/business?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">Unsplash</a>
+            <small style={{ width: "100%", fontSize: "0.5rem" }}>
+              Photo by{" "}
+              <a href="https://unsplash.com/@nordwood?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">
+                NordWood Themes
+              </a>{" "}
+              on{" "}
+              <a href="https://unsplash.com/s/photos/business?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">
+                Unsplash
+              </a>
             </small>
           </div>
         </div>
