@@ -32,6 +32,13 @@ function MainBody() {
   const [projects, setProjects] = useState([]);
   const [activate, setActivate] = useState([]);
 
+  window.addEventListener("popstate", () => {
+    let removepname = [...activate];
+    removepname.pop();
+    removepname.pop();
+    setActivate(removepname);
+  });
+
   function links() {
     return activate;
   }
