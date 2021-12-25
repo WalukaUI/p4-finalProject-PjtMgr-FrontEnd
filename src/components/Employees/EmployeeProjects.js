@@ -4,10 +4,17 @@ import Loading from "../LoadingAnimation/Loading";
 import BASE_URL from "../../constraints/URL";
 import "./Employees.css";
 
-function ProjectsOfdEmployee({ employees }) {
+function ProjectsOfdEmployee({ employees, activate, setActivate }) {
   const [empsProjects, setEmpsProjects] = useState(null);
-
   const params = useParams();
+
+  function setEmployeeProjectName(pname) {
+    let addpname = [...activate];
+    addpname.push("➡");
+    addpname.push(pname);
+    setActivate(addpname);
+  }
+
   useEffect(() => {
     fetch(BASE_URL + `/employees/${params.id}/projects`, {
       method: "GET",
@@ -48,6 +55,7 @@ function ProjectsOfdEmployee({ employees }) {
                     <Link
                       to={`/projects/${pjt.id}/employees`}
                       className="btn btn-info"
+                      onClick={() => setEmployeeProjectName(pjt.name)}
                     >
                       Employees of the Project
                     </Link>

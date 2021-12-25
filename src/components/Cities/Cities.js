@@ -1,8 +1,7 @@
 import Loading from "../LoadingAnimation/Loading";
 import "./Cities.css";
 
-function Cities({cities}) {
-
+function Cities({ cities }) {
   return (
     <>
       {" "}

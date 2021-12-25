@@ -7,7 +7,7 @@ function SideBar({ user, countries, activate, setActivate }) {
   //Add active class to buttons-----------------
 
   function cahngeColor(e) {
-    setActivate(e);
+    setActivate([e]);
   }
 
   return (
@@ -21,7 +21,7 @@ function SideBar({ user, countries, activate, setActivate }) {
                   <Link
                     to={`/countries/${card.id}`}
                     className={
-                      activate === card.name
+                      activate[0] === card.name
                         ? "countryBtn active"
                         : "countryBtn"
                     }

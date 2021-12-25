@@ -30,7 +30,7 @@ function MainBody() {
   const [employees, setEmployees] = useState([]);
   const [countries, setCountries] = useState([]);
   const [projects, setProjects] = useState([]);
-  const [activate, setActivate] = useState(false);
+  const [activate, setActivate] = useState([]);
 
   function links() {
     return activate;
@@ -179,13 +179,26 @@ function MainBody() {
                 <DepartmentEmployees dept={depts} cities={cities} />
               </Route>
               <Route path="/countries/:id" exact>
-                <CountriesCities countries={countries} />
+                <CountriesCities
+                  countries={countries}
+                  activate={activate}
+                  setActivate={setActivate}
+                />
               </Route>
               <Route path="/cities/:id" exact>
-                <EmployeesOftheCity depts={depts} cities={cities} />
+                <EmployeesOftheCity
+                  depts={depts}
+                  cities={cities}
+                  activate={activate}
+                  setActivate={setActivate}
+                />
               </Route>
               <Route path="/employees/:id/projects" exact>
-                <ProjectsOfdEmployee employees={employees} />
+                <ProjectsOfdEmployee
+                  employees={employees}
+                  activate={activate}
+                  setActivate={setActivate}
+                />
               </Route>
               <Route path="/projects/:id/employees" exact>
                 <EmployeesOfdProject projects={projects} />

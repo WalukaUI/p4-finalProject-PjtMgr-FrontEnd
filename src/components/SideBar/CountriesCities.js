@@ -2,13 +2,20 @@ import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { useParams } from "react-router-dom";
 import Loading from "../LoadingAnimation/Loading";
-import BASE_URL from "../../constraints/URL"
+import BASE_URL from "../../constraints/URL";
 
-function CountriesCities({countries}) {
+function CountriesCities({ countries, activate, setActivate }) {
   const [cntyCities, setCntyCities] = useState(null);
-  
+
+  function setBranchName(cname) {
+    let addname = [...activate];
+    addname.push("➡");
+    addname.push(cname);
+    setActivate(addname);
+  }
+
   const params = useParams();
-  let num=params.id
+  let num = params.id;
   useEffect(() => {
     fetch(BASE_URL + `/countries/${params.id}`, {
       method: "GET",
@@ -21,7 +28,12 @@ function CountriesCities({countries}) {
 
   return (
     <>
-      <h4 style={{display: "inline-block", width: "100%", textAlign: "center"}}>Cities of {countries.map((c)=>c.id===parseInt(num)? c.name:null)}</h4>
+      <h4
+        style={{ display: "inline-block", width: "100%", textAlign: "center" }}
+      >
+        Cities of{" "}
+        {countries.map((c) => (c.id === parseInt(num) ? c.name : null))}
+      </h4>
       {cntyCities !== null ? (
         cntyCities.map((city) => {
           return (
@@ -35,9 +47,18 @@ function CountriesCities({countries}) {
                   <h5 className="card-title">
                     Branch Name: {city.branch_name}
                   </h5>
-                  <p className="card-text">Country: {countries.map((c)=>c.id===city.country_id? c.name:null)}</p>
+                  <p className="card-text">
+                    Country:{" "}
+                    {countries.map((c) =>
+                      c.id === city.country_id ? c.name : null
+                    )}
+                  </p>
                   <div>
-                    <Link to={`/cities/${city.id}`} className="btn btn-info">
+                    <Link
+                      to={`/cities/${city.id}`}
+                      className="btn btn-info"
+                      onClick={() => setBranchName(city.name)}
+                    >
                       Employees
                     </Link>
                   </div>
