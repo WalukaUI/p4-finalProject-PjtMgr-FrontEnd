@@ -8,13 +8,6 @@ function ProjectsOfdEmployee({ employees, activate, setActivate }) {
   const [empsProjects, setEmpsProjects] = useState(null);
   const params = useParams();
 
-  function setEmployeeProjectName(pname) {
-    let addpname = [...activate];
-    addpname.push(" ➡ ");
-    addpname.push(pname);
-    setActivate(addpname);
-  }
-
   useEffect(() => {
     fetch(BASE_URL + `/employees/${params.id}/projects`, {
       method: "GET",
@@ -24,6 +17,15 @@ function ProjectsOfdEmployee({ employees, activate, setActivate }) {
       .then((r) => r.json())
       .then((data) => setEmpsProjects(data));
   }, [params.id]);
+
+  //Progress bar...............................
+
+  function setEmployeeProjectName(pname) {
+    let addpname = [...activate];
+    addpname.push(" ➡ ");
+    addpname.push(pname);
+    setActivate(addpname);
+  }
 
   return (
     <>

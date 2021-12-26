@@ -8,13 +8,6 @@ function EmployeesOftheCity({ depts, cities, activate, setActivate }) {
   const [empofCity, setEmpofCity] = useState(null);
   const params = useParams();
 
-  function setEmployeeName(ename) {
-    let addename = [...activate];
-    addename.push(" ➡ ");
-    addename.push(ename);
-    setActivate(addename);
-  }
-
   useEffect(() => {
     fetch(BASE_URL + `/cities/${params.id}`, {
       method: "GET",
@@ -24,6 +17,15 @@ function EmployeesOftheCity({ depts, cities, activate, setActivate }) {
       .then((r) => r.json())
       .then((data) => setEmpofCity(data.employees));
   }, [params.id]);
+
+  //Progress bar...............................
+
+  function setEmployeeName(ename) {
+    let addename = [...activate];
+    addename.push(" ➡ ");
+    addename.push(ename);
+    setActivate(addename);
+  }
 
   return (
     <>

@@ -7,13 +7,6 @@ import BASE_URL from "../../constraints/URL";
 function CountriesCities({ countries, activate, setActivate }) {
   const [cntyCities, setCntyCities] = useState(null);
 
-  function setBranchName(cname) {
-    let addname = [...activate];
-    addname.push(" ➡ ");
-    addname.push(cname);
-    setActivate(addname);
-  }
-
   const params = useParams();
   let num = params.id;
   useEffect(() => {
@@ -26,6 +19,14 @@ function CountriesCities({ countries, activate, setActivate }) {
       .then((data) => setCntyCities(data.cities));
   }, [params.id]);
 
+  //Progress bar...............................
+
+  function setBranchName(cname) {
+    let addname = [...activate];
+    addname.push(" ➡ ");
+    addname.push(cname);
+    setActivate(addname);
+  }
   return (
     <>
       <h4
