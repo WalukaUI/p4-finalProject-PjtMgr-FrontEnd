@@ -31,13 +31,19 @@ function MainBody() {
   const [countries, setCountries] = useState([]);
   const [projects, setProjects] = useState([]);
   const [activate, setActivate] = useState([]);
+  // const history = useHistory();
 
-  window.addEventListener("popstate", () => {
-    let removepname = [...activate];
-    removepname.pop();
-    removepname.pop();
-    setActivate(removepname);
-  });
+  // window.addEventListener("popstate", () => {
+  //   if (history.action === "POP") {
+  //     alert("POP");
+  //   } else if (history.action === "PUSH") {
+  //     alert("Push");
+  //   }
+  //   // let removepname = [...activate];
+  //   // removepname.pop();
+  //   // removepname.pop();
+  //   // setActivate(removepname);
+  // });
 
   function links() {
     return activate;
