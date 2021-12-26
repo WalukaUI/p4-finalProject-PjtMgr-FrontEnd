@@ -9,7 +9,7 @@ function CountriesCities({ countries, activate, setActivate }) {
 
   function setBranchName(cname) {
     let addname = [...activate];
-    addname.push("➡");
+    addname.push(" ➡ ");
     addname.push(cname);
     setActivate(addname);
   }

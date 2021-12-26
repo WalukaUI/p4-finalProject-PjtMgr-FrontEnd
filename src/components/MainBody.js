@@ -165,8 +165,9 @@ function MainBody() {
             />
           </div>
           <div className="col-md-9 mainDiv2 bkground">
-            <div style={{ backgroundColor: "red", width: "100%" }}>
+            <div className="progressbar">
               {links()}
+              <hr style={{ color: "red", width: "100%" }} />
             </div>
             <Switch>
               <Route path="/projects" exact>

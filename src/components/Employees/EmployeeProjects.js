@@ -10,7 +10,7 @@ function ProjectsOfdEmployee({ employees, activate, setActivate }) {
 
   function setEmployeeProjectName(pname) {
     let addpname = [...activate];
-    addpname.push("➡");
+    addpname.push(" ➡ ");
     addpname.push(pname);
     setActivate(addpname);
   }

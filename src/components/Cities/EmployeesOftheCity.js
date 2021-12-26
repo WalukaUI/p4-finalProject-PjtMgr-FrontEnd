@@ -10,7 +10,7 @@ function EmployeesOftheCity({ depts, cities, activate, setActivate }) {
 
   function setEmployeeName(ename) {
     let addename = [...activate];
-    addename.push("➡");
+    addename.push(" ➡ ");
     addename.push(ename);
     setActivate(addename);
   }
