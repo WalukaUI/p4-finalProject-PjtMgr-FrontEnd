@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useHistory, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import "./SignUp.css";
 import BASE_URL from "../../constraints/URL";
 
@@ -10,11 +10,11 @@ function SignUp({ setUser, user }) {
   const [errors, setErrors] = useState(null);
   const [verificationNum, setVerificationNum] = useState();
   const [showSuccessMsg, setShowSuccessMsg] = useState(false);
-
-  const history = useHistory();
+  const [verifyemail, setVerifyemail] = useState(null);
 
   function handleSubmit(e) {
     e.preventDefault();
+
     fetch(BASE_URL + `/signup`, {
       method: "POST",
       headers: {
@@ -25,13 +25,12 @@ function SignUp({ setUser, user }) {
         ...newUser,
         password: password,
         password_confirmation: pwverification,
-        verificationnum: verificationNum,
+        position: verificationNum,
       }),
     }).then((res) => {
       if (res.ok) {
         res.json().then((user) => {
-          setUser(user);
-          history.push("/");
+          setVerifyemail(user);
         });
       } else {
         res.json().then((err) => {
@@ -55,12 +54,13 @@ function SignUp({ setUser, user }) {
     e.preventDefault();
     if (e.target.value == verificationNum) {
       setShowSuccessMsg(true);
+      setUser(verifyemail);
     }
   }
 
   return (
     <>
-      {user === null ? (
+      {verifyemail === null ? (
         <form onSubmit={handleSubmit} className="signupform">
           <div className="form-group">
             <h4>Register</h4>
@@ -120,12 +120,18 @@ function SignUp({ setUser, user }) {
         </form>
       ) : (
         <div style={{ textAlign: "center" }}>
-          <h3>Please Verify Your email address</h3>
-          <div className="d-flex justify-content-center mt-5 mb-5">
-            <div className="spinner-border text-danger" role="status">
-              <span className="sr-only"></span>
+          {showSuccessMsg ? (
+            ""
+          ) : (
+            <div>
+              <h3>Please Verify Your email address</h3>
+              <div className="d-flex justify-content-center mt-5 mb-5">
+                <div className="spinner-border text-danger" role="status">
+                  <span className="sr-only"></span>
+                </div>
+              </div>
             </div>
-          </div>
+          )}
           {showSuccessMsg ? (
             <h4>Successfuly Verified, Thank you </h4>
           ) : (
