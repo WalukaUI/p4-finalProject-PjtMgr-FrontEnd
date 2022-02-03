@@ -39,14 +39,6 @@ function MainBody() {
     setActivate(removepname);
   });
 
-  window.addEventListener("pushstate", () => {
-    // let removepname = [...activate];
-    // removepname.pop();
-    // removepname.pop();
-    // setActivate(removepname);
-    alert("forward");
-  });
-
   function links() {
     return activate;
   }

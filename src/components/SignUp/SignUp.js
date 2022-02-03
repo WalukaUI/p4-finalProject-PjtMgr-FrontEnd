@@ -1,14 +1,15 @@
 import React, { useState } from "react";
-import { useHistory } from "react-router-dom";
+import { useHistory, Link } from "react-router-dom";
 import "./SignUp.css";
 import BASE_URL from "../../constraints/URL";
 
 function SignUp({ setUser, user }) {
-  // const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [newUser, setNewUser] = useState({});
   const [pwverification, setpwVerification] = useState("");
   const [errors, setErrors] = useState(null);
+  const [verificationNum, setVerificationNum] = useState();
+  const [showSuccessMsg, setShowSuccessMsg] = useState(false);
 
   const history = useHistory();
 
@@ -24,6 +25,7 @@ function SignUp({ setUser, user }) {
         ...newUser,
         password: password,
         password_confirmation: pwverification,
+        verificationnum: verificationNum,
       }),
     }).then((res) => {
       if (res.ok) {
@@ -45,6 +47,15 @@ function SignUp({ setUser, user }) {
     e.preventDefault();
     let newObject = { ...newUser, [e.target.name]: e.target.value };
     setNewUser(newObject);
+    let vNumber = Math.round(Math.random() * 100000);
+    setVerificationNum(vNumber);
+  }
+
+  function compareNumber(e) {
+    e.preventDefault();
+    if (e.target.value == verificationNum) {
+      setShowSuccessMsg(true);
+    }
   }
 
   return (
@@ -108,8 +119,23 @@ function SignUp({ setUser, user }) {
           </button>
         </form>
       ) : (
-        <div>
-          <h1>{user.name}, You are signed in</h1>
+        <div style={{ textAlign: "center" }}>
+          <h3>Please Verify Your email address</h3>
+          <div className="d-flex justify-content-center mt-5 mb-5">
+            <div className="spinner-border text-danger" role="status">
+              <span className="sr-only"></span>
+            </div>
+          </div>
+          {showSuccessMsg ? (
+            <h4>Successfuly Verified, Thank you </h4>
+          ) : (
+            <p>Please cheack your emails and enter verification number below</p>
+          )}
+          {showSuccessMsg ? (
+            <Link to="/">Go to Homepage</Link>
+          ) : (
+            <input name="verification" onChange={compareNumber} />
+          )}
         </div>
       )}
       {/* <div>

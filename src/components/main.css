@@ -1,5 +1,6 @@
 .mainRow {
   width: 100%;
+  margin: 0 !important;
 }
 .mainDiv2 {
   display: flex;
