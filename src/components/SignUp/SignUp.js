@@ -11,6 +11,7 @@ function SignUp({ setUser, user }) {
   const [verificationNum, setVerificationNum] = useState();
   const [showSuccessMsg, setShowSuccessMsg] = useState(false);
   const [verifyemail, setVerifyemail] = useState(null);
+  const [enteredValue, setEnteredValue] = useState();
 
   function handleSubmit(e) {
     e.preventDefault();
@@ -55,6 +56,8 @@ function SignUp({ setUser, user }) {
     if (e.target.value == verificationNum) {
       setShowSuccessMsg(true);
       setUser(verifyemail);
+    } else {
+      setEnteredValue(e.target.value);
     }
   }
 
@@ -135,7 +138,15 @@ function SignUp({ setUser, user }) {
           {showSuccessMsg ? (
             <h4>Successfuly Verified, Thank you </h4>
           ) : (
-            <p>Please cheack your emails and enter verification number below</p>
+            <div>
+              <p>
+                <span style={{ color: "red" }}>{enteredValue}</span>, Wrong
+                verification number.
+              </p>
+              <p>
+                Please cheack your emails and enter verification number below
+              </p>
+            </div>
           )}
           {showSuccessMsg ? (
             <Link to="/">Go to Homepage</Link>
