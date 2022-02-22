@@ -1,14 +1,10 @@
-import React from 'react';
-import MainBody from "./components/MainBody"
-
-// import './App.css';
+import React from "react";
+import MainBody from "./components/MainBody";
 
 function App() {
   return (
     <div className="App">
-         
-          <MainBody />
-          
+      <MainBody />
     </div>
   );
 }
