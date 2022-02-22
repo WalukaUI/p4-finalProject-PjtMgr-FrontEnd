@@ -1,23 +1,22 @@
 import { Nav, Navbar, Container } from "react-bootstrap";
-import { useHistory } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import React from "react";
 import "bootstrap/dist/css/bootstrap.css";
 import "./Navbar.css";
 
-
-
-function Nav2({ user, logout}) {
-
-  const history = useHistory();
+function Nav2({ user, logout }) {
+  const history = useNavigate();
 
   function handlelogout(e) {
     e.preventDefault();
     logout();
     localStorage.clear();
-    history.push("/");
+    history("/");
   }
 
-  return <><div className="navDiv">
+  return (
+    <>
+      <div className="navDiv">
         <Navbar
           collapseOnSelect
           expand="lg"
@@ -41,19 +40,32 @@ function Nav2({ user, logout}) {
               <Navbar.Toggle aria-controls="responsive-navbar-nav" />
               <Navbar.Collapse id="responsive-navbar-nav">
                 <Nav className="me-auto">
-                  <Nav.Link href={user ?"/projects": "/login"}>Projects</Nav.Link>
-                  <Nav.Link href={user ?"/departments": "/login"}>Departments</Nav.Link>
-                  <Nav.Link href={user ?"/cities": "/login"}>Cities</Nav.Link>
-                  <Nav.Link href={user ?"/employees": "/login"}>Employees</Nav.Link>
-                  
+                  <Nav.Link href={user ? "/projects" : "/login"}>
+                    Projects
+                  </Nav.Link>
+                  <Nav.Link href={user ? "/departments" : "/login"}>
+                    Departments
+                  </Nav.Link>
+                  <Nav.Link href={user ? "/cities" : "/login"}>Cities</Nav.Link>
+                  <Nav.Link href={user ? "/employees" : "/login"}>
+                    Employees
+                  </Nav.Link>
                 </Nav>
-                {user?<button className="btn btn-light"  style={{cursor: "auto"}} href="/login">
+                {user ? (
+                  <button
+                    className="btn btn-light"
+                    style={{ cursor: "auto" }}
+                    href="/login"
+                  >
                     You are Logged in as "{user.name}"
-                    </button>:"" }
+                  </button>
+                ) : (
+                  ""
+                )}
                 {!user ? (
                   <Nav.Link href="/Login">
-                    <button className="btn btn-warning"  href="/login">
-                    Log in
+                    <button className="btn btn-warning" href="/login">
+                      Log in
                     </button>
                   </Nav.Link>
                 ) : (
@@ -77,6 +89,7 @@ function Nav2({ user, logout}) {
         </Navbar>
       </div>
     </>
+  );
 }
 
 export default Nav2;

@@ -1,10 +1,5 @@
 import React, { useState, useEffect } from "react";
-import {
-  BrowserRouter as Router,
-  Route,
-  Redirect,
-  Switch,
-} from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import "./main.css";
 import Navbar from "./NavBar/Navbar";
 import Footer from "./Footer/Footer";
@@ -22,6 +17,7 @@ import EmployeesOftheCity from "./Cities/EmployeesOftheCity";
 import ProjectsOfdEmployee from "./Employees/EmployeeProjects";
 import EmployeesOfdProject from "./Projects/EmployeesOfdProject";
 import BASE_URL from "../constraints/URL";
+import PhotoCredit from "./PhotoCredit";
 
 function MainBody() {
   const [user, setUser] = useState(null);
@@ -173,91 +169,78 @@ function MainBody() {
                 ""
               )}
             </div>
-            <Switch>
-              <Route path="/projects" exact>
-                <div className="hedderdiv">
-                  <h5>All Projects of the Company</h5>
-                </div>
-                <Projects projects={projects} />
-              </Route>
+            <Routes>
+              <Route
+                path="/projects"
+                element={<Projects projects={projects} />}
+              ></Route>
 
-              <Route path="/departments" exact>
-                <div className="hedderdiv">
-                  <h5>Departments of the Company</h5>
-                </div>
-                <Departments departments={depts} />
-              </Route>
-              <Route path="/employees/:id" exact>
-                <DepartmentEmployees dept={depts} cities={cities} />
-              </Route>
-              <Route path="/countries/:id" exact>
-                <CountriesCities
-                  countries={countries}
-                  activate={activate}
-                  setActivate={setActivate}
-                />
-              </Route>
-              <Route path="/cities/:id" exact>
-                <EmployeesOftheCity
-                  depts={depts}
-                  cities={cities}
-                  activate={activate}
-                  setActivate={setActivate}
-                />
-              </Route>
-              <Route path="/employees/:id/projects" exact>
-                <ProjectsOfdEmployee
-                  employees={employees}
-                  activate={activate}
-                  setActivate={setActivate}
-                />
-              </Route>
-              <Route path="/projects/:id/employees" exact>
-                <EmployeesOfdProject projects={projects} />
-              </Route>
-              <Route path="/cities" exact>
-                <div className="hedderdiv">
-                  <h5>Business Opearting Cities of the Company</h5>
-                </div>
-                <Cities cities={cities} />
-              </Route>
-              <Route path="/employees" exact>
-                <div className="hedderdiv">
-                  <h5 style={{ color: "white" }}>
-                    All Employees of the Company
-                  </h5>
-                </div>
-                <Employees
-                  setEmployees={setEmployees}
-                  employees={employees}
-                  depts={depts}
-                  cities={cities}
-                />
-              </Route>
-              <Route path="/signup" exact>
-                <SignUp setUser={setUser} user={user} />
-              </Route>
-              <Route path="/login" exact>
-                <Login setUser={setUser} />
-              </Route>
-              <Route path="/" exact>
-                <div className="hedderdiv">
-                  <h5>Welcome to T&T Project Manager</h5>
-                </div>
-                <Home user={user} />
-              </Route>
-              <Redirect to="/" />
-            </Switch>
-            <small style={{ width: "100%", fontSize: "0.5rem" }}>
-              Photo by{" "}
-              <a href="https://unsplash.com/@nordwood?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">
-                NordWood Themes
-              </a>{" "}
-              on{" "}
-              <a href="https://unsplash.com/s/photos/business?utm_source=unsplash&utm_medium=referral&utm_content=creditCopyText">
-                Unsplash
-              </a>
-            </small>
+              <Route
+                path="/departments"
+                element={<Departments departments={depts} />}
+              ></Route>
+              <Route
+                path="/employees/:id"
+                element={<DepartmentEmployees dept={depts} cities={cities} />}
+              />
+              <Route
+                path="/countries/:id"
+                element={
+                  <CountriesCities
+                    countries={countries}
+                    activate={activate}
+                    setActivate={setActivate}
+                  />
+                }
+              />
+              <Route
+                path="/cities/:id"
+                element={
+                  <EmployeesOftheCity
+                    depts={depts}
+                    cities={cities}
+                    activate={activate}
+                    setActivate={setActivate}
+                  />
+                }
+              />
+              <Route
+                path="/employees/:id/projects"
+                element={
+                  <ProjectsOfdEmployee
+                    employees={employees}
+                    activate={activate}
+                    setActivate={setActivate}
+                  />
+                }
+              />
+              <Route
+                path="/projects/:id/employees"
+                element={<EmployeesOfdProject projects={projects} />}
+              />
+              <Route
+                path="/cities"
+                element={<Cities cities={cities} />}
+              ></Route>
+              <Route
+                path="/employees"
+                element={
+                  <Employees
+                    setEmployees={setEmployees}
+                    employees={employees}
+                    depts={depts}
+                    cities={cities}
+                  />
+                }
+              ></Route>
+              <Route
+                path="/signup"
+                element={<SignUp setUser={setUser} user={user} />}
+              />
+              <Route path="/login" element={<Login setUser={setUser} />} />
+              <Route path="/" element={<Home user={user} />}></Route>
+            </Routes>
+            <PhotoCredit />
           </div>
         </div>
       </Router>
@@ -265,5 +248,4 @@ function MainBody() {
     </div>
   );
 }
-
 export default MainBody;

@@ -2,15 +2,31 @@ import React, { useState } from "react";
 import EmployeeCard from "./EmployeeCard";
 import Loading from "../LoadingAnimation/Loading";
 import "./Employees.css";
-import BASE_URL from "../../constraints/URL"
+import BASE_URL from "../../constraints/URL";
+import PageHeading from "../PageHeadings";
 
-function Employees({cities, depts, employees, setEmployees}) {
+function Employees({ cities, depts, employees, setEmployees }) {
   const [addEmployeeForm, setAddEmpForm] = useState(false);
   const [addEmployee, setAddEmployee] = useState({});
 
-  let roles=["manager", "civil engineer", "Admin officer", "elecrical enginner",
-   "supervisor","HR officer", "supervisor", "technical officer"]
-  let sections=["Audit", "Finance", "Security", "Transport", "HR", "Purchasing"]
+  let roles = [
+    "manager",
+    "civil engineer",
+    "Admin officer",
+    "elecrical enginner",
+    "supervisor",
+    "HR officer",
+    "supervisor",
+    "technical officer",
+  ];
+  let sections = [
+    "Audit",
+    "Finance",
+    "Security",
+    "Transport",
+    "HR",
+    "Purchasing",
+  ];
 
   //DELETE EMPLOYEE ${URL}----------
 
@@ -26,7 +42,7 @@ function Employees({cities, depts, employees, setEmployees}) {
   //PATCH EMPLOYEE ${URL}------------
 
   function updateEmployee(employeObject, id) {
-    let data = { ...employeObject, "id": id };
+    let data = { ...employeObject, id: id };
 
     fetch(BASE_URL + `/employees/${id}`, {
       method: "PATCH",
@@ -63,7 +79,7 @@ function Employees({cities, depts, employees, setEmployees}) {
   }
 
   //-----------------supportive functions--------------------------
-  
+
   function toggleForm(e) {
     e.preventDefault();
     setAddEmpForm(!addEmployeeForm);
@@ -81,8 +97,9 @@ function Employees({cities, depts, employees, setEmployees}) {
     setAddEmployee(newEmp);
   }
 
-   return (
+  return (
     <>
+      <PageHeading heading={"All Employees of the Company"} colors={"white"} />
       <div className="formDiv createEmployee">
         <div>
           <button
@@ -112,18 +129,22 @@ function Employees({cities, depts, employees, setEmployees}) {
                 onChange={handleAddEmployee}
               >
                 <option value={null}>Select</option>
-               {roles.map((role)=><option value={role}>{role}</option>)}
+                {roles.map((role) => (
+                  <option value={role}>{role}</option>
+                ))}
               </select>
             </label>
             <label>
               Section
-                <select
+              <select
                 className="form-select"
                 name="section"
                 onChange={handleAddEmployee}
               >
                 <option value={null}>Select</option>
-                {sections.map((section)=><option value={section}>{section}</option>)}
+                {sections.map((section) => (
+                  <option value={section}>{section}</option>
+                ))}
               </select>
             </label>
             <label>
@@ -134,7 +155,9 @@ function Employees({cities, depts, employees, setEmployees}) {
                 aria-label="Default select example"
                 onChange={handleAddEmployee}
               >
-                {depts.map((dpt)=><option value={dpt.id}>{dpt.name}</option>)}
+                {depts.map((dpt) => (
+                  <option value={dpt.id}>{dpt.name}</option>
+                ))}
               </select>
             </label>
             <label>
@@ -145,7 +168,9 @@ function Employees({cities, depts, employees, setEmployees}) {
                 aria-label="Default select example"
                 onChange={handleAddEmployee}
               >
-              {cities.map((cty)=><option value={cty.id}>{cty.name}</option>)}
+                {cities.map((cty) => (
+                  <option value={cty.id}>{cty.name}</option>
+                ))}
               </select>
             </label>
             <div className="col-sm">

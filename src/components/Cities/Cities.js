@@ -1,10 +1,11 @@
 import Loading from "../LoadingAnimation/Loading";
 import "./Cities.css";
+import PageHeading from "../PageHeadings";
 
 function Cities({ cities }) {
   return (
     <>
-      {" "}
+      <PageHeading heading={"Business Opearting Cities of the Company"} />{" "}
       {cities !== null ? (
         cities.map((c, idx) => {
           return (
