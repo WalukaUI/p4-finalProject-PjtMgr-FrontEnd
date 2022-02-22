@@ -36,5 +36,4 @@ function Projects({ projects }) {
     </>
   );
 }
-
 export default Projects;
