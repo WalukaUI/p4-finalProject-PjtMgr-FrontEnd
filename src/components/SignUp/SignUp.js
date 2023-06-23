@@ -53,7 +53,7 @@ function SignUp({ setUser, user }) {
 
   function compareNumber(e) {
     e.preventDefault();
-    if (e.target.value == verificationNum) {
+    if (e.target.value === verificationNum) {
       setShowSuccessMsg(true);
       setUser(verifyemail);
     } else {

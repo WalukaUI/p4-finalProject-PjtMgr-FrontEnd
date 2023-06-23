@@ -2,11 +2,7 @@ import React from "react";
 import MainBody from "./components/MainBody";
 
 function App() {
-  return (
-    <div className="App">
-      <MainBody />
-    </div>
-  );
+  return (<MainBody />);
 }
 
 export default App;
