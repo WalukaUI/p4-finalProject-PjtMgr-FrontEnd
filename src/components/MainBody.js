@@ -57,7 +57,7 @@ function MainBody() {
   // logout //${URL}-------------
 
   function logout() {
-    fetch(BASE_URL + `/logout`, {
+    fetch(BASE_URL + `/cnc/logout`, {
       method: "DELETE",
       credentials: "include",
     }).then((r) => console.log("logged out"));
