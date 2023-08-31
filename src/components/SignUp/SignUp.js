@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./SignUp.css";
 import BASE_URL from "../../constraints/URL";
 
@@ -13,6 +13,7 @@ function SignUp({ setUser, user }) {
   const [verifyemail, setVerifyemail] = useState(null);
   const [enteredValue, setEnteredValue] = useState();
 
+  const history = useNavigate();
   function handleSubmit(e) {
     e.preventDefault();
 
@@ -32,6 +33,9 @@ function SignUp({ setUser, user }) {
       if (res.ok) {
         res.json().then((user) => {
           setVerifyemail(user);
+          setShowSuccessMsg(true);
+          setUser(verifyemail)
+          history(`/login`);
         });
       } else {
         res.json().then((err) => {
@@ -63,7 +67,7 @@ function SignUp({ setUser, user }) {
 
   return (
     <>
-      {verifyemail === null ? (
+      {/* {verifyemail === null ? ( */}
         <form onSubmit={handleSubmit} className="signupform">
           <div className="form-group">
             <h4>Register</h4>
@@ -121,7 +125,7 @@ function SignUp({ setUser, user }) {
             Submit
           </button>
         </form>
-      ) : (
+      {/* ) : (
         <div style={{ textAlign: "center" }}>
           {showSuccessMsg ? (
             ""
@@ -154,7 +158,7 @@ function SignUp({ setUser, user }) {
             <input name="verification" onChange={compareNumber} />
           )}
         </div>
-      )}
+      )} */}
       {/* <div>
         {errors
           ? errors?.map((e) => (

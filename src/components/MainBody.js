@@ -41,7 +41,7 @@ function MainBody() {
   // auto-login----------------
 
   useEffect(() => {
-    fetch(BASE_URL + `/me`, {
+    fetch(BASE_URL + `/c&c/me`, {
       method: "GET",
       headers: { "Content-Type": "application/json" },
       credentials: "include",

@@ -75,7 +75,9 @@ function Employees({ cities, depts, employees, setEmployees }) {
       body: JSON.stringify(newEmpObject),
     })
       .then((res) => res.json())
-      .then((newPerson) => setEmployees([...employees, newPerson]));
+      .then((newPerson) =>{
+        document.newEmpForm.reset();
+        setEmployees([...employees, newPerson])});
   }
 
   //-----------------supportive functions--------------------------
@@ -110,7 +112,7 @@ function Employees({ cities, depts, employees, setEmployees }) {
           </button>
         </div>
         <div className={addEmployeeForm ? "display formDiv" : "hidden"}>
-          <form onSubmit={createNewEmployee}>
+          <form name="newEmpForm" onSubmit={createNewEmployee}>
             <label>
               Name
               <input

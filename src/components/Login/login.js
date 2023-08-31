@@ -20,6 +20,7 @@ function Login({ setUser }) {
       body: JSON.stringify({
         name: name,
         password: password,
+        user: true,
       }),
     }).then((res) => {
       if (res.ok) {

@@ -10,7 +10,6 @@ function Nav2({ user, logout }) {
   function handlelogout(e) {
     e.preventDefault();
     logout();
-    localStorage.clear();
     history("/");
   }
 
