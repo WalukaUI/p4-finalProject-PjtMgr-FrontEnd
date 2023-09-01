@@ -2,7 +2,7 @@
 const BASE_URL=
 process.env.NODE_ENV === "development"
 ?"http://localhost:3000"
-:"https://tnt-project-management-app.onrender.com"
+:"https://doc-appointment-booking-app-8owr.onrender.com"
 
 export default BASE_URL
 
